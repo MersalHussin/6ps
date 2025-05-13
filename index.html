@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رحلة 6Ps - اكتشف شغفك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== الأساسيات ===== */
+    :root {
+      --primary-color: #052ed8;
+      --primary-dark: #0324a5;
+      --secondary-color: #64748b;
+      --secondary-dark: #475569;
+      --success-color: #10b981;
+      --danger-color: #ef4444;
+      --warning-color: #f59e0b;
+      --light-color: #f8fafc;
+      --dark-color: #1e293b;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', Arial, sans-serif;
+      background-color: #f0f4f8;
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ===== العناوين والنصوص ===== */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .main-title {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--gray-600);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    /* ===== البطاقات ===== */
+    .card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    /* ===== الفئات والخيارات ===== */
+    .categories-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .category {
+      background-color: var(--gray-100);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .category:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-header {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .category-header h3 {
+      margin: 0;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .checkbox-label:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .checkbox-label input {
+      margin-left: 0.5rem;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .checkbox-label span {
+      font-size: 1rem;
+    }
+
+    /* ===== الأزرار ===== */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Tajawal', Arial, sans-serif;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--secondary-dark);
+    }
+
+    .btn-add {
+      background-color: var(--success-color);
+      color: white;
+      padding: 0.5rem 1rem;
+    }
+
+    .btn-add:hover {
+      background-color: #0d9668;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* ===== الإدخال المخصص ===== */
+    .custom-passion {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .custom-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--border-radius);
+      font-family: 'Tajawal', Arial, sans-serif;
+      font-size: 1rem;
+    }
+
+    .custom-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    /* ===== رسائل الخطأ ===== */
+    .error-message {
+      color: var(--danger-color);
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background-color: rgba(239, 68, 68, 0.1);
+      border-radius: var(--border-radius);
+      text-align: center;
+    }
+
+    .error-message.hidden {
+      display: none;
+    }
+
+    /* ===== العداد ===== */
+    .counter {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ===== قسم الأسئلة ===== */
+    .progress-container {
+      margin-bottom: 2rem;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: var(--gray-200);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: var(--primary-color);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      text-align: center;
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .passion-title {
+      font-size: 1.5rem;
+      color: var(--gray-800);
+    }
+
+    .stage-badge {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      order: 2;
+    }
+
+    .stage-description {
+      color: var(--primary-color);
+     margin-top: 0.5rem;
+    font-size: 25px;
+    font-weight: 600;
+    }
+
+    .question-options {
+      background-color: var(--gray-100);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+    }
+
+    /* ===== قسم النتائج ===== */
+    .results-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    .results-table th, .results-table td {
+      padding: 0.75rem;
+      border: 1px solid var(--gray-300);
+    }
+
+    .results-table th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+    }
+
+    .results-table tr:nth-child(even) {
+      background-color: var(--gray-100);
+    }
+
+    .results-table tr:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .recommendation-container {
+      background-color: var(--gray-100);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+    }
+
+    .recommendation {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 1rem 0;
+    }
+
+    .recommendation-details {
+      color: var(--gray-600);
+      margin-top: 0.5rem;
+    }
+
+    /* ===== تذييل الصفحة ===== */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      color: var(--gray-500);
+      font-size: 0.9rem;
+    }
+
+    /* ===== الإشعارات ===== */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .notification.error {
+      background-color: #ef4444;
+    }
+    
+    .notification.success {
+      background-color: #10b981;
+    }
+    
+    .notification.warning {
+      background-color: #f59e0b;
+    }
+
+    /* ===== إشعار الانتقال بين الشغف ===== */
+    .passion-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .passion-transition.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .passion-transition-content {
+      background-color: white;
+      padding: 2rem 3rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(20px);
+      transition: transform 0.5s ease;
+    }
+
+    .passion-transition.show .passion-transition-content {
+      transform: translateY(0);
+    }
+
+    .passion-transition-title {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .passion-transition-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin: 1rem 0;
+    }
+
+    /* ===== تصميم متجاوب ===== */
+    @media (max-width: 768px) {
+      .categories-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .main-title {
+        font-size: 2rem;
+      }
+      
+      .question-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .notification {
+        right: 10px;
+        left: 10px;
+        text-align: center;
+      }
+    }
+
+    /* ===== أنماط الطباعة ===== */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #results-section, #results-section * {
+        visibility: visible;
+      }
+      #results-section {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      .action-buttons {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="main-title">رحلة 6Ps</h1>
+      <p class="subtitle">اكتشف شغفك وحدد مسارك المهني</p>
+    </header>
+
+    <!-- اختيار الشغف -->
+    <section id="passion-selection" class="card">
+      <div class="card-header">
+        <h2>اختر 6 شغف (حد أقصى 6)</h2>
+        <div id="passion-counter" class="counter">0/6</div>
+      </div>
+      <div id="passion-error" class="error-message hidden">لا يمكنك اختيار أكثر من 6 شغف!</div>
+      
+      <div class="categories-container">
+        <!-- تكنولوجيا -->
+        <div class="category">
+          <div class="category-header">
+            <h3>🧠 تكنولوجيا</h3>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" value="البرمجة" class="passion-checkbox"> <span>البرمجة</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التصميم" class="passion-checkbox"> <span>التصميم</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="تعديل الفيديوهات" class="passion-checkbox"> <span>تعديل الفيديوهات</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="UI/UX" class="passion-checkbox"> <span>UI/UX</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="الأمن السيبراني" class="passion-checkbox"> <span>الأمن السيبراني</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="الذكاء الاصطناعي" class="passion-checkbox"> <span>الذكاء الاصطناعي</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="تحليل البيانات" class="passion-checkbox"> <span>تحليل البيانات</span></label>
+          </div>
+        </div>
+        
+        <!-- عملية -->
+        <div class="category">
+          <div class="category-header">
+            <h3>⚙️ عملية</h3>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" value="التدريس" class="passion-checkbox"> <span>التدريس</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="إدارة الشركات" class="passion-checkbox"> <span>إدارة الشركات</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التصوير" class="passion-checkbox"> <span>التصوير</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التمثيل" class="passion-checkbox"> <span>التمثيل</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="العمل الحر" class="passion-checkbox"> <span>العمل الحر</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="المبيعات" class="passion-checkbox"> <span>المبيعات</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="الموارد البشرية" class="passion-checkbox"> <span>الموارد البشرية</span></label>
+          </div>
+        </div>
+        
+        <!-- إبداعية -->
+        <div class="category">
+          <div class="category-header">
+            <h3>🎨 إبداعية</h3>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" value="الكتابة الإبداعية" class="passion-checkbox"> <span>الكتابة الإبداعية</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="الرسم" class="passion-checkbox"> <span>الرسم</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="الموسيقى" class="passion-checkbox"> <span>الموسيقى</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="صناعة المحتوى" class="passion-checkbox"> <span>صناعة المحتوى</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التمثيل الصوتي" class="passion-checkbox"> <span>التمثيل الصوتي</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="إخراج الأفلام" class="passion-checkbox"> <span>إخراج الأفلام</span></label>
+          </div>
+        </div>
+        
+        <!-- اجتماعية -->
+        <div class="category">
+          <div class="category-header">
+            <h3>💬 اجتماعية</h3>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" value="العمل المجتمعي" class="passion-checkbox"> <span>العمل المجتمعي</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التقديم والإلقاء" class="passion-checkbox"> <span>التقديم والإلقاء</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="العلاقات العامة" class="passion-checkbox"> <span>العلاقات العامة</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التدريب الشخصي" class="passion-checkbox"> <span>التدريب الشخصي (كوتشينج)</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="العمل التطوعي" class="passion-checkbox"> <span>العمل التطوعي</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التوجيه والإرشاد" class="passion-checkbox"> <span>التوجيه والإرشاد</span></label>
+          </div>
+        </div>
+        
+        <!-- ريادية -->
+        <div class="category">
+          <div class="category-header">
+            <h3>🧳 ريادية</h3>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" value="تأسيس المشاريع" class="passion-checkbox"> <span>تأسيس المشاريع</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التسويق الرقمي" class="passion-checkbox"> <span>التسويق الرقمي</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="إدارة المنتجات" class="passion-checkbox"> <span>إدارة المنتجات</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="التجارة الإلكترونية" class="passion-checkbox"> <span>التجارة الإلكترونية</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="تطوير التطبيقات" class="passion-checkbox"> <span>تطوير التطبيقات</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="النمو الشخصي والمالي" class="passion-checkbox"> <span>النمو الشخصي والمالي</span></label>
+          </div>
+        </div>
+        
+        <!-- علمية/بحثية -->
+        <div class="category">
+          <div class="category-header">
+            <h3>🧪 علمية/بحثية</h3>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" value="البحث العلمي" class="passion-checkbox"> <span>البحث العلمي</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="العلوم الطبية" class="passion-checkbox"> <span>العلوم الطبية</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="الهندسة" class="passion-checkbox"> <span>الهندسة</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="البيئة والطاقة" class="passion-checkbox"> <span>البيئة والطاقة</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="تطوير المناهج" class="passion-checkbox"> <span>تطوير المناهج</span></label>
+            <label class="checkbox-label"><input type="checkbox" value="علم النفس" class="passion-checkbox"> <span>علم النفس</span></label>
+          </div>
+        </div>
+        
+        <!-- إضافة شغف مخصص -->
+        <div class="category">
+          <div class="category-header">
+            <h3>✍️ شغف مخصص</h3>
+          </div>
+          <div class="custom-passion">
+            <input type="text" id="custom-passion-input" class="custom-input" placeholder="أدخل شغفك هنا">
+            <button id="add-custom-passion" class="btn btn-add">إضافة</button>
+          </div>
+          <div id="custom-passion-error" class="error-message hidden">لا يمكنك إضافة شغف مخصص لأنك اخترت 6 شغف بالفعل!</div>
+          <div id="custom-passions-list" class="checkbox-group"></div>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button id="start-journey" class="btn btn-primary">ابدأ الرحلة</button>
+      </div>
+    </section>
+
+    <!-- مراحل الأسئلة -->
+    <section id="question-section" class="card hidden">
+      <div class="progress-container">
+        <div id="progress-bar" class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div id="progress-text" class="progress-text"></div>
+      </div>
+      
+      <div class="question-header">
+        <h2 id="current-passion" class="passion-title"></h2>
+        <div id="current-stage" class="stage-badge"></div>
+      </div>
+      
+      <div id="question-checkboxes" class="checkbox-group question-options"></div>
+      <div id="question-error" class="error-message hidden">لا يمكنك اختيار أكثر من 6 إجابات!</div>
+      
+      <div class="action-buttons">
+        <button id="prev-question" class="btn btn-secondary">السابق</button>
+        <button id="next-question" class="btn btn-primary">التالي</button>
+      </div>
+    </section>
+
+    <!-- النتائج -->
+    <section id="results-section" class="card hidden">
+      <div class="card-header">
+        <h2>نتائج رحلة 6Ps</h2>
+      </div>
+      
+      <div class="results-container">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>الشغف</th>
+              <th>Purpose</th>
+              <th>Problems</th>
+              <th>Power</th>
+              <th>Proof</th>
+              <th>Possible</th>
+              <th>الإجمالي</th>
+            </tr>
+          </thead>
+          <tbody id="results-table"></tbody>
+        </table>
+        
+        <div class="recommendation-container">
+          <h3>التوصية النهائية</h3>
+          <div id="recommendation" class="recommendation"></div>
+          <div id="recommendation-details" class="recommendation-details"></div>
+        </div>
+        
+        <div class="action-buttons">
+          <button id="restart-journey" class="btn btn-primary">إعادة الاختبار</button>
+          <button id="print-results" class="btn btn-secondary">طباعة النتائج</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- إشعار الانتقال بين الشغف -->
+  <div id="passion-transition" class="passion-transition">
+    <div class="passion-transition-content">
+      <div class="passion-transition-title">أسئلة شغف</div>
+      <div id="passion-transition-name" class="passion-transition-name"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>رحلة 6Ps &copy; 2025 - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    // المتغيرات الرئيسية
+    const passions = [];
+    const stages = ['Purpose', 'Problems', 'Power', 'Proof', 'Possible'];
+    const stageEmojis = {
+      'Purpose': '🎯',
+      'Problems': '🚧',
+      'Power': '💪',
+      'Proof': '🏆',
+      'Possible': '🚀'
+    };
+    const stageDescriptions = {
+      'Purpose': 'لماذا هذا الشغف مهم بالنسبة لك؟',
+      'Problems': 'ما هي التحديات التي تواجهك في هذا الشغف؟',
+      'Power': 'ما هي نقاط قوتك في هذا الشغف؟',
+      'Proof': 'ما هي الإنجازات التي حققتها في هذا الشغف؟',
+      'Possible': 'ما هي الخطوات التي يمكنك اتخاذها لتطوير هذا الشغف؟'
+    };
+    const questions = {
+      Purpose: [
+        'لأنه يفرغ طاقتي الإبداعية',
+        'لأنه يسمح لي بالتعبير عن أفكاري',
+        'لأنه مطلوب في سوق العمل',
+        'لأنه يحتوي على فن وإبداع',
+        'لأنه يساعد الآخرين',
+        'لأنه ممتع بالنسبة لي'
+      ],
+      Problems: [
+        'الأدوات أو المعدات غالية',
+        'لا أعرف من أين أبدأ',
+        'ليس لدي وقت كافٍ',
+        'أخاف من الفشل',
+        'لا أجد من يشجعني',
+        'أشعر أنني لست موهوبًا بما يكفي'
+      ],
+      Power: [
+        'لدي مهارة طبيعية فيه',
+        'أملك شغف قوي تجاهه',
+        'لدي خبرة سابقة',
+        'أستطيع التعلم بسرعة',
+        'لدي شبكة علاقات تدعمه',
+        'أملك الثقة لتجربته'
+      ],
+      Proof: [
+        'حققت نتيجة صغيرة فيه',
+        'شاركت في حدث/مشروع متعلق',
+        'تلقيت إشادة من الآخرين',
+        'أكملت دورة تدريبية',
+        'ساعدت شخصًا آخر فيه',
+        'صنعت شيئًا ملموسًا'
+      ],
+      Possible: [
+        'أبدأ بمشروع صغير',
+        'أتابع دروسًا على الإنترنت',
+        'أشارك في مجتمع مهتم',
+        'أجرب أداة مجانية',
+        'أطلب نصيحة من خبير',
+        'أخصص وقت يومي له'
+      ]
+    };
+
+    let currentPassionIndex = 0;
+    let currentStageIndex = 0;
+    let previousPassionIndex = -1; // لتتبع الشغف السابق
+    const answers = {};
+    let isTransitioning = false; // لمنع النقر المتكرر أثناء الانتقال
+
+    // ===== وظائف المساعدة =====
+    function updatePassionCounter() {
+      const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
+      document.getElementById('passion-counter').textContent = `${checkedCount}/6`;
+      
+      // تحديث لون العداد
+      const counter = document.getElementById('passion-counter');
+      if (checkedCount === 6) {
+        counter.style.backgroundColor = '#10b981'; // لون أخضر
+      } else if (checkedCount > 6) {
+        counter.style.backgroundColor = '#ef4444'; // لون أحمر
+      } else {
+        counter.style.backgroundColor = '#3b82f6'; // لون أزرق
+      }
+    }
+
+    function updateProgressBar() {
+      const totalQuestions = passions.length * stages.length;
+      const currentQuestion = currentPassionIndex * stages.length + currentStageIndex + 1;
+      const progressPercentage = (currentQuestion / totalQuestions) * 100;
+      
+      document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
+      document.getElementById('progress-text').textContent = 
+        `السؤال ${currentQuestion} من ${totalQuestions} | المرحلة: ${stageEmojis[stages[currentStageIndex]]} ${stages[currentStageIndex]} | متبقي: ${totalQuestions - currentQuestion} سؤال`;
+    }
+
+    function showNotification(message, type = 'error') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 10);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+
+    // ===== إظهار إشعار الانتقال بين الشغف =====
+    function showPassionTransition(passionName) {
+      if (isTransitioning) return;
+      
+      isTransitioning = true;
+      
+      const transitionOverlay = document.getElementById('passion-transition');
+      const passionNameElement = document.getElementById('passion-transition-name');
+      
+      passionNameElement.textContent = passionName;
+      transitionOverlay.classList.add('show');
+      
+      // إخفاء الإشعار بعد 3 ثواني
+      setTimeout(() => {
+        transitionOverlay.classList.remove('show');
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500); // انتظر حتى تنتهي حركة الإخفاء
+      }, 3000);
+    }
+
+    // ===== إدارة اختيار الشغف =====
+    function updatePassionSelection() {
+      const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
+      const addButton = document.getElementById('add-custom-passion');
+      const errorDiv = document.getElementById('custom-passion-error');
+      
+      updatePassionCounter();
+      
+      if (checkedCount >= 6) {
+        addButton.disabled = true;
+        addButton.classList.add('disabled');
+        errorDiv.classList.remove('hidden');
+      } else {
+        addButton.disabled = false;
+        addButton.classList.remove('disabled');
+        errorDiv.classList.add('hidden');
+      }
+    }
+
+    document.querySelectorAll('.passion-checkbox').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
+        if (checkedCount > 6) {
+          cb.checked = false;
+          document.getElementById('passion-error').classList.remove('hidden');
+          showNotification('لا يمكنك اختيار أكثر من 6 شغف!');
+        } else {
+          document.getElementById('passion-error').classList.add('hidden');
+        }
+        updatePassionSelection();
+      });
+    });
+
+    // ===== إضافة شغف مخصص =====
+    document.getElementById('add-custom-passion').addEventListener('click', () => {
+      const input = document.getElementById('custom-passion-input');
+      const value = input.value.trim();
+      const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
+
+      if (value && checkedCount < 6) {
+        const list = document.getElementById('custom-passions-list');
+        const label = document.createElement('label');
+        label.className = 'checkbox-label';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = value;
+        checkbox.className = 'passion-checkbox';
+        checkbox.checked = true;
+        checkbox.addEventListener('change', updatePassionSelection);
+        
+        const span = document.createElement('span');
+        span.textContent = ` ${value}`;
+        
+        label.appendChild(checkbox);
+        label.appendChild(span);
+        list.appendChild(label);
+        
+        input.value = '';
+        updatePassionSelection();
+        showNotification(`تمت إضافة "${value}" بنجاح!`, 'success');
+      } else if (checkedCount >= 6) {
+        document.getElementById('custom-passion-error').classList.remove('hidden');
+        showNotification('لا يمكنك إضافة شغف مخصص لأنك اخترت 6 شغف بالفعل!');
+      } else if (!value) {
+        showNotification('يرجى إدخال اسم الشغف المخصص!');
+      }
+    });
+
+    // إضافة شغف مخصص عند الضغط على Enter
+    document.getElementById('custom-passion-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('add-custom-passion').click();
+      }
+    });
+
+    // ===== بدء الرحلة =====
+    document.getElementById('start-journey').addEventListener('click', () => {
+      const checkboxes = document.querySelectorAll('.passion-checkbox:checked');
+      if (checkboxes.length !== 6) {
+        showNotification('يرجى اختيار 6 شغف بالضبط!');
+        return;
+      }
+      
+      // تجميع الشغف المختار
+      passions.length = 0;
+      checkboxes.forEach(cb => passions.push(cb.value));
+      
+      // تهيئة مصفوفة الإجابات
+      passions.forEach(p => answers[p] = { Purpose: [], Problems: [], Power: [], Proof: [], Possible: [] });
+      
+      // الانتقال إلى قسم الأسئلة
+      document.getElementById('passion-selection').classList.add('hidden');
+      document.getElementById('question-section').classList.remove('hidden');
+      
+      // إظهار إشعار الانتقال للشغف الأول
+      showPassionTransition(passions[0]);
+      
+      // عرض السؤال الأول
+      showQuestion();
+      
+      // تمرير إلى الأعلى
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ===== عرض السؤال الحالي =====
+    function showQuestion() {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      
+      // تحديث شريط التقدم
+      updateProgressBar();
+      
+      // تحديث عنوان السؤال
+      document.getElementById('current-passion').textContent = `الشغف: ${passion}`;
+      document.getElementById('current-stage').textContent = `${stageEmojis[stage]} ${stage}`;
+      
+      // إضافة وصف المرحلة
+      const questionHeader = document.querySelector('.question-header');
+      const stageDescription = document.createElement('p');
+      stageDescription.className = 'stage-description';
+      stageDescription.textContent = stageDescriptions[stage];
+      
+      // إزالة الوصف السابق إن وجد
+      const oldDescription = document.querySelector('.stage-description');
+      if (oldDescription) {
+        oldDescription.remove();
+      }
+      
+      questionHeader.appendChild(stageDescription);
+
+      // إنشاء خيارات الأسئلة
+      const checkboxesDiv = document.getElementById('question-checkboxes');
+      checkboxesDiv.innerHTML = '';
+      
+      questions[stage].forEach((q, i) => {
+        const label = document.createElement('label');
+        label.className = 'checkbox-label';
+        
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.value = q;
+        input.checked = answers[passion][stage].includes(q);
+        input.className = 'question-checkbox';
+        
+        const span = document.createElement('span');
+        span.textContent = ` ${q}`;
+        
+        label.appendChild(input);
+        label.appendChild(span);
+        checkboxesDiv.appendChild(label);
+      });
+
+      // تقييد اختيار الـ checkboxes
+      document.querySelectorAll('.question-checkbox').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const checkedCount = document.querySelectorAll('.question-checkbox:checked').length;
+          if (checkedCount > 6) {
+            cb.checked = false;
+            document.getElementById('question-error').classList.remove('hidden');
+            setTimeout(() => {
+              document.getElementById('question-error').classList.add('hidden');
+            }, 2000);
+          } else {
+            document.getElementById('question-error').classList.add('hidden');
+          }
+        });
+      });
+
+      // تحديث حالة زر السابق
+      const prevButton = document.getElementById('prev-question');
+      if (currentPassionIndex === 0 && currentStageIndex === 0) {
+        prevButton.disabled = true;
+        prevButton.classList.add('disabled');
+      } else {
+        prevButton.disabled = false;
+        prevButton.classList.remove('disabled');
+      }
+      
+      // تحديث نص زر التالي
+      const nextButton = document.getElementById('next-question');
+      if (currentPassionIndex === passions.length - 1 && currentStageIndex === stages.length - 1) {
+        nextButton.textContent = 'عرض النتائج';
+      } else {
+        nextButton.textContent = 'التالي';
+      }
+    }
+
+    // ===== الرجوع للسؤال السابق =====
+    document.getElementById('prev-question').addEventListener('click', () => {
+      if (isTransitioning) return; // منع النقر أثناء الانتقال
+      
+      // حفظ الإجابات الحالية
+      saveCurrentAnswers();
+      
+      // حفظ الشغف الحالي قبل التغيير
+      previousPassionIndex = currentPassionIndex;
+      
+      if (currentStageIndex > 0) {
+        currentStageIndex--;
+      } else if (currentPassionIndex > 0) {
+        currentPassionIndex--;
+        currentStageIndex = stages.length - 1;
+        
+        // إظهار إشعار الانتقال إذا تغير الشغف
+        if (previousPassionIndex !== currentPassionIndex) {
+          showPassionTransition(passions[currentPassionIndex]);
+        }
+      }
+      
+      showQuestion();
+    });
+
+    // ===== الانتقال للسؤال التالي =====
+    document.getElementById('next-question').addEventListener('click', () => {
+      if (isTransitioning) return; // منع النقر أثناء الانتقال
+      
+      // حفظ الإجابات الحالية
+      saveCurrentAnswers();
+      
+      // حفظ الشغف الحالي قبل التغيير
+      previousPassionIndex = currentPassionIndex;
+      
+      currentStageIndex++;
+      if (currentStageIndex >= stages.length) {
+        currentStageIndex = 0;
+        currentPassionIndex++;
+        
+        // إظهار إشعار الانتقال إذا تغير الشغف وليس نهاية الاختبار
+        if (currentPassionIndex < passions.length) {
+          showPassionTransition(passions[currentPassionIndex]);
+        }
+      }
+      
+      if (currentPassionIndex >= passions.length) {
+        showResults();
+      } else {
+        showQuestion();
+      }
+    });
+
+    // ===== حفظ الإجابات الحالية =====
+    function saveCurrentAnswers() {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      const checkboxes = document.querySelectorAll('.question-checkbox:checked');
+      answers[passion][stage] = Array.from(checkboxes).map(cb => cb.value);
+    }
+
+    // ===== عرض النتائج =====
+    function showResults() {
+      document.getElementById('question-section').classList.add('hidden');
+      document.getElementById('results-section').classList.remove('hidden');
+      
+      const tbody = document.getElementById('results-table');
+      tbody.innerHTML = '';
+
+      let maxTotal = -Infinity;
+      let recommendedPassion = '';
+      let passionScores = [];
+
+      passions.forEach(passion => {
+        const row = document.createElement('tr');
+        const counts = stages.map(stage => answers[passion][stage].length);
+        
+        // حساب الإجمالي مع طرح Problems
+        const total = counts.reduce((sum, count, index) => {
+          return stages[index] === 'Problems' ? sum - count : sum + count;
+        }, 0);
+        
+        row.innerHTML = `
+          <td>${passion}</td>
+          ${counts.map(c => `<td>${c}</td>`).join('')}
+          <td class="total-score">${total}</td>
+        `;
+        
+        tbody.appendChild(row);
+        
+        passionScores.push({ passion, total });
+        
+        if (total > maxTotal) {
+          maxTotal = total;
+          recommendedPassion = passion;
+        }
+      });
+      
+      // ترتيب النتائج تنازليًا
+      passionScores.sort((a, b) => b.total - a.total);
+      
+      // عرض التوصية
+      document.getElementById('recommendation').textContent = `${recommendedPassion}`;
+      
+      // إضافة تفاصيل التوصية
+      const details = document.getElementById('recommendation-details');
+      details.innerHTML = `
+        <p>حصل "${recommendedPassion}" على أعلى درجة (${maxTotal}) في تقييمك.</p>
+        <p>هذا يشير إلى أن هذا الشغف يتوافق بشكل كبير مع قدراتك واهتماماتك.</p>
+        <p>ننصحك بالتركيز على تطوير هذا الشغف والاستثمار فيه.</p>
+      `;
+      
+      // تلوين الصفوف حسب الترتيب
+      const rows = document.querySelectorAll('#results-table tr');
+      rows.forEach(row => {
+        const passionName = row.cells[0].textContent;
+        const rank = passionScores.findIndex(p => p.passion === passionName);
+        
+        if (rank === 0) {
+          row.classList.add('top-passion');
+          row.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
+          row.cells[row.cells.length - 1].style.backgroundColor = '#10b981';
+          row.cells[row.cells.length - 1].style.color = 'white';
+          row.cells[row.cells.length - 1].style.fontWeight = 'bold';
+        } else if (rank === 1 || rank === 2) {
+          row.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
+        }
+      });
+      
+      // تمرير إلى الأعلى
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== إعادة الاختبار =====
+    document.getElementById('restart-journey').addEventListener('click', () => {
+      // إعادة تعيين المتغيرات
+      currentPassionIndex = 0;
+      currentStageIndex = 0;
+      previousPassionIndex = -1;
+      
+      // إعادة عرض قسم اختيار الشغف
+      document.getElementById('results-section').classList.add('hidden');
+      document.getElementById('passion-selection').classList.remove('hidden');
+      
+      // إلغاء تحديد جميع خيارات الشغف
+      document.querySelectorAll('.passion-checkbox').forEach(cb => {
+        cb.checked = false;
+      });
+      
+      // إزالة الشغف المخصص
+      document.getElementById('custom-passions-list').innerHTML = '';
+      
+      // تحديث عداد الشغف
+      updatePassionCounter();
+      
+      // تمرير إلى الأعلى
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ===== طباعة النتائج =====
+    document.getElementById('print-results').addEventListener('click', () => {
+      window.print();
+    });
+
+    // ===== تهيئة الصفحة =====
+    document.addEventListener('DOMContentLoaded', () => {
+      updatePassionSelection();
+    });
+  </script>
+</body>
+</html>
