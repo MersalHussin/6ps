@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رحلة 6Ps - اكتشف ميولك المهنية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --primary-lighter: #93c5fd;
+      --primary-dark: #1e3a8a;
+      --primary-darker: #172554;
+      --background: #f0f9ff;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --border: #cbd5e1;
+      --error: #ef4444;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --radius: 12px;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      background-image: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 2rem 0;
+      color: var(--primary-dark);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+      border-radius: 2px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(203, 213, 225, 0.4);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      color: white;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      background-color: rgba(241, 245, 249, 0.5);
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      align-items: center;
+    }
+
+    .input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      background-color: #f8fafc;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      background-color: white;
+    }
+
+    .select {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      background-color: #f8fafc;
+      min-width: 150px;
+      transition: all 0.2s ease;
+    }
+
+    .select:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      background-color: white;
+    }
+
+    .button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.75rem 1.5rem;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button:disabled {
+      background-color: var(--text-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .button-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .button-outline:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .button-icon {
+      padding: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .table th,
+    .table td {
+      padding: 0.75rem 1rem;
+      text-align: right;
+    }
+
+    .table th {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      color: white;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .table tr {
+      background-color: white;
+    }
+
+    .table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .table tr:hover {
+      background-color: #f1f5f9;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .alert {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: none;
+      font-weight: 500;
+    }
+
+    .alert-error {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--error);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background-color: rgba(203, 213, 225, 0.5);
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-light), var(--primary-dark));
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1rem;
+    }
+
+    .guiding-question {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: rgba(59, 130, 246, 0.1);
+      border-radius: var(--radius);
+      border-right: 4px solid var(--primary);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .result-highlight {
+      background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(30, 64, 175, 0.1));
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      border-right: 4px solid var(--primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .action-button {
+      background-color: var(--primary-light);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.35rem 0.6rem;
+      margin: 0 0.125rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+    }
+
+    .action-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .delete-button {
+      background-color: var(--error);
+    }
+
+    .delete-button:hover {
+      background-color: #dc2626;
+    }
+
+    .action-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 1rem;
+      color: var(--primary-dark);
+      position: relative;
+      padding-right: 1rem;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 1.25rem;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background-color: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      color: white;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 1.25rem;
+    }
+
+    .modal-footer {
+      padding: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      background-color: rgba(241, 245, 249, 0.5);
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    /* Icons */
+    .icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        font-size: 12pt;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      .card {
+        box-shadow: none;
+        margin: 0 auto 20px;
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        width: 90%;
+      }
+
+      .card-header {
+        background: #f0f0f0 !important;
+        color: black !important;
+      }
+
+      .card-description {
+        color: #333 !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .print-only {
+        display: block;
+      }
+
+      .table th {
+        background: #f0f0f0 !important;
+        color: black !important;
+      }
+
+      .result-highlight {
+        border: 1px solid #ddd;
+        background: #f9f9f9 !important;
+      }
+
+      h1 {
+        color: black !important;
+        text-shadow: none;
+      }
+
+      h1::after {
+        display: none;
+      }
+
+      .print-section {
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+      }
+
+      .print-header {
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+      }
+
+      .print-content {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      table {
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .card-header, .card-content, .card-footer {
+        padding: 1rem;
+      }
+
+      .input-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .select {
+        width: 100%;
+      }
+
+      .table th, .table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .table-actions {
+        flex-wrap: wrap;
+      }
+
+      .card-footer {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .card-footer .button {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .container {
+        padding: 15px;
+      }
+
+      .card-header, .card-content, .card-footer {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>رحلة 6Ps - اكتشف ميولك المهنية</h1>
+
+    <!-- إدخال الشغف -->
+    <div id="passion-selection" class="card">
+      <div class="card-header">
+        <h2 class="card-title">أدخل 6 شغف</h2>
+        <p class="card-description">أدخل الشغف الذي تهتم به. يمكنك تغيير الترتيب لاحقاً.</p>
+      </div>
+      <div class="card-content">
+        <div id="passion-error" class="alert alert-error">أدخل اسم شغف صالح (مثل: البرمجة، التصميم)!</div>
+        <div class="input-group">
+          <input type="text" id="passion-input" class="input" placeholder="أدخل شغفك (مثل: البرمجة)">
+          <button id="add-passion" class="button">إضافة</button>
+        </div>
+        <table id="passion-table" class="table">
+          <thead>
+            <tr>
+              <th>الشغف</th>
+              <th>الترتيب</th>
+              <th>إجراء</th>
+            </tr>
+          </thead>
+          <tbody id="passion-list"></tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <button id="start-journey" class="button" disabled>ابدأ الرحلة</button>
+      </div>
+    </div>
+
+    <!-- مراحل الأسئلة -->
+    <div id="question-section" class="card hidden">
+      <div class="card-header">
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="progress-text">
+          <span id="progress-text">السؤال 1 من 30</span>
+          <span id="remaining-text">المتبقي: 29</span>
+        </div>
+        <h2 id="current-passion" class="card-title">الشغف: </h2>
+        <h3 id="current-stage" class="card-description">المرحلة: </h3>
+      </div>
+      <div class="card-content">
+        <div id="guiding-question" class="guiding-question"></div>
+        <div id="question-error" class="alert alert-error">أدخل إجابة صالحة لكل حقل مع تحديد التقييم!</div>
+        <div id="question-inputs"></div>
+        <button id="add-input" class="button button-outline">إضافة إدخال</button>
+      </div>
+      <div class="card-footer">
+        <button id="prev-question" class="button button-outline" disabled>السابق</button>
+        <button id="next-question" class="button">التالي</button>
+      </div>
+    </div>
+
+    <!-- النتائج -->
+    <div id="results-section" class="card hidden">
+      <div class="card-header">
+        <h2 class="card-title">النتائج</h2>
+      </div>
+      <div class="card-content">
+        <h3 class="section-title">الترتيب بناءً على الاختبار</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>الشغف</th>
+              <th>Purpose</th>
+              <th>Problems</th>
+              <th>Power</th>
+              <th>Proof</th>
+              <th>Possible</th>
+              <th>الإجمالي</th>
+            </tr>
+          </thead>
+          <tbody id="results-table"></tbody>
+        </table>
+        <div id="recommendation" class="result-highlight"></div>
+        <h3 class="section-title">الترتيب الذي اخترته</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>الشغف</th>
+              <th>الترتيب</th>
+            </tr>
+          </thead>
+          <tbody id="user-priority-table"></tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <button id="restart-test" class="button button-outline">إعادة الاختبار</button>
+        <div>
+          <button id="print-report" class="button">طباعة التقرير</button>
+          <button id="download-report" class="button button-outline">تحميل التقرير</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة منبثقة للإشعارات -->
+    <div id="toast" class="toast"></div>
+
+    <!-- نافذة استعادة البيانات -->
+    <div id="restore-modal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title">استعادة البيانات</h3>
+          <button class="modal-close" onclick="closeModal('restore-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>تم العثور على بيانات محفوظة من جلسة سابقة. هل ترغب في استعادتها واستكمال الاختبار؟</p>
+        </div>
+        <div class="modal-footer">
+          <button class="button button-outline" onclick="clearSavedData()">بدء اختبار جديد</button>
+          <button class="button" onclick="restoreSavedData()">استكمال الاختبار السابق</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- محتوى الطباعة -->
+    <div id="print-content" class="print-only">
+      <div class="print-header">
+        <h1>تقرير رحلة 6Ps - اكتشف ميولك المهنية</h1>
+      </div>
+      <div class="print-content">
+        <div id="print-passions" class="print-section">
+          <h2>الشغف المُدخل</h2>
+          <div id="print-passions-content"></div>
+        </div>
+        <div id="print-answers" class="print-section">
+          <h2>إجابات المراحل</h2>
+          <div id="print-answers-content"></div>
+        </div>
+        <div id="print-results" class="print-section">
+          <h2>النتائج</h2>
+          <div id="print-results-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG Icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-pencil" viewBox="0 0 24 24">
+      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19V4Z" />
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+      <path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+    </symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24">
+      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+    </symbol>
+  </svg>
+
+  <script>
+    // تعريف المتغيرات الرئيسية
+    const passions = [];
+    const stages = ['Purpose', 'Problems', 'Power', 'Proof', 'Possible'];
+    const guidingQuestions = {
+      Purpose: 'ما الغرض أو الهدف الأساسي من هذا الشغف؟ كيف يؤثر إيجابيًا على حياتك أو الآخرين؟',
+      Problems: 'ما التحديات أو العقبات التي قد تواجهها في هذا الشغف؟ ما الذي يقلقك؟',
+      Power: 'ما نقاط القوة أو المهارات التي تمتلكها تدعم هذا الشغف؟',
+      Proof: 'ما الأدلة أو الإنجازات التي تثبت قدرتك على النجاح في هذا الشغف؟',
+      Possible: 'ما الفرص المستقبلية التي يمكن أن يفتحها هذا الشغف؟ كيف يمكن أن يتطور؟'
+    };
+    
+    let currentPassionIndex = 0;
+    let currentStageIndex = 0;
+    let previousPassionIndex = -1;
+    const answers = {};
+    const userPriorities = {};
+    let currentStep = "selection"; // selection, questions, results
+
+    // العناصر المستخدمة
+    const passionInput = document.getElementById('passion-input');
+    const addPassionBtn = document.getElementById('add-passion');
+    const passionError = document.getElementById('passion-error');
+    const passionList = document.getElementById('passion-list');
+    const startJourneyBtn = document.getElementById('start-journey');
+    const passionSelection = document.getElementById('passion-selection');
+    const questionSection = document.getElementById('question-section');
+    const resultsSection = document.getElementById('results-section');
+    const currentPassionEl = document.getElementById('current-passion');
+    const currentStageEl = document.getElementById('current-stage');
+    const guidingQuestionEl = document.getElementById('guiding-question');
+    const questionInputs = document.getElementById('question-inputs');
+    const questionError = document.getElementById('question-error');
+    const addInputBtn = document.getElementById('add-input');
+    const prevQuestionBtn = document.getElementById('prev-question');
+    const nextQuestionBtn = document.getElementById('next-question');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const remainingText = document.getElementById('remaining-text');
+    const resultsTable = document.getElementById('results-table');
+    const userPriorityTable = document.getElementById('user-priority-table');
+    const recommendation = document.getElementById('recommendation');
+    const restartTestBtn = document.getElementById('restart-test');
+    const downloadReportBtn = document.getElementById('download-report');
+    const printReportBtn = document.getElementById('print-report');
+    const toast = document.getElementById('toast');
+    const restoreModal = document.getElementById('restore-modal');
+
+    // إدارة النوافذ المنبثقة
+    function showModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // عرض نافذة منبثقة
+    function showToast(message, duration = 2000) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // حفظ البيانات في localStorage
+    function saveData() {
+      const data = {
+        passions: passions,
+        userPriorities: userPriorities,
+        answers: answers,
+        currentPassionIndex: currentPassionIndex,
+        currentStageIndex: currentStageIndex,
+        currentStep: currentStep
+      };
+      
+      localStorage.setItem('6ps_journey_data', JSON.stringify(data));
+    }
+
+    // التحقق من وجود بيانات محفوظة
+    function checkSavedData() {
+      const savedData = localStorage.getItem('6ps_journey_data');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        if (data.passions && data.passions.length > 0) {
+          showModal('restore-modal');
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // استعادة البيانات المحفوظة
+    function restoreSavedData() {
+      const savedData = localStorage.getItem('6ps_journey_data');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        
+        // استعادة البيانات
+        data.passions.forEach(p => passions.push(p));
+        Object.assign(userPriorities, data.userPriorities);
+        Object.assign(answers, data.answers);
+        currentPassionIndex = data.currentPassionIndex;
+        currentStageIndex = data.currentStageIndex;
+        currentStep = data.currentStep;
+        
+        // عرض الشاشة المناسبة
+        if (currentStep === "questions") {
+          passionSelection.classList.add('hidden');
+          questionSection.classList.remove('hidden');
+          resultsSection.classList.add('hidden');
+          showQuestion();
+        } else if (currentStep === "results") {
+          passionSelection.classList.add('hidden');
+          questionSection.classList.add('hidden');
+          resultsSection.classList.remove('hidden');
+          showResults();
+        } else {
+          updatePassionSelection();
+        }
+        
+        closeModal('restore-modal');
+        showToast('تم استعادة البيانات بنجاح');
+      }
+    }
+
+    // مسح البيانات المحفوظة وبدء اختبار جديد
+    function clearSavedData() {
+      localStorage.removeItem('6ps_journey_data');
+      closeModal('restore-modal');
+      showToast('تم بدء اختبار جديد');
+    }
+
+    // إدارة إدخال الشغف
+    function updatePassionSelection() {
+      const passionCount = passions.length;
+      startJourneyBtn.disabled = passionCount !== 6;
+      passionInput.disabled = passionCount >= 6;
+      addPassionBtn.disabled = passionCount >= 6;
+      renderPassionList();
+      
+      // حفظ البيانات
+      currentStep = "selection";
+      saveData();
+    }
+
+    // إضافة شغف جديد
+    addPassionBtn.addEventListener('click', () => {
+      const value = passionInput.value.trim();
+
+      if (value && passions.length < 6 && !passions.includes(value)) {
+        passions.push(value);
+        userPriorities[value] = 6 - passions.length + 1;
+        passionInput.value = '';
+        passionError.style.display = 'none';
+        updatePassionSelection();
+      } else {
+        passionError.style.display = 'block';
+        setTimeout(() => {
+          passionError.style.display = 'none';
+        }, 2000);
+      }
+    });
+
+    // إضافة شغف عند الضغط على Enter
+    passionInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        addPassionBtn.click();
+      }
+    });
+
+    // عرض جدول الشغف
+    function renderPassionList() {
+      passionList.innerHTML = '';
+      for (let i = 0; i < 6; i++) {
+        const passion = passions[i] || '';
+        const priority = passion ? userPriorities[passion] : '-';
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${passion || '-'}</td>
+          <td>${priority}</td>
+          <td>
+            ${passion ? `
+              <div class="table-actions">
+                <button class="action-button" onclick="editPassion(${i})">
+                  <svg class="icon"><use xlink:href="#icon-pencil"></use></svg>
+                </button>
+                <button class="action-button delete-button" onclick="deletePassion(${i})">
+                  <svg class="icon"><use xlink:href="#icon-trash"></use></svg>
+                </button>
+                <button class="action-button" ${i === 0 ? 'disabled' : ''} onclick="movePassion(${i}, -1)">
+                  <svg class="icon"><use xlink:href="#icon-arrow-up"></use></svg>
+                </button>
+                <button class="action-button" ${i === passions.length - 1 ? 'disabled' : ''} onclick="movePassion(${i}, 1)">
+                  <svg class="icon"><use xlink:href="#icon-arrow-down"></use></svg>
+                </button>
+              </div>
+            ` : '-'}
+          </td>
+        `;
+        passionList.appendChild(row);
+      }
+    }
+
+    // تعديل شغف
+    window.editPassion = function(index) {
+      const passion = passions[index];
+      const newValue = prompt('أدخل اسم الشغف الجديد:', passion);
+
+      if (newValue && newValue.trim() && !passions.includes(newValue.trim())) {
+        delete userPriorities[passion];
+        passions[index] = newValue.trim();
+        userPriorities[newValue.trim()] = 6 - index;
+        updatePassionSelection();
+      } else if (newValue) {
+        alert('خطأ: الاسم غير صالح أو مكرر!');
+      }
+    };
+
+    // مسح شغف
+    window.deletePassion = function(index) {
+      const passion = passions[index];
+      delete userPriorities[passion];
+      passions.splice(index, 1);
+      reassignPriorities();
+      updatePassionSelection();
+    };
+
+    // نقل شغف لأعلى أو لأسفل
+    window.movePassion = function(index, direction) {
+      const newIndex = index + direction;
+      if (newIndex >= 0 && newIndex < passions.length) {
+        [passions[index], passions[newIndex]] = [passions[newIndex], passions[index]];
+        reassignPriorities();
+        updatePassionSelection();
+      }
+    };
+
+    // إعادة ترتيب الأولويات
+    function reassignPriorities() {
+      const newPriorities = {};
+      passions.forEach((passion, index) => {
+        newPriorities[passion] = 6 - index;
+      });
+      Object.assign(userPriorities, newPriorities);
+    }
+
+    // بدء الرحلة
+    startJourneyBtn.addEventListener('click', () => {
+      if (passions.length !== 6) {
+        alert('يرجى إدخال 6 شغف بالضبط!');
+        return;
+      }
+      passions.forEach(p => {
+        if (!answers[p]) {
+          answers[p] = { Purpose: [], Problems: [], Power: [], Proof: [], Possible: [] };
+        }
+      });
+      passionSelection.classList.add('hidden');
+      questionSection.classList.remove('hidden');
+      previousPassionIndex = -1;
+      currentStep = "questions";
+      showQuestion();
+    });
+
+    // عرض السؤال الحالي
+    function showQuestion() {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      const totalQuestions = passions.length * stages.length;
+      const currentQuestion = currentPassionIndex * stages.length + currentStageIndex + 1;
+      const remainingQuestions = totalQuestions - currentQuestion;
+
+      // إظهار نافذة منبثقة عند الانتقال لشغف جديد
+      if (currentPassionIndex !== previousPassionIndex) {
+        showToast(`الآن تجيب على أسئلة: ${passion}`);
+        previousPassionIndex = currentPassionIndex;
+      }
+
+      // تحديث شريط التقدم
+      progressBar.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+      progressText.textContent = `السؤال ${currentQuestion} من ${totalQuestions}`;
+      remainingText.textContent = `المتبقي: ${remainingQuestions}`;
+
+      currentPassionEl.textContent = `الشغف: ${passion}`;
+      currentStageEl.textContent = `المرحلة: ${stage}`;
+      guidingQuestionEl.textContent = guidingQuestions[stage];
+
+      questionInputs.innerHTML = '';
+      const currentAnswers = answers[passion][stage];
+      const inputCount = currentAnswers.length || 3;
+
+      for (let i = 0; i < inputCount; i++) {
+        addInputField(questionInputs, currentAnswers[i]?.text || '', currentAnswers[i]?.rating || 0, stage, i);
+      }
+
+      addInputBtn.disabled = inputCount >= 6;
+      prevQuestionBtn.disabled = currentQuestion === 1;
+      
+      // حفظ البيانات
+      saveData();
+    }
+
+    // إضافة حقل إدخال
+    function addInputField(container, text = '', rating = 0, stage, index) {
+      const div = document.createElement('div');
+      div.className = 'input-group';
+      
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'input';
+      input.value = text;
+      input.placeholder = 'أدخل إجابتك';
+      div.appendChild(input);
+      
+      const isProblems = stage === 'Problems';
+      const selectLabel = document.createElement('label');
+      selectLabel.textContent = isProblems ? 'مستوى القلق:' : 'مستوى الاقتناع:';
+      selectLabel.style.minWidth = '100px';
+      div.appendChild(selectLabel);
+      
+      const select = document.createElement('select');
+      select.className = 'select';
+      
+      const options = [
+        { value: '', label: 'اختر المستوى' },
+        { value: isProblems ? '-2' : '2', label: 'بسيط' },
+        { value: isProblems ? '-4' : '4', label: 'متوسط' },
+        { value: isProblems ? '-6' : '6', label: 'عالي' }
+      ];
+      
+      options.forEach(option => {
+        const optionEl = document.createElement('option');
+        optionEl.value = option.value;
+        optionEl.textContent = option.label;
+        if (rating.toString() === option.value) {
+          optionEl.selected = true;
+        }
+        select.appendChild(optionEl);
+      });
+      
+      div.appendChild(select);
+      
+      if (index >= 3) {
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'button button-outline button-icon delete-button';
+        deleteBtn.innerHTML = '<svg class="icon"><use xlink:href="#icon-trash"></use></svg>';
+        deleteBtn.onclick = function() {
+          deleteInputField(this);
+        };
+        div.appendChild(deleteBtn);
+      }
+      
+      container.appendChild(div);
+    }
+
+    // مسح حقل إدخال
+    window.deleteInputField = function(button) {
+      if (questionInputs.children.length > 3) {
+        button.parentElement.remove();
+        addInputBtn.disabled = questionInputs.children.length >= 6;
+      }
+    };
+
+    // إضافة إدخال جديد
+    addInputBtn.addEventListener('click', () => {
+      if (questionInputs.children.length < 6) {
+        addInputField(questionInputs, '', 0, stages[currentStageIndex], questionInputs.children.length);
+        addInputBtn.disabled = questionInputs.children.length >= 6;
+      }
+    });
+
+    // الرجوع للسؤال السابق
+    prevQuestionBtn.addEventListener('click', () => {
+      if (currentStageIndex > 0) {
+        currentStageIndex--;
+      } else if (currentPassionIndex > 0) {
+        currentPassionIndex--;
+        currentStageIndex = stages.length - 1;
+      }
+      showQuestion();
+    });
+
+    // الانتقال للسؤال التالي
+    nextQuestionBtn.addEventListener('click', () => {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      const inputGroups = questionInputs.querySelectorAll('.input-group');
+      const newAnswers = [];
+
+      let valid = true;
+      inputGroups.forEach(group => {
+        const text = group.querySelector('input').value.trim();
+        const select = group.querySelector('select');
+        const rating = select.value;
+        
+        if (text && rating) {
+          newAnswers.push({ text, rating: parseInt(rating) });
+        } else {
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        questionError.style.display = 'block';
+        setTimeout(() => {
+          questionError.style.display = 'none';
+        }, 2000);
+        return;
+      }
+
+      answers[passion][stage] = newAnswers;
+
+      currentStageIndex++;
+      if (currentStageIndex >= stages.length) {
+        currentStageIndex = 0;
+        currentPassionIndex++;
+      }
+      if (currentPassionIndex >= passions.length) {
+        currentStep = "results";
+        saveData();
+        showResults();
+      } else {
+        showQuestion();
+      }
+    });
+
+    // عرض النتائج
+    function showResults() {
+      questionSection.classList.add('hidden');
+      resultsSection.classList.remove('hidden');
+      resultsTable.innerHTML = '';
+
+      let maxTotal = -Infinity;
+      let recommendedPassion = '';
+
+      // حساب النتائج بناءً على التقييمات
+      passions.forEach(passion => {
+        const row = document.createElement('tr');
+        const stageSums = stages.map(stage => 
+          answers[passion][stage].reduce((sum, ans) => sum + parseInt(ans.rating), 0)
+        );
+        const total = stageSums.reduce((sum, val) => sum + val, 0);
+        row.innerHTML = `
+          <td>${passion}</td>
+          ${stageSums.map(p => `<td>${p}</td>`).join('')}
+          <td>${total}</td>
+        `;
+        resultsTable.appendChild(row);
+        if (total > maxTotal) {
+          maxTotal = total;
+          recommendedPassion = passion;
+        }
+      });
+
+      recommendation.textContent = `الشغف المقترح: ${recommendedPassion} (بإجمالي ${maxTotal} نقطة)`;
+
+      // جدول الأولويات الأصلية
+      userPriorityTable.innerHTML = '';
+      const sortedPassions = [...passions].sort((a, b) => userPriorities[b] - userPriorities[a]);
+      sortedPassions.forEach(passion => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${passion}</td>
+          <td>${userPriorities[passion]}</td>
+        `;
+        userPriorityTable.appendChild(row);
+      });
+
+      // تحضير محتوى الطباعة
+      preparePrintContent();
+    }
+
+    // تحضير محتوى الطباعة
+    function preparePrintContent() {
+      // محتوى الشغف
+      const printPassionsContent = document.getElementById('print-passions-content');
+      printPassionsContent.innerHTML = '';
+      const passionsTable = document.createElement('table');
+      passionsTable.style.width = '100%';
+      passionsTable.style.borderCollapse = 'collapse';
+      passionsTable.style.marginTop = '10px';
+      
+      let passionsHtml = '<tr style="background-color: #f0f0f0;"><th style="border: 1px solid #ddd; padding: 8px; text-align: right;">الشغف</th><th style="border: 1px solid #ddd; padding: 8px; text-align: right;">الترتيب</th></tr>';
+      
+      passions.forEach(passion => {
+        passionsHtml += `<tr><td style="border: 1px solid #ddd; padding: 8px;">${passion}</td><td style="border: 1px solid #ddd; padding: 8px;">${userPriorities[passion]}</td></tr>`;
+      });
+      
+      passionsTable.innerHTML = passionsHtml;
+      printPassionsContent.appendChild(passionsTable);
+      
+      // محتوى الإجابات
+      const printAnswersContent = document.getElementById('print-answers-content');
+      printAnswersContent.innerHTML = '';
+      
+      passions.forEach(passion => {
+        const passionDiv = document.createElement('div');
+        passionDiv.style.marginBottom = '20px';
+        
+        const passionTitle = document.createElement('h3');
+        passionTitle.textContent = `الشغف: ${passion}`;
+        passionTitle.style.marginBottom = '10px';
+        passionTitle.style.borderBottom = '1px solid #ddd';
+        passionTitle.style.paddingBottom = '5px';
+        passionDiv.appendChild(passionTitle);
+        
+        stages.forEach(stage => {
+          const stageDiv = document.createElement('div');
+          stageDiv.style.marginBottom = '15px';
+          stageDiv.style.marginRight = '15px';
+          
+          const stageTitle = document.createElement('h4');
+          stageTitle.textContent = stage;
+          stageTitle.style.marginBottom = '5px';
+          stageDiv.appendChild(stageTitle);
+          
+          const questionP = document.createElement('p');
+          questionP.textContent = `السؤال: ${guidingQuestions[stage]}`;
+          questionP.style.marginBottom = '5px';
+          questionP.style.fontStyle = 'italic';
+          stageDiv.appendChild(questionP);
+          
+          const answersList = document.createElement('ul');
+          answersList.style.paddingRight = '20px';
+          
+          answers[passion][stage].forEach(answer => {
+            const answerItem = document.createElement('li');
+            answerItem.textContent = `${answer.text} (التقييم: ${answer.rating})`;
+            answersList.appendChild(answerItem);
+          });
+          
+          stageDiv.appendChild(answersList);
+          passionDiv.appendChild(stageDiv);
+        });
+        
+        printAnswersContent.appendChild(passionDiv);
+      });
+      
+      // محتوى النتائج
+      const printResultsContent = document.getElementById('print-results-content');
+      printResultsContent.innerHTML = '';
+      
+      const resultsTable = document.createElement('table');
+      resultsTable.style.width = '100%';
+      resultsTable.style.borderCollapse = 'collapse';
+      resultsTable.style.marginTop = '10px';
+      resultsTable.style.marginBottom = '20px';
+      
+      let resultsHtml = '<tr style="background-color: #f0f0f0;"><th style="border: 1px solid #ddd; padding: 8px; text-align: right;">الشغف</th>';
+      stages.forEach(stage => {
+        resultsHtml += `<th style="border: 1px solid #ddd; padding: 8px; text-align: right;">${stage}</th>`;
+      });
+      resultsHtml += '<th style="border: 1px solid #ddd; padding: 8px; text-align: right;">الإجمالي</th></tr>';
+      
+      // حساب النتائج مرة أخرى للطباعة
+      let maxTotal = -Infinity;
+      let recommendedPassion = '';
+      
+      passions.forEach(passion => {
+        const stageSums = stages.map(stage => 
+          answers[passion][stage].reduce((sum, ans) => sum + parseInt(ans.rating), 0)
+        );
+        const total = stageSums.reduce((sum, val) => sum + val, 0);
+        
+        resultsHtml += `<tr><td style="border: 1px solid #ddd; padding: 8px;">${passion}</td>`;
+        stageSums.forEach(sum => {
+          resultsHtml += `<td style="border: 1px solid #ddd; padding: 8px;">${sum}</td>`;
+        });
+        resultsHtml += `<td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">${total}</td></tr>`;
+        
+        if (total > maxTotal) {
+          maxTotal = total;
+          recommendedPassion = passion;
+        }
+      });
+      
+      resultsTable.innerHTML = resultsHtml;
+      printResultsContent.appendChild(resultsTable);
+      
+      const recommendationP = document.createElement('p');
+      recommendationP.textContent = `الشغف المقترح: ${recommendedPassion} (بإجمالي ${maxTotal} نقطة)`;
+      recommendationP.style.padding = '10px';
+      recommendationP.style.backgroundColor = '#f9f9f9';
+      recommendationP.style.border = '1px solid #ddd';
+      recommendationP.style.borderRadius = '5px';
+      recommendationP.style.fontWeight = 'bold';
+      printResultsContent.appendChild(recommendationP);
+    }
+
+    // طباعة التقرير
+    printReportBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    // تحميل التقرير
+    downloadReportBtn.addEventListener('click', () => {
+      // إنشاء نص التقرير
+      let reportText = "تقرير رحلة 6Ps - اكتشف ميولك المهنية\n\n";
+      
+      reportText += "الشغف المُدخل:\n";
+      passions.forEach(p => {
+        reportText += `${p} - الترتيب: ${userPriorities[p]}\n`;
+      });
+      
+      reportText += "\nإجابات المراحل:\n";
+      passions.forEach(p => {
+        reportText += `\nالشغف: ${p}\n`;
+        stages.forEach(s => {
+          reportText += `\n${s}:\n`;
+          reportText += `السؤال التوجيهي: ${guidingQuestions[s]}\n`;
+          answers[p][s].forEach(a => {
+            reportText += `- ${a.text} (التقييم: ${a.rating})\n`;
+          });
+        });
+      });
+      
+      reportText += "\nالنتائج:\n";
+      reportText += `الشغف المقترح: ${recommendation.textContent}\n`;
+      
+      // إنشاء ملف نصي للتحميل
+      const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '6Ps_Report.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    // إعادة الاختبار
+    restartTestBtn.addEventListener('click', () => {
+      if (confirm('هل أنت متأكد من رغبتك في إعادة الاختبار؟ سيتم مسح جميع البيانات الحالية.')) {
+        localStorage.removeItem('6ps_journey_data');
+        location.reload();
+      }
+    });
+
+    // حفظ البيانات عند إغلاق الصفحة أو تحديثها
+    window.addEventListener('beforeunload', () => {
+      saveData();
+    });
+
+    // التحقق من وجود بيانات محفوظة عند تحميل الصفحة
+    window.addEventListener('load', () => {
+      if (!checkSavedData()) {
+        // لا توجد بيانات محفوظة، ابدأ اختبار جديد
+        updatePassionSelection();
+      }
+    });
+  </script>
+</body>
+</html>
