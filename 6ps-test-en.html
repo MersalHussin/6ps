@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رحلة 6Ps - اكتشف ميولك المهنية</title>
+  <title>6Ps Journey - Discover Your Career Passions</title>
+    <link rel="icon" href="/assets/LogoIC.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="icon" href="/assets/LogoIC.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #052ed8;
@@ -30,7 +31,7 @@
     }
 
     body {
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--background);
       color: var(--text);
       line-height: 1.6;
@@ -111,7 +112,7 @@
       padding: 0.75rem 1rem;
       border: 2px solid var(--border);
       border-radius: var(--radius);
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
       transition: border-color 0.2s ease;
     }
@@ -123,15 +124,15 @@
 
     .hint-button {
       position: absolute;
-      left: 10px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
       background: var(--yellow);
       border: none;
       cursor: pointer;
       color: #333;
-      font-size: 10px;
-      padding: 10px;
+      font-size: 1rem;
+      padding: 6px;
       border-radius: 50%;
       transition: all 0.2s ease;
       z-index: 10;
@@ -143,7 +144,7 @@
 
     .hint-tooltip {
       position: absolute;
-      left: -10px;
+      right: -10px;
       bottom: 100%;
       margin-bottom: 10px;
       background: var(--text);
@@ -157,14 +158,14 @@
       visibility: hidden;
       transition: all 0.3s ease;
       z-index: 1000;
-      text-align: right;
+      text-align: left;
     }
 
     .hint-tooltip::after {
       content: '';
       position: absolute;
       top: 100%;
-      left: 20px;
+      right: 20px;
       border: 6px solid transparent;
       border-top-color: var(--text);
     }
@@ -178,7 +179,7 @@
       padding: 0.75rem 1rem;
       border: 2px solid var(--border);
       border-radius: var(--radius);
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
       background: white;
       min-width: 140px;
@@ -196,7 +197,7 @@
       border: none;
       border-radius: var(--radius);
       padding: 0.75rem 1.5rem;
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
@@ -248,7 +249,7 @@
       background: #d1a800;
     }
 
-    /* تبسيط الجداول */
+    /* Table Styling */
     .table-container {
       overflow-x: auto;
       margin: 1rem 0;
@@ -266,7 +267,7 @@
     .table th,
     .table td {
       padding: 1rem;
-      text-align: right;
+      text-align: left;
       border-bottom: 1px solid var(--border);
     }
 
@@ -361,7 +362,7 @@
       padding: 1.5rem;
       background: #f0f4ff;
       border-radius: var(--radius);
-      border-right: 4px solid var(--primary);
+      border-left: 4px solid var(--primary);
     }
 
     .hidden {
@@ -517,7 +518,7 @@
         margin: 0;
         padding: 0;
         color: black;
-        font-family: 'Tajawal', Arial, sans-serif;
+        font-family: 'Inter', Arial, sans-serif;
       }
 
       .container {
@@ -624,7 +625,7 @@
         background-color: #f8f9ff;
         padding: 10px;
         border-radius: 6px;
-        text-align: right;
+        text-align: left;
         line-height: 1.5;
       }
 
@@ -640,8 +641,8 @@
         padding: 8px 12px;
         background: #f9f9f9;
         border-radius: 4px;
-        text-align: right;
-        border-right: 3px solid #052ed8;
+        text-align: left;
+        border-left: 3px solid #052ed8;
       }
 
       .print-total {
@@ -679,7 +680,7 @@
         line-height: 1.6;
         font-size: 12pt;
         width: 80%;
-        text-align: right;
+        text-align: left;
       }
 
       .no-print {
@@ -742,7 +743,7 @@
         min-width: auto;
       }
 
-      /* تحسين الجداول للموبايل */
+      /* Mobile table improvements */
       .table-container {
         margin: 0.5rem 0;
       }
@@ -775,7 +776,7 @@
 
       .hint-tooltip {
         width: 250px;
-        left: -50px;
+        right: -50px;
         font-size: 0.8rem;
       }
 
@@ -824,7 +825,7 @@
 
       .table th,
       .table td {
-        padding: 10px 15px ;
+        padding: 10px 15px;
         font-size: 0.75rem;
       }
 
@@ -839,7 +840,7 @@
 
       .hint-tooltip {
         width: 200px;
-        left: -5px;
+        right: -5px;
       }
     }
 
@@ -854,7 +855,7 @@
       }
     }
 
-    /* تحسين الجداول للشاشات الكبيرة */
+    /* Large screen table improvements */
     @media (min-width: 1200px) {
       .table th,
       .table td {
@@ -862,15 +863,14 @@
       }
     }
 
-    .Logo-image{
+    .logo-image {
       width: 250px;
-    display: flex
-;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
     }
-       .Language-button{
+    .Language-button{
         color: white;
         background-color: var(--green);
         font-size: 20px;
@@ -879,42 +879,41 @@
         padding: 5px 15px;
         border-radius: 10px;
     }
-
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="/6ps-test-en.html" class="Language-button">الإنجليزية</a>
-    <img src="/assets/Logo.png" alt="Logo Qudraat Shabab" class="Logo-image">
-    <h1>رحلة 6Ps - اكتشف ميولك المهنية</h1>
+    <a href="/6ps-test.html" class="Language-button">Arabic</a>
+    <img src="/assets/Logo.png" alt="Logo Qudraat Shabab" class="logo-image">
+    <h1>6Ps Journey - Discover Your Career Passions</h1>
 
-    <!-- إدخال الشغف -->
+    <!-- Passion Input -->
     <div id="passion-selection" class="card">
       <div class="card-header">
-        <h2 class="card-title">أدخل 6 شغف</h2>
-        <p class="card-description">أدخل الشغف الذي تهتم به. يمكنك تغيير الترتيب لاحقاً.</p>
+        <h2 class="card-title">Enter 6 Passions</h2>
+        <p class="card-description">Enter the passions you're interested in. You can change the order later.</p>
       </div>
       <div class="card-content">
-        <div id="passion-error" class="alert">أدخل اسم شغف صالح (مثل: البرمجة، التصميم)!</div>
+        <div id="passion-error" class="alert">Please enter a valid passion name (e.g., Programming, Design)!</div>
         <div class="input-group">
           <div class="input-wrapper">
-            <input type="text" id="passion-input" class="input" placeholder="أدخل شغفك (مثل: البرمجة)">
+            <input type="text" id="passion-input" class="input" placeholder="Enter your passion (e.g., Programming)">
             <button class="hint-button" type="button">
               💡
               <div class="hint-tooltip">
-                أمثلة على الشغف: البرمجة، التصميم، التدريس، الطبخ، الكتابة، التصوير، الرياضة، الموسيقى، ريادة الأعمال، الطب، الهندسة، التسويق
+                Examples of passions: Programming, Design, Teaching, Cooking, Writing, Photography, Sports, Music, Entrepreneurship, Medicine, Engineering, Marketing
               </div>
             </button>
           </div>
-          <button id="add-passion" class="button">إضافة</button>
+          <button id="add-passion" class="button">Add</button>
         </div>
         <div class="table-container">
           <table id="passion-table" class="table">
             <thead>
               <tr>
-                <th>الشغف</th>
-                <th>الترتيب</th>
-                <th>إجراء</th>
+                <th>Passion</th>
+                <th>Priority</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="passion-list"></tbody>
@@ -922,66 +921,66 @@
         </div>
       </div>
       <div class="card-footer">
-        <button id="start-journey" class="button button-success" disabled>ابدأ الرحلة</button>
+        <button id="start-journey" class="button button-success" disabled>Start Journey</button>
       </div>
     </div>
 
-    <!-- مراحل الأسئلة -->
+    <!-- Question Stages -->
     <div id="question-section" class="card hidden">
       <div class="card-header">
         <div class="progress-container">
           <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
         </div>
         <div class="progress-text">
-          <span id="progress-text">السؤال 1 من 30</span>
-          <span id="remaining-text">المتبقي: 29</span>
+          <span id="progress-text">Question 1 of 30</span>
+          <span id="remaining-text">Remaining: 29</span>
         </div>
-        <h2 id="current-passion" class="card-title">الشغف: </h2>
-        <h3 id="current-stage" class="card-description">المرحلة: </h3>
+        <h2 id="current-passion" class="card-title">Passion: </h2>
+        <h3 id="current-stage" class="card-description">Stage: </h3>
       </div>
       <div class="card-content">
         <div id="guiding-question" class="guiding-question"></div>
-        <div id="question-error" class="alert">أدخل إجابة صالحة لكل حقل مع تحديد التقييم!</div>
+        <div id="question-error" class="alert">Please enter a valid answer for each field and select a rating!</div>
         <div id="question-inputs"></div>
-        <button id="add-input" class="button button-outline">إضافة إدخال</button>
+        <button id="add-input" class="button button-outline">Add Input</button>
       </div>
       <div class="card-footer">
-        <button id="prev-question" class="button button-outline" disabled>السابق</button>
-        <button id="next-question" class="button button-success">التالي</button>
+        <button id="prev-question" class="button button-outline" disabled>Previous</button>
+        <button id="next-question" class="button button-success">Next</button>
       </div>
     </div>
 
-    <!-- النتائج -->
+    <!-- Results -->
     <div id="results-section" class="card hidden">
       <div class="card-header">
-        <h2 class="card-title">النتائج</h2>
+        <h2 class="card-title">Results</h2>
       </div>
       <div class="card-content">
-        <h3 class="section-title">الترتيب بناءً على الاختبار</h3>
+        <h3 class="section-title">Ranking Based on Assessment</h3>
         <div class="table-container">
           <table class="table">
             <thead>
               <tr>
-                <th>الشغف</th>
+                <th>Passion</th>
                 <th>Purpose</th>
                 <th>Problems</th>
                 <th>Power</th>
                 <th>Proof</th>
                 <th>Possible</th>
-                <th>الإجمالي</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody id="results-table"></tbody>
           </table>
         </div>
         <div id="recommendation" class="result-highlight"></div>
-        <h3 class="section-title">الترتيب الذي اخترته</h3>
+        <h3 class="section-title">Your Original Priority Order</h3>
         <div class="table-container">
           <table class="table">
             <thead>
               <tr>
-                <th>الشغف</th>
-                <th>الترتيب</th>
+                <th>Passion</th>
+                <th>Priority</th>
               </tr>
             </thead>
             <tbody id="user-priority-table"></tbody>
@@ -989,51 +988,51 @@
         </div>
       </div>
       <div class="card-footer">
-        <button id="restart-test" class="button button-outline">إعادة الاختبار</button>
+        <button id="restart-test" class="button button-outline">Restart Assessment</button>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button id="print-report" class="button button-success">طباعة التقرير</button>
-          <button id="download-report" class="button button-warning">تحميل التقرير</button>
+          <button id="print-report" class="button button-success">Print Report</button>
+          <button id="download-report" class="button button-warning">Download Report</button>
         </div>
       </div>
     </div>
 
-    <!-- نافذة منبثقة للإشعارات -->
+    <!-- Toast Notifications -->
     <div id="toast" class="toast"></div>
 
-    <!-- نافذة استعادة البيانات -->
+    <!-- Data Restore Modal -->
     <div id="restore-modal" class="modal-overlay">
       <div class="modal">
         <div class="modal-header">
-          <h3 class="modal-title">استعادة البيانات</h3>
+          <h3 class="modal-title">Restore Data</h3>
           <button class="modal-close" onclick="closeModal('restore-modal')">&times;</button>
         </div>
         <div class="modal-body">
-          <p>تم العثور على بيانات محفوظة من جلسة سابقة. هل ترغب في استعادتها واستكمال الاختبار؟</p>
+          <p>We found saved data from a previous session. Would you like to restore it and continue the assessment?</p>
         </div>
         <div class="modal-footer">
-          <button class="button button-outline" onclick="clearSavedData()">بدء اختبار جديد</button>
-          <button class="button button-success" onclick="restoreSavedData()">استكمال الاختبار السابق</button>
+          <button class="button button-outline" onclick="clearSavedData()">Start New Assessment</button>
+          <button class="button button-success" onclick="restoreSavedData()">Continue Previous Assessment</button>
         </div>
       </div>
     </div>
 
-    <!-- محتوى الطباعة -->
+    <!-- Print Content -->
     <div id="print-content" class="print-only">
       <div class="print-header">
-        <h1>تقرير رحلة 6Ps - اكتشف ميولك المهنية</h1>
-        <p style="color: #666; font-size: 12pt; margin-top: 10px;">تقرير شامل يحتوي على جميع الإجابات والنتائج</p>
+        <h1>6Ps Journey Report - Discover Your Career Passions</h1>
+        <p style="color: #666; font-size: 12pt; margin-top: 10px;">Comprehensive report containing all answers and results</p>
       </div>
       <div class="print-content">
         <div id="print-passions" class="print-section">
-          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;">الشغف المُدخل</h2>
+          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;">Entered Passions</h2>
           <div id="print-passions-content"></div>
         </div>
         <div id="print-answers" class="print-section">
-          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;">إجابات المراحل مرتبة حسب النتائج</h2>
+          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;">Stage Answers Sorted by Results</h2>
           <div id="print-answers-content"></div>
         </div>
         <div id="print-results" class="print-section">
-          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;">النتائج النهائية</h2>
+          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;">Final Results</h2>
           <div id="print-results-content"></div>
         </div>
       </div>
@@ -1057,43 +1056,43 @@
   </svg>
 
   <script>
-    // تعريف المتغيرات الرئيسية
+    // Main Variables
     const passions = [];
     const stages = ['Purpose', 'Problems', 'Power', 'Proof', 'Possible'];
     const guidingQuestions = {
-      Purpose: 'ما الغرض أو الهدف الأساسي من هذا الشغف؟ كيف يؤثر إيجابيًا على حياتك أو الآخرين؟',
-      Problems: 'ما التحديات أو العقبات التي قد تواجهها في هذا الشغف؟ ما الذي يقلقك؟',
-      Power: 'ما نقاط القوة أو المهارات التي تمتلكها تدعم هذا الشغف؟',
-      Proof: 'ما الأدلة أو الإنجازات التي تثبت قدرتك على النجاح في هذا الشغف؟',
-      Possible: 'ما الفرص المستقبلية التي يمكن أن يفتحها هذا الشغف؟ كيف يمكن أن يتطور؟'
+      Purpose: 'What is the main purpose or goal of this passion? How does it positively impact your life or others?',
+      Problems: 'What challenges or obstacles might you face with this passion? What concerns you?',
+      Power: 'What strengths or skills do you have that support this passion?',
+      Proof: 'What evidence or achievements prove your ability to succeed in this passion?',
+      Possible: 'What future opportunities could this passion open up? How could it develop?'
     };
 
-    // نصائح لكل مرحلة
+    // Stage hints
     const stageHints = {
       Purpose: [
-        'فكر في الهدف الأساسي: لماذا تحب هذا المجال؟ ما الذي يدفعك إليه؟',
-        'اكتب عن التأثير الإيجابي: كيف يمكن أن يفيد هذا الشغف الآخرين أو المجتمع؟',
-        'حدد القيم: ما القيم الشخصية التي يحققها لك هذا الشغف؟'
+        'Think about the main goal: Why do you love this field? What drives you to it?',
+        'Write about positive impact: How could this passion benefit others or society?',
+        'Define values: What personal values does this passion fulfill for you?'
       ],
       Problems: [
-        'فكر في التحديات المالية: هل يحتاج استثمار كبير؟ هل الدخل مستقر؟',
-        'اذكر العقبات التقنية: ما المهارات التي تحتاج تطويرها؟',
-        'حدد المخاطر: ما أكبر المخاوف التي تواجهك في هذا المجال؟'
+        'Think about financial challenges: Does it require large investment? Is income stable?',
+        'Mention technical obstacles: What skills do you need to develop?',
+        'Identify risks: What are your biggest concerns in this field?'
       ],
       Power: [
-        'اذكر مهاراتك الحالية: ما المهارات التي تمتلكها بالفعل؟',
-        'حدد نقاط قوتك الشخصية: الصبر، الإبداع، التواصل، القيادة، إلخ',
-        'اكتب عن خبراتك السابقة: أي تجارب سابقة تدعم هذا الشغف؟'
+        'List your current skills: What skills do you already possess?',
+        'Identify personal strengths: Patience, creativity, communication, leadership, etc.',
+        'Write about past experiences: Any previous experiences that support this passion?'
       ],
       Proof: [
-        'اذكر إنجازاتك: أي مشاريع أو أعمال قمت بها في هذا المجال؟',
-        'حدد الشهادات أو الدورات: أي تعليم رسمي أو غير رسمي حصلت عليه؟',
-        'اكتب عن التقدير: أي مدح أو تقدير حصلت عليه من الآخرين؟'
+        'Mention your achievements: Any projects or work you\'ve done in this field?',
+        'Identify certificates or courses: Any formal or informal education you\'ve received?',
+        'Write about recognition: Any praise or recognition you\'ve received from others?'
       ],
       Possible: [
-        'فكر في الفرص المستقبلية: ما الوظائف أو المشاريع المتاحة؟',
-        'حدد إمكانيات النمو: كيف يمكن تطوير هذا الشغف مع الوقت؟',
-        'اكتب عن الاتجاهات: ما التطورات الجديدة في هذا المجال؟'
+        'Think about future opportunities: What jobs or projects are available?',
+        'Identify growth potential: How can this passion develop over time?',
+        'Write about trends: What new developments are happening in this field?'
       ]
     };
     
@@ -1104,7 +1103,7 @@
     const userPriorities = {};
     let currentStep = "selection"; // selection, questions, results
 
-    // العناصر المستخدمة
+    // DOM Elements
     const passionInput = document.getElementById('passion-input');
     const addPassionBtn = document.getElementById('add-passion');
     const passionError = document.getElementById('passion-error');
@@ -1133,7 +1132,7 @@
     const toast = document.getElementById('toast');
     const restoreModal = document.getElementById('restore-modal');
 
-    // إدارة النوافذ المنبثقة
+    // Modal Management
     function showModal(modalId) {
       document.getElementById(modalId).classList.add('active');
     }
@@ -1142,7 +1141,7 @@
       document.getElementById(modalId).classList.remove('active');
     }
 
-    // عرض نافذة منبثقة
+    // Toast Notifications
     function showToast(message, duration = 3000) {
       toast.textContent = message;
       toast.classList.add('show');
@@ -1152,7 +1151,7 @@
       }, duration);
     }
 
-    // حفظ البيانات في localStorage
+    // Data Persistence
     function saveData() {
       const data = {
         passions: passions,
@@ -1163,12 +1162,11 @@
         currentStep: currentStep
       };
       
-      localStorage.setItem('6ps_journey_data', JSON.stringify(data));
+      localStorage.setItem('6ps_journey_data_en', JSON.stringify(data));
     }
 
-    // التحقق من وجود بيانات محفوظة
     function checkSavedData() {
-      const savedData = localStorage.getItem('6ps_journey_data');
+      const savedData = localStorage.getItem('6ps_journey_data_en');
       if (savedData) {
         const data = JSON.parse(savedData);
         if (data.passions && data.passions.length > 0) {
@@ -1179,13 +1177,12 @@
       return false;
     }
 
-    // استعادة البيانات المحفوظة
     function restoreSavedData() {
-      const savedData = localStorage.getItem('6ps_journey_data');
+      const savedData = localStorage.getItem('6ps_journey_data_en');
       if (savedData) {
         const data = JSON.parse(savedData);
         
-        // استعادة البيانات
+        // Restore data
         data.passions.forEach(p => passions.push(p));
         Object.assign(userPriorities, data.userPriorities);
         Object.assign(answers, data.answers);
@@ -1193,7 +1190,7 @@
         currentStageIndex = data.currentStageIndex;
         currentStep = data.currentStep;
         
-        // عرض الشاشة المناسبة
+        // Show appropriate screen
         if (currentStep === "questions") {
           passionSelection.classList.add('hidden');
           questionSection.classList.remove('hidden');
@@ -1209,18 +1206,17 @@
         }
         
         closeModal('restore-modal');
-        showToast('تم استعادة البيانات بنجاح');
+        showToast('Data restored successfully');
       }
     }
 
-    // مسح البيانات المحفوظة وبدء اختبار جديد
     function clearSavedData() {
-      localStorage.removeItem('6ps_journey_data');
+      localStorage.removeItem('6ps_journey_data_en');
       closeModal('restore-modal');
-      showToast('تم بدء اختبار جديد');
+      showToast('Started new assessment');
     }
 
-    // إدارة إدخال الشغف
+    // Passion Management
     function updatePassionSelection() {
       const passionCount = passions.length;
       startJourneyBtn.disabled = passionCount !== 6;
@@ -1228,12 +1224,10 @@
       addPassionBtn.disabled = passionCount >= 6;
       renderPassionList();
       
-      // حفظ البيانات
       currentStep = "selection";
       saveData();
     }
 
-    // إضافة شغف جديد
     addPassionBtn.addEventListener('click', () => {
       const value = passionInput.value.trim();
 
@@ -1251,14 +1245,12 @@
       }
     });
 
-    // إضافة شغف عند الضغط على Enter
     passionInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         addPassionBtn.click();
       }
     });
 
-    // عرض جدول الشغف
     function renderPassionList() {
       passionList.innerHTML = '';
       for (let i = 0; i < 6; i++) {
@@ -1271,16 +1263,16 @@
           <td>
             ${passion ? `
               <div class="table-actions">
-                <button class="action-button" onclick="editPassion(${i})" title="تعديل">
+                <button class="action-button" onclick="editPassion(${i})" title="Edit">
                   <svg class="icon"><use xlink:href="#icon-pencil"></use></svg>
                 </button>
-                <button class="action-button delete-button" onclick="deletePassion(${i})" title="حذف">
+                <button class="action-button delete-button" onclick="deletePassion(${i})" title="Delete">
                   <svg class="icon"><use xlink:href="#icon-trash"></use></svg>
                 </button>
-                <button class="action-button" ${i === 0 ? 'disabled' : ''} onclick="movePassion(${i}, -1)" title="لأعلى">
+                <button class="action-button" ${i === 0 ? 'disabled' : ''} onclick="movePassion(${i}, -1)" title="Move Up">
                   <svg class="icon"><use xlink:href="#icon-arrow-up"></use></svg>
                 </button>
-                <button class="action-button" ${i === passions.length - 1 ? 'disabled' : ''} onclick="movePassion(${i}, 1)" title="لأسفل">
+                <button class="action-button" ${i === passions.length - 1 ? 'disabled' : ''} onclick="movePassion(${i}, 1)" title="Move Down">
                   <svg class="icon"><use xlink:href="#icon-arrow-down"></use></svg>
                 </button>
               </div>
@@ -1291,10 +1283,9 @@
       }
     }
 
-    // تعديل شغف
     window.editPassion = function(index) {
       const passion = passions[index];
-      const newValue = prompt('أدخل اسم الشغف الجديد:', passion);
+      const newValue = prompt('Enter new passion name:', passion);
 
       if (newValue && newValue.trim() && !passions.includes(newValue.trim())) {
         delete userPriorities[passion];
@@ -1302,11 +1293,10 @@
         userPriorities[newValue.trim()] = 6 - index;
         updatePassionSelection();
       } else if (newValue) {
-        alert('خطأ: الاسم غير صالح أو مكرر!');
+        alert('Error: Invalid or duplicate name!');
       }
     };
 
-    // مسح شغف
     window.deletePassion = function(index) {
       const passion = passions[index];
       delete userPriorities[passion];
@@ -1315,7 +1305,6 @@
       updatePassionSelection();
     };
 
-    // نقل شغف لأعلى أو لأسفل
     window.movePassion = function(index, direction) {
       const newIndex = index + direction;
       if (newIndex >= 0 && newIndex < passions.length) {
@@ -1325,7 +1314,6 @@
       }
     };
 
-    // إعادة ترتيب الأولويات
     function reassignPriorities() {
       const newPriorities = {};
       passions.forEach((passion, index) => {
@@ -1334,10 +1322,10 @@
       Object.assign(userPriorities, newPriorities);
     }
 
-    // بدء الرحلة
+    // Start Journey
     startJourneyBtn.addEventListener('click', () => {
       if (passions.length !== 6) {
-        alert('يرجى إدخال 6 شغف بالضبط!');
+        alert('Please enter exactly 6 passions!');
         return;
       }
       passions.forEach(p => {
@@ -1352,7 +1340,7 @@
       showQuestion();
     });
 
-    // عرض السؤال الحالي
+    // Question Management
     function showQuestion() {
       const passion = passions[currentPassionIndex];
       const stage = stages[currentStageIndex];
@@ -1360,19 +1348,17 @@
       const currentQuestion = currentPassionIndex * stages.length + currentStageIndex + 1;
       const remainingQuestions = totalQuestions - currentQuestion;
 
-      // إظهار نافذة منبثقة عند الانتقال لشغف جديد
       if (currentPassionIndex !== previousPassionIndex) {
-        showToast(`الآن تجيب على أسئلة: ${passion}`);
+        showToast(`Now answering questions for: ${passion}`);
         previousPassionIndex = currentPassionIndex;
       }
 
-      // تحديث شريط التقدم
       progressBar.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
-      progressText.textContent = `السؤال ${currentQuestion} من ${totalQuestions}`;
-      remainingText.textContent = `المتبقي: ${remainingQuestions}`;
+      progressText.textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+      remainingText.textContent = `Remaining: ${remainingQuestions}`;
 
-      currentPassionEl.textContent = `الشغف: ${passion}`;
-      currentStageEl.textContent = `المرحلة: ${stage}`;
+      currentPassionEl.textContent = `Passion: ${passion}`;
+      currentStageEl.textContent = `Stage: ${stage}`;
       guidingQuestionEl.textContent = guidingQuestions[stage];
 
       questionInputs.innerHTML = '';
@@ -1386,11 +1372,9 @@
       addInputBtn.disabled = inputCount >= 6;
       prevQuestionBtn.disabled = currentQuestion === 1;
       
-      // حفظ البيانات
       saveData();
     }
 
-    // إضافة حقل إدخال
     function addInputField(container, text = '', rating = 0, stage, index) {
       const div = document.createElement('div');
       div.className = 'input-group';
@@ -1402,10 +1386,9 @@
       input.type = 'text';
       input.className = 'input';
       input.value = text;
-      input.placeholder = 'أدخل إجابتك';
+      input.placeholder = 'Enter your answer';
       inputWrapper.appendChild(input);
       
-      // إضافة زر النصيحة
       const hintButton = document.createElement('button');
       hintButton.className = 'hint-button';
       hintButton.type = 'button';
@@ -1414,7 +1397,6 @@
       const hintTooltip = document.createElement('div');
       hintTooltip.className = 'hint-tooltip';
       
-      // اختيار نصيحة عشوائية من المرحلة الحالية
       const hints = stageHints[stage];
       const randomHint = hints[Math.floor(Math.random() * hints.length)];
       hintTooltip.textContent = randomHint;
@@ -1425,7 +1407,7 @@
       
       const isProblems = stage === 'Problems';
       const selectLabel = document.createElement('label');
-      selectLabel.textContent = isProblems ? 'مستوى القلق:' : 'مستوى الاقتناع:';
+      selectLabel.textContent = isProblems ? 'Concern Level:' : 'Conviction Level:';
       selectLabel.style.minWidth = '100px';
       selectLabel.style.fontWeight = '500';
       div.appendChild(selectLabel);
@@ -1434,10 +1416,10 @@
       select.className = 'select';
       
       const options = [
-        { value: '', label: 'اختر المستوى' },
-        { value: isProblems ? '-2' : '2', label: 'بسيط' },
-        { value: isProblems ? '-4' : '4', label: 'متوسط' },
-        { value: isProblems ? '-6' : '6', label: 'عالي' }
+        { value: '', label: 'Select Level' },
+        { value: isProblems ? '-2' : '2', label: 'Low' },
+        { value: isProblems ? '-4' : '4', label: 'Medium' },
+        { value: isProblems ? '-6' : '6', label: 'High' }
       ];
       
       options.forEach(option => {
@@ -1467,7 +1449,6 @@
       container.appendChild(div);
     }
 
-    // مسح حقل إدخال
     window.deleteInputField = function(button) {
       if (questionInputs.children.length > 3) {
         button.parentElement.remove();
@@ -1475,7 +1456,6 @@
       }
     };
 
-    // إضافة إدخال جديد
     addInputBtn.addEventListener('click', () => {
       if (questionInputs.children.length < 6) {
         addInputField(questionInputs, '', 0, stages[currentStageIndex], questionInputs.children.length);
@@ -1483,7 +1463,6 @@
       }
     });
 
-    // الرجوع للسؤال السابق
     prevQuestionBtn.addEventListener('click', () => {
       if (currentStageIndex > 0) {
         currentStageIndex--;
@@ -1494,7 +1473,6 @@
       showQuestion();
     });
 
-    // الانتقال للسؤال التالي
     nextQuestionBtn.addEventListener('click', () => {
       const passion = passions[currentPassionIndex];
       const stage = stages[currentStageIndex];
@@ -1538,7 +1516,7 @@
       }
     });
 
-    // عرض النتائج
+    // Results
     function showResults() {
       questionSection.classList.add('hidden');
       resultsSection.classList.remove('hidden');
@@ -1546,7 +1524,6 @@
 
       let passionResults = [];
 
-      // حساب النتائج بناءً على التقييمات
       passions.forEach(passion => {
         const stageSums = stages.map(stage => 
           answers[passion][stage].reduce((sum, ans) => sum + parseInt(ans.rating), 0)
@@ -1560,13 +1537,10 @@
         });
       });
 
-      // ترتيب النتائج من الأعلى للأقل
       passionResults.sort((a, b) => b.total - a.total);
 
-      // عرض النتائج المرتبة
       passionResults.forEach((result, index) => {
         const row = document.createElement('tr');
-        // إضافة كلاس للنتيجة الأفضل
         if (index === 0) {
           row.classList.add('best-result');
         }
@@ -1581,13 +1555,12 @@
       const topPassion = passionResults[0];
       recommendation.innerHTML = `
         <div>
-          <h3 style="color: var(--green); margin-bottom: 10px;">🎯 الشغف المقترح</h3>
+          <h3 style="color: var(--green); margin-bottom: 10px;">🎯 Recommended Passion</h3>
           <p style="font-size: 1.3em; font-weight: bold; color: var(--primary);">${topPassion.passion}</p>
-          <p style="color: var(--text-light); margin-top: 5px;">بإجمالي ${topPassion.total} نقطة</p>
+          <p style="color: var(--text-light); margin-top: 5px;">Total Score: ${topPassion.total} points</p>
         </div>
       `;
 
-      // إضافة النصيحة الشخصية
       const hint = generatePersonalHint(topPassion.passion);
       if (hint) {
         const hintElement = document.createElement('div');
@@ -1597,14 +1570,13 @@
         hintElement.style.borderColor = 'var(--yellow)';
         hintElement.innerHTML = `
           <div>
-            <h3 style="color: var(--yellow); margin-bottom: 10px;">💡 نصيحة شخصية</h3>
+            <h3 style="color: var(--yellow); margin-bottom: 10px;">💡 Personal Advice</h3>
             <p style="font-size: 1em; line-height: 1.6; color: var(--text);">${hint}</p>
           </div>
         `;
         recommendation.parentNode.insertBefore(hintElement, recommendation.nextSibling);
       }
 
-      // جدول الأولويات الأصلية
       userPriorityTable.innerHTML = '';
       const sortedPassions = [...passions].sort((a, b) => userPriorities[b] - userPriorities[a]);
       sortedPassions.forEach(passion => {
@@ -1616,40 +1588,33 @@
         userPriorityTable.appendChild(row);
       });
 
-      // تحضير محتوى الطباعة
       preparePrintContent();
     }
 
-    // دالة لتوليد النصيحة الشخصية
     function generatePersonalHint(topPassion) {
       const purposeAnswers = answers[topPassion]['Purpose'];
       
-      // البحث عن أول إجابة بمستوى عالي (6 نقاط) في Purpose
       const highPurposeAnswer = purposeAnswers.find(answer => parseInt(answer.rating) === 6);
       
       if (highPurposeAnswer) {
-        return `بناءً على إجاباتك، أنت مناسب جداً لمجال "${topPassion}" لأنك ذكرت: "${highPurposeAnswer.text}". هذا يُظهر وضوح رؤيتك وقوة دافعيتك في هذا المجال. ننصحك بالتركيز على تطوير مهاراتك في هذا الاتجاه والبحث عن الفرص التي تتماشى مع هذا الهدف.`;
+        return `Based on your answers, you are very well-suited for "${topPassion}" because you mentioned: "${highPurposeAnswer.text}". This shows clarity in your vision and strong motivation in this field. We recommend focusing on developing your skills in this direction and looking for opportunities that align with this goal.`;
       }
       
-      // إذا لم توجد إجابة بمستوى عالي، ابحث عن أول إجابة بمستوى متوسط
       const mediumPurposeAnswer = purposeAnswers.find(answer => parseInt(answer.rating) === 4);
       
       if (mediumPurposeAnswer) {
-        return `أنت تُظهر اهتماماً واضحاً بمجال "${topPassion}" خاصة فيما يتعلق بـ "${mediumPurposeAnswer.text}". ننصحك بالاستمرار في استكشاف هذا المجال وتطوير فهمك له أكثر.`;
+        return `You show clear interest in "${topPassion}" especially regarding "${mediumPurposeAnswer.text}". We recommend continuing to explore this field and developing your understanding of it further.`;
       }
       
-      // إذا لم توجد إجابات مناسبة، أعطِ نصيحة عامة
-      return `مجال "${topPassion}" يبدو الأنسب لك بناءً على إجاباتك. ننصحك بالتعمق أكثر في هذا المجال واستكشاف الفرص المتاحة فيه.`;
+      return `"${topPassion}" appears to be the most suitable for you based on your answers. We recommend delving deeper into this field and exploring the opportunities available in it.`;
     }
 
-    // تحضير محتوى الطباعة
     function preparePrintContent() {
-      // محتوى الشغف
       const printPassionsContent = document.getElementById('print-passions-content');
       printPassionsContent.innerHTML = '';
       const passionsTable = document.createElement('table');
       
-      let passionsHtml = '<tr><th>الشغف</th><th>الترتيب الأصلي</th></tr>';
+      let passionsHtml = '<tr><th>Passion</th><th>Original Priority</th></tr>';
       
       passions.forEach(passion => {
         passionsHtml += `<tr><td>${passion}</td><td>${userPriorities[passion]}</td></tr>`;
@@ -1658,11 +1623,9 @@
       passionsTable.innerHTML = passionsHtml;
       printPassionsContent.appendChild(passionsTable);
       
-      // محتوى الإجابات مرتبة حسب النتائج
       const printAnswersContent = document.getElementById('print-answers-content');
       printAnswersContent.innerHTML = '';
 
-      // حساب وترتيب النتائج
       let passionResults = [];
       passions.forEach(passion => {
         const stageSums = stages.map(stage => 
@@ -1677,7 +1640,6 @@
         });
       });
 
-      // ترتيب النتائج من الأعلى للأقل
       passionResults.sort((a, b) => b.total - a.total);
 
       passionResults.forEach((result, index) => {
@@ -1686,7 +1648,7 @@
         
         const passionTitle = document.createElement('h3');
         passionTitle.className = 'print-passion-title';
-        passionTitle.textContent = `${index + 1}. الشغف: ${result.passion}`;
+        passionTitle.textContent = `${index + 1}. Passion: ${result.passion}`;
         passionDiv.appendChild(passionTitle);
         
         stages.forEach(stage => {
@@ -1700,13 +1662,12 @@
           
           const questionP = document.createElement('p');
           questionP.className = 'print-question';
-          questionP.textContent = `السؤال التوجيهي: ${guidingQuestions[stage]}`;
+          questionP.textContent = `Guiding Question: ${guidingQuestions[stage]}`;
           stageDiv.appendChild(questionP);
           
           const answersList = document.createElement('ul');
           answersList.className = 'print-answers';
           
-          // ترتيب الإجابات حسب التقييم
           const sortedAnswers = [...answers[result.passion][stage]].sort((a, b) => {
             if (stage === 'Problems') {
               return parseInt(b.rating) - parseInt(a.rating);
@@ -1717,7 +1678,7 @@
           sortedAnswers.forEach(answer => {
             const answerItem = document.createElement('li');
             answerItem.className = 'print-answer-item';
-            answerItem.textContent = `${answer.text} (التقييم: ${answer.rating})`;
+            answerItem.textContent = `${answer.text} (Rating: ${answer.rating})`;
             answersList.appendChild(answerItem);
           });
           
@@ -1725,28 +1686,25 @@
           passionDiv.appendChild(stageDiv);
         });
 
-        // إضافة الإجمالي
         const totalDiv = document.createElement('div');
         totalDiv.className = 'print-total';
-        totalDiv.textContent = `الإجمالي: ${result.total} نقطة`;
+        totalDiv.textContent = `Total: ${result.total} points`;
         passionDiv.appendChild(totalDiv);
         
         printAnswersContent.appendChild(passionDiv);
       });
       
-      // محتوى النتائج
       const printResultsContent = document.getElementById('print-results-content');
       printResultsContent.innerHTML = '';
 
       const resultsTable = document.createElement('table');
       
-      let resultsHtml = '<tr><th>الترتيب</th><th>الشغف</th>';
+      let resultsHtml = '<tr><th>Rank</th><th>Passion</th>';
       stages.forEach(stage => {
         resultsHtml += `<th>${stage}</th>`;
       });
-      resultsHtml += '<th>الإجمالي</th></tr>';
+      resultsHtml += '<th>Total</th></tr>';
 
-      // عرض النتائج المرتبة
       passionResults.forEach((result, index) => {
         const rowClass = index === 0 ? 'class="best-result"' : '';
         resultsHtml += `<tr ${rowClass}><td>${index + 1}</td><td>${result.passion}</td>`;
@@ -1763,37 +1721,32 @@
       const recommendationDiv = document.createElement('div');
       recommendationDiv.className = 'print-recommendation';
       recommendationDiv.innerHTML = `
-        <h3>🎯 التوصية النهائية</h3>
-        <p>الشغف المقترح: ${topPassion.passion}</p>
-        <p>بإجمالي ${topPassion.total} نقطة</p>
+        <h3>🎯 Final Recommendation</h3>
+        <p>Recommended Passion: ${topPassion.passion}</p>
+        <p>Total Score: ${topPassion.total} points</p>
       `;
       printResultsContent.appendChild(recommendationDiv);
 
-      // إضافة النصيحة الشخصية للطباعة
       const hint = generatePersonalHint(topPassion.passion);
       if (hint) {
         const hintDiv = document.createElement('div');
         hintDiv.className = 'print-hint';
         hintDiv.innerHTML = `
-          <h3>💡 نصيحة شخصية</h3>
+          <h3>💡 Personal Advice</h3>
           <p>${hint}</p>
         `;
         printResultsContent.appendChild(hintDiv);
       }
     }
 
-    // طباعة التقرير
     printReportBtn.addEventListener('click', () => {
       window.print();
     });
 
-    // تحميل التقرير
     downloadReportBtn.addEventListener('click', () => {
-      // إنشاء نص التقرير
-      let reportText = "تقرير رحلة 6Ps - اكتشف ميولك المهنية\n";
-      reportText += "=" .repeat(50) + "\n\n";
+      let reportText = "6Ps Journey Report - Discover Your Career Passions\n";
+      reportText += "=".repeat(50) + "\n\n";
       
-      // حساب وترتيب النتائج
       let passionResults = [];
       passions.forEach(passion => {
         const stageSums = stages.map(stage => 
@@ -1808,88 +1761,76 @@
         });
       });
 
-      // ترتيب النتائج من الأعلى للأقل
       passionResults.sort((a, b) => b.total - a.total);
 
-      // عرض النتائج مرتبة حسب التقييم
       passionResults.forEach((result, index) => {
-        reportText += `${index + 1}. الشغف: ${result.passion}\n`;
+        reportText += `${index + 1}. Passion: ${result.passion}\n`;
         reportText += "-".repeat(30) + "\n\n";
         
         stages.forEach(stage => {
           reportText += `${stage}:\n`;
-          reportText += `السؤال التوجيهي: ${guidingQuestions[stage]}\n`;
+          reportText += `Guiding Question: ${guidingQuestions[stage]}\n`;
           
-          // ترتيب الإجابات حسب التقييم (من الأعلى للأقل)
           const sortedAnswers = [...answers[result.passion][stage]].sort((a, b) => {
-            // للـ Problems نرتب من الأقل سلبية للأكثر سلبية (الأقل قلقاً أولاً)
             if (stage === 'Problems') {
-              return parseInt(b.rating) - parseInt(a.rating); // من -2 إلى -6
+              return parseInt(b.rating) - parseInt(a.rating);
             }
-            // للباقي نرتب من الأعلى للأقل
             return parseInt(b.rating) - parseInt(a.rating);
           });
           
           sortedAnswers.forEach(answer => {
-            reportText += `- ${answer.text} (التقييم: ${answer.rating})\n`;
+            reportText += `- ${answer.text} (Rating: ${answer.rating})\n`;
           });
           reportText += "\n";
         });
         
-        reportText += `الإجمالي: ${result.total} نقطة\n`;
+        reportText += `Total: ${result.total} points\n`;
         reportText += "=".repeat(50) + "\n\n";
       });
       
-      // إضافة التوصية والنصيحة
       const topPassion = passionResults[0];
-      reportText += "التوصية النهائية:\n";
+      reportText += "Final Recommendation:\n";
       reportText += "-".repeat(20) + "\n";
-      reportText += `الشغف المقترح: ${topPassion.passion} (بإجمالي ${topPassion.total} نقطة)\n\n`;
+      reportText += `Recommended Passion: ${topPassion.passion} (Total: ${topPassion.total} points)\n\n`;
       
-      // إضافة النصيحة الشخصية
       const hint = generatePersonalHint(topPassion.passion);
       if (hint) {
-        reportText += "نصيحة شخصية:\n";
+        reportText += "Personal Advice:\n";
         reportText += "-".repeat(15) + "\n";
         reportText += `${hint}\n\n`;
       }
       
-      reportText += "الترتيب الذي اخترته في البداية:\n";
+      reportText += "Your Original Priority Order:\n";
       reportText += "-".repeat(35) + "\n";
       const sortedPassions = [...passions].sort((a, b) => userPriorities[b] - userPriorities[a]);
       sortedPassions.forEach((passion, index) => {
-        reportText += `${index + 1}. ${passion} (الأولوية: ${userPriorities[passion]})\n`;
+        reportText += `${index + 1}. ${passion} (Priority: ${userPriorities[passion]})\n`;
       });
       
-      // إنشاء ملف نصي للتحميل
       const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = '6Ps_Report.txt';
+      a.download = '6Ps_Report_EN.txt';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     });
 
-    // إعادة الاختبار
     restartTestBtn.addEventListener('click', () => {
-      if (confirm('هل أنت متأكد من رغبتك في إعادة الاختبار؟ سيتم مسح جميع البيانات الحالية.')) {
-        localStorage.removeItem('6ps_journey_data');
+      if (confirm('Are you sure you want to restart the assessment? All current data will be deleted.')) {
+        localStorage.removeItem('6ps_journey_data_en');
         location.reload();
       }
     });
 
-    // حفظ البيانات عند إغلاق الصفحة أو تحديثها
     window.addEventListener('beforeunload', () => {
       saveData();
     });
 
-    // التحقق من وجود بيانات محفوظة عند تحميل الصفحة
     window.addEventListener('load', () => {
       if (!checkSavedData()) {
-        // لا توجد بيانات محفوظة، ابدأ اختبار جديد
         updatePassionSelection();
       }
     });
