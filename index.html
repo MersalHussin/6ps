@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رحلة 6Ps - اكتشف شغفك</title>
+  <title>رحلة 6Ps - اكتشف ميولك المهنية | 6Ps Journey - Discover Your Career Passions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ===== الأساسيات ===== */
     :root {
-      --primary-color: #052ed8;
-      --primary-dark: #0324a5;
-      --secondary-color: #64748b;
-      --secondary-dark: #475569;
-      --success-color: #10b981;
-      --danger-color: #ef4444;
-      --warning-color: #f59e0b;
-      --light-color: #f8fafc;
-      --dark-color: #1e293b;
-      --gray-100: #f1f5f9;
-      --gray-200: #e2e8f0;
-      --gray-300: #cbd5e1;
-      --gray-400: #94a3b8;
-      --gray-500: #64748b;
-      --gray-600: #475569;
-      --gray-700: #334155;
-      --gray-800: #1e293b;
-      --gray-900: #0f172a;
-      --border-radius: 8px;
-      --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --transition: all 0.3s ease;
+      --primary: #052ed8;
+      --green: #00c309;
+      --yellow: #f1c900;
+      --background: #f8faff;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --error: #ef4444;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(5, 46, 216, 0.1);
     }
 
     * {
@@ -40,1166 +29,2962 @@
     }
 
     body {
-      font-family: 'Tajawal', Arial, sans-serif;
-      background-color: #f0f4f8;
-      color: var(--gray-800);
+      font-family: 'Tajawal', sans-serif;
+      background: var(--background);
+      color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
+      transition: all 0.3s ease;
+    }
+
+    body.en {
+      font-family: 'Inter', sans-serif;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem 1rem;
+      padding: 20px;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
-    /* ===== العناوين والنصوص ===== */
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .main-title {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: var(--gray-600);
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gray-800);
-    }
-
-    h3 {
-      font-size: 1.3rem;
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 0.9rem;
       font-weight: 600;
-      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* ===== البطاقات ===== */
+    .language-switcher:hover {
+      background: #041db8;
+      transform: translateY(-2px);
+    }
+
+    .language-switcher .flag {
+      font-size: 1.2rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      text-align: center;
+      margin: 2rem 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
     .card {
-      background-color: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       margin-bottom: 2rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
 
     .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--gray-200);
+      padding: 1.5rem;
+      background: var(--primary);
+      color: white;
     }
 
-    /* ===== الفئات والخيارات ===== */
-    .categories-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .category {
-      background-color: var(--gray-100);
-      border-radius: var(--border-radius);
-      padding: 0.7rem;
-      transition: var(--transition);
-    }
-
-    .category:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .category-header {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .category-header h3 {
-      margin: 0;
-    }
-
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: var(--transition);
-    }
-
-    .checkbox-label:hover {
-      background-color: rgba(59, 130, 246, 0.1);
-    }
-
-    .checkbox-label input {
-      margin-left: 0.5rem;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
-
-    .checkbox-label span {
-      font-size: 1rem;
-    }
-
-    /* ===== الأزرار ===== */
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: var(--border-radius);
-      font-size: 1rem;
+    .card-title {
+      font-size: 2rem;
       font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: 'Tajawal', Arial, sans-serif;
+      text-align: center;
     }
 
-    .btn-primary {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--primary-dark);
-    }
-
-    .btn-secondary {
-      background-color: var(--secondary-color);
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--secondary-dark);
-    }
-
-    .btn-add {
-      background-color: var(--success-color);
-      color: white;
-      padding: 0.5rem 1rem;
-    }
-
-    .btn-add:hover {
-      background-color: #0d9668;
-    }
-
-    .action-buttons {
+    .card-description {
+      color: var(--yellow);
+      font-size: 20px;
+      font-weight: bold;
       display: flex;
+      align-items:center;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    /* ===== الإدخال المخصص ===== */
-    .custom-passion {
-      display: flex;
       gap: 0.5rem;
-      margin-bottom: 1rem;
     }
 
-    .custom-input {
-      flex: 1;
-      padding: 0.75rem;
-      border: 1px solid var(--gray-300);
-      border-radius: var(--border-radius);
-      font-family: 'Tajawal', Arial, sans-serif;
-      font-size: 1rem;
-    }
-
-    .custom-input:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-    }
-
-    /* ===== رسائل الخطأ ===== */
-    .error-message {
-      color: var(--danger-color);
-      font-size: 0.9rem;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      background-color: rgba(239, 68, 68, 0.1);
-      border-radius: var(--border-radius);
-      text-align: center;
-    }
-
-    .error-message.hidden {
-      display: none;
-    }
-
-    /* ===== العداد ===== */
-    .counter {
-      background-color: var(--primary-color);
+    .stage-info-button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      flex-shrink: 0;
     }
 
-    /* ===== قسم الأسئلة ===== */
-    .progress-container {
-      margin-bottom: 2rem;
+    .stage-info-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
     }
 
-    .progress-bar {
-      height: 10px;
-      background-color: var(--gray-200);
-      border-radius: 5px;
-      overflow: hidden;
-      margin-bottom: 0.5rem;
+    .card-content {
+      padding: 1.5rem;
     }
 
-    .progress-fill {
-      height: 100%;
-      background-color: var(--primary-color);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .progress-text {
-      font-size: 0.9rem;
-      color: var(--gray-600);
-      text-align: center;
-    }
-
-    .question-header {
+    .card-footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: #f8fafc;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 1rem;
       margin-bottom: 1.5rem;
-    }
-
-    .passion-title {
-      font-size: 1.5rem;
-      color: var(--gray-800);
-    }
-
-    .stage-badge {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      order: 2;
-    }
-
-    .stage-description {
-      color: var(--primary-color);
-     margin-top: 0.5rem;
-    font-size: 25px;
-    font-weight: 600;
-    }
-
-    .question-options {
-      background-color: var(--gray-100);
-      padding: 1.5rem;
-      border-radius: var(--border-radius);
-    }
-
-    /* ===== قسم النتائج ===== */
-    .results-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .results-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: center;
-    }
-
-    .results-table th, .results-table td {
-      padding: 0.75rem;
-      border: 1px solid var(--gray-300);
-    }
-
-    .results-table th {
-      background-color: var(--primary-color);
-      color: white;
-      font-weight: 600;
-    }
-
-    .results-table tr:nth-child(even) {
-      background-color: var(--gray-100);
-    }
-
-    .results-table tr:hover {
-      background-color: rgba(59, 130, 246, 0.1);
-    }
-
-    .recommendation-container {
-      background-color: var(--gray-100);
-      padding: 1.5rem;
-      border-radius: var(--border-radius);
-      text-align: center;
-    }
-
-    .recommendation {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin: 1rem 0;
-    }
-
-    .recommendation-details {
-      color: var(--gray-600);
-      margin-top: 0.5rem;
-    }
-
-    /* ===== تذييل الصفحة ===== */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      color: var(--gray-500);
-      font-size: 0.9rem;
-    }
-
-    /* ===== الإشعارات ===== */
-    .notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 12px 20px;
-      border-radius: 8px;
-      color: white;
-      font-weight: 600;
-      z-index: 1000;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    .notification.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .notification.error {
-      background-color: #ef4444;
-    }
-    
-    .notification.success {
-      background-color: #10b981;
-    }
-    
-    .notification.warning {
-      background-color: #f59e0b;
-    }
-
-    /* ===== إشعار الانتقال بين الشغف ===== */
-    .passion-transition {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(15, 23, 42, 0.8);
-      display: flex;
-      justify-content: center;
       align-items: center;
-      z-index: 2000;
+      flex-wrap: wrap;
+    }
+
+    .input-wrapper {
+      flex: 1;
+      position: relative;
+      min-width: 250px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .hint-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--yellow);
+      border: none;
+      cursor: pointer;
+      color: #333;
+      font-size: 1rem;
+      padding: 6px;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    [dir="rtl"] .hint-button {
+      left: 10px;
+    }
+
+    [dir="ltr"] .hint-button {
+      right: 10px;
+    }
+
+    .hint-button:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .hint-tooltip {
+      position: absolute;
+      bottom: 100%;
+      margin-bottom: 10px;
+      background: var(--text);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      width: 280px;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      transition: all 0.3s ease;
+      z-index: 1000;
     }
 
-    .passion-transition.show {
+    [dir="rtl"] .hint-tooltip {
+      left: -10px;
+      text-align: right;
+    }
+
+    [dir="ltr"] .hint-tooltip {
+      right: -10px;
+      text-align: left;
+    }
+
+    .hint-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      border: 6px solid transparent;
+      border-top-color: var(--text);
+    }
+
+    [dir="rtl"] .hint-tooltip::after {
+      left: 20px;
+    }
+
+    [dir="ltr"] .hint-tooltip::after {
+      right: 20px;
+    }
+
+    .hint-button:hover .hint-tooltip {
       opacity: 1;
       visibility: visible;
     }
 
-    .passion-transition-content {
-      background-color: white;
-      padding: 2rem 3rem;
-      border-radius: var(--border-radius);
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      transform: translateY(20px);
-      transition: transform 0.5s ease;
+    .select {
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      background: white;
+      min-width: 140px;
+      cursor: pointer;
     }
 
-    .passion-transition.show .passion-transition-content {
-      transform: translateY(0);
+    .select:focus {
+      outline: none;
+      border-color: var(--green);
     }
 
-    .passion-transition-title {
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
+    .button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-width: 120px;
     }
 
-    .passion-transition-name {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--dark-color);
+    .button:hover {
+      background: #041db8;
+      transform: translateY(-1px);
+    }
+
+    .button:disabled {
+      background: #cacaca;
+      color: white;
+      cursor: not-allowed;
+      transform: none;
+      border: none !important; /* إزالة الحدود عند التعطيل */
+      opacity: 0.7;
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .button-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-success {
+      background: var(--green);
+    }
+
+    .button-success:hover {
+      background: #009907;
+    }
+
+    .button-warning {
+      background: var(--yellow);
+      color: #333;
+    }
+
+    .button-warning:hover {
+      background: #d1a800;
+    }
+
+    .table-container {
+      overflow-x: auto;
       margin: 1rem 0;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
     }
 
-    /* ===== تصميم متجاوب ===== */
-    @media (max-width: 768px) {
-      .categories-container {
-        grid-template-columns: 1fr;
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 600px;
+    }
+
+    .table th,
+    .table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    [dir="rtl"] .table th,
+    [dir="rtl"] .table td {
+      text-align: right;
+    }
+
+    [dir="ltr"] .table th,
+    [dir="ltr"] .table td {
+      text-align: left;
+    }
+
+    .table th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .table tr:hover {
+      background: #f8fafc;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .action-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.4rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+    }
+
+    .action-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .delete-button {
+      background: var(--error);
+    }
+
+    .action-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .alert {
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: none;
+      font-weight: 500;
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--error);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: white;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .guiding-question {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: #f0f4ff;
+      border-radius: var(--radius);
+    }
+
+    [dir="rtl"] .guiding-question {
+      border-right: 4px solid var(--primary);
+    }
+
+    [dir="ltr"] .guiding-question {
+      border-left: 4px solid var(--primary);
+    }
+
+    .stage-explanation {
+      background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .stage-explanation h4 {
+      color: var(--green);
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stage-explanation ul {
+      margin: 0.8rem 0;
+      padding-right: 1.5rem;
+    }
+
+    [dir="ltr"] .stage-explanation ul {
+      padding-left: 1.5rem;
+      padding-right: 0;
+    }
+
+    .stage-explanation li {
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .suggestions-container {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .suggestions-title {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .suggestions-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .suggestion-chip {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      max-width: 300px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .suggestion-chip:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(5, 46, 216, 0.3);
+    }
+
+    .suggestion-text {
+      flex: 1;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .suggestion-level {
+      background: var(--primary);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      min-width: 60px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .suggestion-level.high {
+      background: var(--green);
+    }
+
+    .suggestion-level.medium {
+      background: var(--yellow);
+      color: #333;
+    }
+
+    .suggestion-level.low {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .suggestion-chip:hover .suggestion-level {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .no-suggestions {
+      color: var(--text-light);
+      font-style: italic;
+      text-align: center;
+      padding: 2rem;
+      background: #f9f9f9;
+      border-radius: var(--radius);
+      border: 2px dashed var(--border);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .result-highlight {
+      background: #f0f4ff;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      border: 2px solid var(--primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 0.5rem;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(10px);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stage-info-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .stage-info-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .stage-info-content {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .stage-info-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+    }
+
+    .stage-info-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .stage-info-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .stage-info-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stage-info-body {
+      padding: 1.5rem;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    .icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+    }
+
+    .best-result {
+      background: #e8f5e8 !important;
+      color: var(--green) !important;
+      font-weight: bold !important;
+    }
+
+    .logo-image {
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    /* Print styles */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
       }
-      
-      .card {
-        padding: 1.5rem;
+
+      body {
+        background: white !important;
+        font-size: 12pt;
+        margin: 0;
+        padding: 0;
+        color: black;
       }
-      
-      .main-title {
-        font-size: 2rem;
+
+      .language-switcher {
+        display: none !important;
       }
-      
-      .question-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      
-      .action-buttons {
-        flex-direction: column;
-      }
-      
-      .btn {
+
+      .container {
         width: 100%;
+        max-width: none;
+        padding: 20px;
+        margin: 0 auto;
       }
-      
-      .notification {
-        right: 10px;
-        left: 10px;
+
+      .print-content {
+        width: 100%;
+        margin: 0 auto;
         text-align: center;
       }
+
+      .print-section {
+        width: 100%;
+        margin-bottom: 30px;
+        page-break-inside: avoid;
+        text-align: center;
+      }
+
+      .print-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #052ed8;
+        padding-bottom: 20px;
+      }
+
+      .print-header h1 {
+        color: #052ed8 !important;
+        font-size: 24pt;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        font-size: 11pt;
+        border: 1px solid #ddd;
+      }
+
+      th, td {
+        padding: 12px 8px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f0f4ff !important;
+        color: #052ed8 !important;
+        font-weight: bold;
+      }
+
+      .best-result {
+        background-color: #e8f5e8 !important;
+        color: #00c309 !important;
+        font-weight: bold !important;
+      }
+
+      .print-passion-section {
+        width: 90%;
+        margin: 0 auto 40px auto;
+        border: 2px solid #052ed8;
+        border-radius: 8px;
+        padding: 20px;
+        page-break-inside: avoid;
+        background: #fafbff;
+      }
+
+      .print-passion-title {
+        color: #052ed8 !important;
+        font-size: 16pt;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        border-bottom: 2px solid #00c309;
+        padding-bottom: 8px;
+      }
+
+      .print-stage-section {
+        margin-bottom: 25px;
+        padding: 15px;
+        background: white;
+        border-radius: 6px;
+        border: 1px solid #e0e7ff;
+        page-break-inside: avoid;
+      }
+
+      .print-stage-title {
+        color: #00c309 !important;
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        border-bottom: 1px dashed #e0e7ff;
+        padding-bottom: 8px;
+      }
+
+      .print-question {
+        font-style: italic;
+        color: #666 !important;
+        margin-bottom: 15px;
+        font-size: 11pt;
+        background-color: #f8f9ff;
+        padding: 12px;
+        border-radius: 6px;
+        line-height: 1.5;
+      }
+
+      [dir="rtl"] .print-question {
+        text-align: right;
+      }
+
+      [dir="ltr"] .print-question {
+        text-align: left;
+      }
+
+      .print-answers {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .print-answer-item {
+        margin-bottom: 10px;
+        font-size: 11pt;
+        padding: 10px 15px;
+        background: #f9f9f9;
+        border-radius: 4px;
+      }
+
+      [dir="rtl"] .print-answer-item {
+        text-align: right;
+        border-right: 3px solid #052ed8;
+        padding-right: 15px;
+      }
+
+      [dir="ltr"] .print-answer-item {
+        text-align: left;
+        border-left: 3px solid #052ed8;
+        padding-left: 15px;
+      }
+
+      .print-answer-rating {
+        font-weight: bold;
+        color: #052ed8;
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      .print-total {
+        background: #fff3cd !important;
+        border: 2px solid #f1c900 !important;
+        color: #856404 !important;
+        padding: 12px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 6px;
+        margin-top: 20px;
+        font-size: 13pt;
+      }
+
+      .print-recommendation {
+        background: #e8f5e8 !important;
+        border: 3px solid #00c309 !important;
+        color: #00c309 !important;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 10px;
+        margin: 20px auto;
+        font-size: 15pt;
+        width: 80%;
+      }
+
+      .print-hint {
+        background: #fff3cd !important;
+        border: 2px solid #f1c900 !important;
+        color: #856404 !important;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px auto;
+        line-height: 1.6;
+        font-size: 12pt;
+        width: 80%;
+      }
+
+      [dir="rtl"] .print-hint {
+        text-align: right;
+      }
+
+      [dir="ltr"] .print-hint {
+        text-align: left;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .print-only {
+        display: block !important;
+      }
+
+      @page {
+        margin: 2cm;
+        size: A4;
+      }
     }
 
-    /* ===== أنماط الطباعة ===== */
-    @media print {
-      body * {
-        visibility: hidden;
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
       }
-      #results-section, #results-section * {
-        visibility: visible;
+
+      .language-switcher {
+        top: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        font-size: 0.8rem;
       }
-      #results-section {
-        position: absolute;
-        left: 0;
-        top: 0;
+
+      h1 {
+        font-size: 1.8rem;
+        margin: 1rem 0;
+      }
+
+      .card-header,
+      .card-content,
+      .card-footer {
+        padding: 1rem;
+      }
+
+      .card-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+      }
+
+      .card-footer .button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .input-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .input-wrapper {
+        min-width: auto;
+      }
+
+      .select {
+        width: 50%;
+        min-width: auto;
+      }
+
+      .button {
+        width: 60%;
+        min-width: auto;
+      }
+
+      .table-container {
+        margin: 0.5rem 0;
+      }
+
+      .table {
+        min-width: auto;
+        font-size: 0.85rem;
+      }
+
+      .table th,
+      .table td {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.8rem;
+      }
+
+      .table th {
+        font-size: 0.75rem;
+      }
+
+      .table-actions {
+        flex-direction: row;
+        gap: 0.25rem;
+      }
+
+      .action-button {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+      }
+
+      .hint-tooltip {
+        width: 250px;
+        font-size: 0.8rem;
+      }
+
+      [dir="rtl"] .hint-tooltip {
+        left: -50px;
+      }
+
+      [dir="ltr"] .hint-tooltip {
+        right: -50px;
+      }
+
+      .progress-text {
+        font-size: 0.8rem;
+      }
+      .card-title{
+        font-size: 1.5rem;
+      }
+      .card-description{
+        font-size: 15px;
+        padding: 5px 15px;
+      font-weight: bold;      }
+      .guiding-question {
+        font-size: 1.2rem;
+        font-weight: 800;
+        padding: 1rem;
+      }
+
+      .result-highlight {
+        font-size: 1.1rem;
+        padding: 1rem;
+      }
+
+      .modal {
+        width: 95%;
+        margin: 10px;
+      }
+
+      .modal-footer {
+        flex-direction: column;
+      }
+
+      .modal-footer .button {
         width: 100%;
       }
-      .action-buttons {
-        display: none;
+
+      .suggestions-grid {
+        gap: 0.5rem;
       }
+
+      .suggestion-chip {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        max-width: 250px;
+      }
+
+      .suggestion-text {
+        max-width: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .card-header,
+      .card-content,
+      .card-footer {
+        padding: 0.75rem;
+      }
+
+      .table th,
+      .table td {
+        padding: 10px 15px;
+        font-size: 0.75rem;
+      }
+
+      .table th {
+        font-size: 0.7rem;
+      }
+
+      .action-button {
+        width: 24px;
+        height: 24px;
+      }
+
+      .hint-tooltip {
+        width: 200px;
+      }
+
+      [dir="rtl"] .hint-tooltip {
+        left: -80px;
+      }
+
+      [dir="ltr"] .hint-tooltip {
+        right: -80px;
+      }
+
+      .suggestion-chip {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        max-width: 200px;
+      }
+
+      .suggestion-text {
+        max-width: 120px;
+      }
+    }
+
+    /* إضافة أنماط النافذة المنبثقة الجديدة للمرحلة الحالية */
+    .current-stage-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .current-stage-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .current-stage-content {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      text-align: center;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      max-width: 90%;
+      width: 500px;
+    }
+
+    .current-stage-modal.active .current-stage-content {
+      transform: scale(1);
+    }
+
+    .current-stage-title {
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .current-stage-description {
+      color: var(--text);
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .button-outline:disabled {
+      background: #cacaca !important;
+      color: white !important;
+      border: none !important;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1 class="main-title">رحلة 6Ps</h1>
-      <p class="subtitle">اكتشف شغفك وحدد مسارك المهني</p>
-    </header>
+  <button class="language-switcher" onclick="toggleLanguage()">
+    <span class="flag">🇺🇸</span>
+    <span class="text">English</span>
+  </button>
 
-    <!-- اختيار الشغف -->
-    <section id="passion-selection" class="card">
+  <div class="container">
+    <img src="/placeholder.svg?height=100&width=250" alt="Logo Qudraat Shabab" class="logo-image">
+    <h1 data-ar="اكتشف ميولك المهنية" data-en="Discover Your Career Passion">اكتشف شغفك المهني</h1>
+
+    <!-- إدخال الشغف -->
+    <div id="passion-selection" class="card">
       <div class="card-header">
-        <h2>اختر 6 شغف (حد أقصى 6)</h2>
-        <div id="passion-counter" class="counter">0/6</div>
+        <h2 class="card-title" data-ar="ما هي اهتماماتك؟" data-en="What are your Passion">ما هي اهتماماتك؟</h2>
+        <p class="card-description" data-ar="اختر 3-6 مجالات تهتم بها (مثل: البرمجة، التصميم، الطبخ)" data-en="Choose 3-6 areas you're interested in (e.g., Programming, Design, Cooking)">اختر 3-6 مجالات تهتم بها (مثل: البرمجة، التصميم، الطبخ)</p>
       </div>
-      <div id="passion-error" class="error-message hidden">لا يمكنك اختيار أكثر من 6 شغف!</div>
-      
-      <div class="categories-container">
-        <!-- تكنولوجيا -->
-        <div class="category">
-          <div class="category-header">
-            <h3>🧠 تكنولوجيا</h3>
+      <div class="card-content">
+        <div id="passion-error" class="alert" data-ar="يرجى إدخال اسم صحيح وغير مكرر" data-en="Please enter a valid and unique name">يرجى إدخال اسم صحيح وغير مكرر</div>
+        <div class="input-group">
+          <div class="input-wrapper">
+            <input type="text" id="passion-input" class="input" data-ar="اكتب اهتمامك هنا" data-en="Type your interest here" placeholder="اكتب اهتمامك هنا">
+            <button class="hint-button" type="button">
+              💡
+              <div class="hint-tooltip" data-ar="أمثلة: البرمجة، التصميم، التدريس، الطبخ، الكتابة، التصوير، الرياضة، الموسيقى، ريادة الأعمال، الطب، الهندسة، التسويق" data-en="Examples: Programming, Design, Teaching, Cooking, Writing, Photography, Sports, Music, Entrepreneurship, Medicine, Engineering, Marketing">
+                أمثلة: البرمجة، التصميم، التدريس، الطبخ، الكتابة، التصوير، الرياضة، الموسيقى، ريادة الأعمال، الطب، الهندسة، التسويق
+              </div>
+            </button>
           </div>
-          <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" value="البرمجة" class="passion-checkbox"> <span>البرمجة</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التصميم" class="passion-checkbox"> <span>التصميم</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="تعديل الفيديوهات" class="passion-checkbox"> <span>تعديل الفيديوهات</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="UI/UX" class="passion-checkbox"> <span>UI/UX</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="الأمن السيبراني" class="passion-checkbox"> <span>الأمن السيبراني</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="الذكاء الاصطناعي" class="passion-checkbox"> <span>الذكاء الاصطناعي</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="تحليل البيانات" class="passion-checkbox"> <span>تحليل البيانات</span></label>
-          </div>
+          <button id="add-passion" class="button" data-ar="إضافة" data-en="Add">إضافة</button>
         </div>
-        
-        <!-- عملية -->
-        <div class="category">
-          <div class="category-header">
-            <h3>⚙️ عملية</h3>
-          </div>
-          <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" value="التدريس" class="passion-checkbox"> <span>التدريس</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="إدارة الشركات" class="passion-checkbox"> <span>إدارة الشركات</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التصوير" class="passion-checkbox"> <span>التصوير</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التمثيل" class="passion-checkbox"> <span>التمثيل</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="العمل الحر" class="passion-checkbox"> <span>العمل الحر</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="المبيعات" class="passion-checkbox"> <span>المبيعات</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="الموارد البشرية" class="passion-checkbox"> <span>الموارد البشرية</span></label>
-          </div>
-        </div>
-        
-        <!-- إبداعية -->
-        <div class="category">
-          <div class="category-header">
-            <h3>🎨 إبداعية</h3>
-          </div>
-          <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" value="الكتابة الإبداعية" class="passion-checkbox"> <span>الكتابة الإبداعية</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="الرسم" class="passion-checkbox"> <span>الرسم</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="الموسيقى" class="passion-checkbox"> <span>الموسيقى</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="صناعة المحتوى" class="passion-checkbox"> <span>صناعة المحتوى</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التمثيل الصوتي" class="passion-checkbox"> <span>التمثيل الصوتي</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="إخراج الأفلام" class="passion-checkbox"> <span>إخراج الأفلام</span></label>
-          </div>
-        </div>
-        
-        <!-- اجتماعية -->
-        <div class="category">
-          <div class="category-header">
-            <h3>💬 اجتماعية</h3>
-          </div>
-          <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" value="العمل المجتمعي" class="passion-checkbox"> <span>العمل المجتمعي</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التقديم والإلقاء" class="passion-checkbox"> <span>التقديم والإلقاء</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="العلاقات العامة" class="passion-checkbox"> <span>العلاقات العامة</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التدريب الشخصي" class="passion-checkbox"> <span>التدريب الشخصي (كوتشينج)</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="العمل التطوعي" class="passion-checkbox"> <span>العمل التطوعي</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التوجيه والإرشاد" class="passion-checkbox"> <span>التوجيه والإرشاد</span></label>
-          </div>
-        </div>
-        
-        <!-- ريادية -->
-        <div class="category">
-          <div class="category-header">
-            <h3>🧳 ريادية</h3>
-          </div>
-          <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" value="تأسيس المشاريع" class="passion-checkbox"> <span>تأسيس المشاريع</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التسويق الرقمي" class="passion-checkbox"> <span>التسويق الرقمي</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="إدارة المنتجات" class="passion-checkbox"> <span>إدارة المنتجات</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="التجارة الإلكترونية" class="passion-checkbox"> <span>التجارة الإلكترونية</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="تطوير التطبيقات" class="passion-checkbox"> <span>تطوير التطبيقات</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="النمو الشخصي والمالي" class="passion-checkbox"> <span>النمو الشخصي والمالي</span></label>
-          </div>
-        </div>
-        
-        <!-- علمية/بحثية -->
-        <div class="category">
-          <div class="category-header">
-            <h3>🧪 علمية/بحثية</h3>
-          </div>
-          <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" value="البحث العلمي" class="passion-checkbox"> <span>البحث العلمي</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="العلوم الطبية" class="passion-checkbox"> <span>العلوم الطبية</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="الهندسة" class="passion-checkbox"> <span>الهندسة</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="البيئة والطاقة" class="passion-checkbox"> <span>البيئة والطاقة</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="تطوير المناهج" class="passion-checkbox"> <span>تطوير المناهج</span></label>
-            <label class="checkbox-label"><input type="checkbox" value="علم النفس" class="passion-checkbox"> <span>علم النفس</span></label>
-          </div>
-        </div>
-        
-        <!-- إضافة شغف مخصص -->
-        <div class="category">
-          <div class="category-header">
-            <h3>✍️ شغف مخصص</h3>
-          </div>
-          <div class="custom-passion">
-            <input type="text" id="custom-passion-input" class="custom-input" placeholder="أدخل شغفك هنا">
-            <button id="add-custom-passion" class="btn btn-add">إضافة</button>
-          </div>
-          <div id="custom-passion-error" class="error-message hidden">لا يمكنك إضافة شغف مخصص لأنك اخترت 6 شغف بالفعل!</div>
-          <div id="custom-passions-list" class="checkbox-group"></div>
+        <div class="table-container">
+          <table id="passion-table" class="table">
+            <thead>
+              <tr>
+                <th data-ar="الاهتمام" data-en="Interest">الاهتمام</th>
+                <th data-ar="الترتيب" data-en="Order">الترتيب</th>
+                <th data-ar="خيارات" data-en="Options">خيارات</th>
+              </tr>
+            </thead>
+            <tbody id="passion-list"></tbody>
+          </table>
         </div>
       </div>
-      
-      <div class="action-buttons">
-        <button id="start-journey" class="btn btn-primary">ابدأ الرحلة</button>
+      <div class="card-footer">
+        <button id="start-journey" class="button button-success" disabled data-ar="ابدأ الاختبار" data-en="Start Test">ابدأ الاختبار</button>
       </div>
-    </section>
+    </div>
 
     <!-- مراحل الأسئلة -->
-    <section id="question-section" class="card hidden">
-      <div class="progress-container">
-        <div id="progress-bar" class="progress-bar">
-          <div id="progress-fill" class="progress-fill"></div>
+    <div id="question-section" class="card hidden">
+      <div class="card-header">
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
         </div>
-        <div id="progress-text" class="progress-text"></div>
+        <div class="progress-text">
+          <span id="progress-text">السؤال 1 من 30</span>
+          <span id="remaining-text">المتبقي: 29</span>
+        </div>
+        <h2 id="current-passion" class="card-title">الاهتمام: </h2>
+        <div class="card-description">
+          <span id="current-stage">المرحلة: </span>
+          <button class="stage-info-button" type="button" onclick="showStageInfoModal()">
+            ?
+          </button>
+        </div>
       </div>
-      
-      <div class="question-header">
-        <h2 id="current-passion" class="passion-title"></h2>
-        <div id="current-stage" class="stage-badge"></div>
+      <div class="card-content">
+        <div id="stage-explanation" style="display: none;" class="stage-explanation"></div>
+        <div id="guiding-question" class="guiding-question"></div>
+        
+        <!-- قسم المقترحات -->
+        <div id="suggestions-container" class="suggestions-container hidden">
+          <h4 class="suggestions-title">
+            💡 <span data-ar="مقترحات من إجاباتك السابقة" data-en="Suggestions from your previous answers">مقترحات من إجاباتك السابقة</span>
+          </h4>
+          <div id="suggestions-grid" class="suggestions-grid"></div>
+        </div>
+        
+        <div id="question-error" class="alert" data-ar="أدخل إجابة صالحة لكل حقل مع تحديد التقييم!" data-en="Please enter a valid answer for each field and select a rating!">أدخل إجابة صالحة لكل حقل مع تحديد التقييم!</div>
+        <div id="question-inputs"></div>
+        <button id="add-input" class="button button-outline" data-ar="إضافة إدخال" data-en="Add Input">إضافة إدخال</button>
       </div>
-      
-      <div id="question-checkboxes" class="checkbox-group question-options"></div>
-      <div id="question-error" class="error-message hidden">لا يمكنك اختيار أكثر من 6 إجابات!</div>
-      
-      <div class="action-buttons">
-        <button id="prev-question" class="btn btn-secondary">السابق</button>
-        <button id="next-question" class="btn btn-primary">التالي</button>
+      <div class="card-footer">
+        <button id="prev-question" class="button button-outline" disabled data-ar="السابق" data-en="Previous">السابق</button>
+        <button id="next-question" class="button button-success" data-ar="التالي" data-en="Next">التالي</button>
       </div>
-    </section>
+    </div>
 
     <!-- النتائج -->
-    <section id="results-section" class="card hidden">
+    <div id="results-section" class="card hidden">
       <div class="card-header">
-        <h2>نتائج رحلة 6Ps</h2>
+        <h2 class="card-title" data-ar="النتائج" data-en="Results">النتائج</h2>
       </div>
-      
-      <div class="results-container">
-        <table class="results-table">
-          <thead>
-            <tr>
-              <th>الشغف</th>
-              <th>Purpose</th>
-              <th>Problems</th>
-              <th>Power</th>
-              <th>Proof</th>
-              <th>Possible</th>
-              <th>الإجمالي</th>
-            </tr>
-          </thead>
-          <tbody id="results-table"></tbody>
-        </table>
-        
-        <div class="recommendation-container">
-          <h3>التوصية النهائية</h3>
-          <div id="recommendation" class="recommendation"></div>
-          <div id="recommendation-details" class="recommendation-details"></div>
+      <div class="card-content">
+        <h3 class="section-title" data-ar="الترتيب بناءً على الاختبار" data-en="Ranking Based on Assessment">الترتيب بناءً على الاختبار</h3>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-ar="الشغف" data-en="Passion">الشغف</th>
+                <th>Purpose</th>
+                <th>Problems</th>
+                <th>Power</th>
+                <th>Proof</th>
+                <th>Possible</th>
+                <th data-ar="الإجمالي" data-en="Total">الإجمالي</th>
+              </tr>
+            </thead>
+            <tbody id="results-table"></tbody>
+          </table>
         </div>
-        
-        <div class="action-buttons">
-          <button id="restart-journey" class="btn btn-primary">إعادة الاختبار</button>
-          <button id="print-results" class="btn btn-secondary">طباعة النتائج</button>
+        <div id="recommendation" class="result-highlight"></div>
+        <h3 class="section-title" data-ar="الترتيب الذي اخترته" data-en="Your Original Priority Order">الترتيب الذي اخترته</h3>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-ar="الشغف" data-en="Passion">الشغف</th>
+                <th data-ar="الترتيب" data-en="Priority">الترتيب</th>
+              </tr>
+            </thead>
+            <tbody id="user-priority-table"></tbody>
+          </table>
         </div>
       </div>
-    </section>
-  </div>
+      <div class="card-footer">
+        <button id="restart-test" class="button button-outline" data-ar="إعادة الاختبار" data-en="Restart Assessment">إعادة الاختبار</button>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button id="print-report" class="button button-success" data-ar="طباعة التقرير" data-en="Print Report">طباعة التقرير</button>
+          <button id="download-report" class="button button-warning" data-ar="تحميل التقرير" data-en="Download Report">تحميل التقرير</button>
+        </div>
+      </div>
+    </div>
 
-  <!-- إشعار الانتقال بين الشغف -->
-  <div id="passion-transition" class="passion-transition">
-    <div class="passion-transition-content">
-      <div class="passion-transition-title">أسئلة شغف</div>
-      <div id="passion-transition-name" class="passion-transition-name"></div>
+    <!-- نافذة منبثقة للإشعارات -->
+    <div id="toast" class="toast"></div>
+
+    <!-- نافذة استعادة البيانات -->
+    <div id="restore-modal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title" data-ar="استعادة البيانات" data-en="Restore Data">استعادة البيانات</h3>
+          <button class="modal-close" onclick="closeModal('restore-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p data-ar="تم العثور على بيانات محفوظة من جلسة سابقة. هل ترغب في استعادتها واستكمال الاختبار؟" data-en="We found saved data from a previous session. Would you like to restore it and complete the assessment?">تم العثور على بيانات محفوظة من جلسة سابقة. هل ترغب في استعادتها واستكمال الاختبار؟</p>
+        </div>
+        <div class="modal-footer">
+          <button class="button button-outline" onclick="clearSavedData()" data-ar="بدء اختبار جديد" data-en="Start New Assessment">بدء اختبار جديد</button>
+          <button class="button button-success" onclick="restoreSavedData()" data-ar="استكمال الاختبار السابق" data-en="Continue Previous Assessment">استكمال الاختبار السابق</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة معلومات المرحلة -->
+    <div id="stage-info-modal" class="stage-info-modal">
+      <div class="stage-info-content">
+        <div class="stage-info-header">
+          <h3 id="stage-info-modal-title" class="stage-info-title"></h3>
+          <button class="stage-info-close" onclick="closeModal('stage-info-modal')">&times;</button>
+        </div>
+        <div id="stage-info-modal-body" class="stage-info-body"></div>
+      </div>
+    </div>
+
+    <!-- محتوى الطباعة -->
+    <div id="print-content" class="print-only">
+      <div class="print-header">
+        <h1 data-ar="تقرير رحلة 6Ps - اكتشف ميولك المهنية" data-en="6Ps Journey Report - Discover Your Career Passions">تقرير رحلة 6Ps - اكتشف ميولك المهنية</h1>
+        <p style="color: #666; font-size: 12pt; margin-top: 10px;" data-ar="تقرير شامل يحتوي على جميع الإجابات والنتائج" data-en="Comprehensive report containing all answers and results">تقرير شامل يحتوي على جميع الإجابات والنتائج</p>
+      </div>
+      <div class="print-content">
+        <div id="print-passions" class="print-section">
+          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;" data-ar="الشغف المُدخل" data-en="Entered Passions">الشغف المُدخل</h2>
+          <div id="print-passions-content"></div>
+        </div>
+        <div id="print-answers" class="print-section">
+          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;" data-ar="إجابات المراحل مرتبة حسب النتائج" data-en="Stage Answers Sorted by Results">إجابات المراحل مرتبة حسب النتائج</h2>
+          <div id="print-answers-content"></div>
+        </div>
+        <div id="print-results" class="print-section">
+          <h2 style="color: #052ed8; font-size: 18pt; margin-bottom: 15px;" data-ar="النتائج النهائية" data-en="Final Results">النتائج النهائية</h2>
+          <div id="print-results-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- إضافة نافذة المرحلة الحالية -->
+    <div id="current-stage-modal" class="current-stage-modal">
+      <div class="current-stage-content">
+        <h2 id="current-stage-modal-title" class="current-stage-title"></h2>
+        <p id="current-stage-modal-description" class="current-stage-description"></p>
+      </div>
     </div>
   </div>
 
-  <footer>
-    <p>هذا النموذج من إبتكار <a href="https://www.linkedin.com/in/mohamedharby2020/">د.محمد حربي</a> وتمت البرمجة والتصميم من <a href="https://mersal.top">مرسال</a> </p>
-  </footer>
+  <!-- SVG Icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-pencil" viewBox="0 0 24 24">
+      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19V4Z" />
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+      <path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+    </symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24">
+      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+    </symbol>
+  </svg>
 
   <script>
-    // المتغيرات الرئيسية
-    const passions = [];
-    const stages = ['Purpose', 'Problems', 'Power', 'Proof', 'Possible'];
-    const stageEmojis = {
-      'Purpose': '🎯',
-      'Problems': '🚧',
-      'Power': '💪',
-      'Proof': '🏆',
-      'Possible': '🚀'
-    };
-    const stageDescriptions = {
-      'Purpose': 'لماذا هذا الشغف مهم بالنسبة لك؟',
-      'Problems': 'ما هي التحديات التي تواجهك في هذا الشغف؟',
-      'Power': 'ما هي نقاط قوتك في هذا الشغف؟',
-      'Proof': 'ما هي الإنجازات التي حققتها في هذا الشغف؟',
-      'Possible': 'ما هي الخطوات التي يمكنك اتخاذها لتطوير هذا الشغف؟'
-    };
-    const questions = {
-      Purpose: [
-        'لأنه يفرغ طاقتي الإبداعية',
-        'لأنه يسمح لي بالتعبير عن أفكاري',
-        'لأنه مطلوب في سوق العمل',
-        'لأنه يحتوي على فن وإبداع',
-        'لأنه يساعد الآخرين',
-        'لأنه ممتع بالنسبة لي'
-      ],
-      Problems: [
-        'الأدوات أو المعدات غالية',
-        'لا أعرف من أين أبدأ',
-        'ليس لدي وقت كافٍ',
-        'أخاف من الفشل',
-        'لا أجد من يشجعني',
-        'أشعر أنني لست موهوبًا بما يكفي'
-      ],
-      Power: [
-        'لدي مهارة طبيعية فيه',
-        'أملك شغف قوي تجاهه',
-        'لدي خبرة سابقة',
-        'أستطيع التعلم بسرعة',
-        'لدي شبكة علاقات تدعمه',
-        'أملك الثقة لتجربته'
-      ],
-      Proof: [
-        'حققت نتيجة صغيرة فيه',
-        'شاركت في حدث/مشروع متعلق',
-        'تلقيت إشادة من الآخرين',
-        'أكملت دورة تدريبية',
-        'ساعدت شخصًا آخر فيه',
-        'صنعت شيئًا ملموسًا'
-      ],
-      Possible: [
-        'أبدأ بمشروع صغير',
-        'أتابع دروسًا على الإنترنت',
-        'أشارك في مجتمع مهتم',
-        'أجرب أداة مجانية',
-        'أطلب نصيحة من خبير',
-        'أخصص وقت يومي له'
-      ]
+    // Language Management
+    let currentLanguage = 'ar';
+    
+    const translations = {
+      ar: {
+        progressText: 'السؤال {current} من {total}',
+        remainingText: 'المتبقي: {remaining}',
+        passionLabel: 'الاهتمام: ',
+        stageLabel: 'المرحلة: ',
+        convictionLevel: 'مستوى اقتناعك بهذا الأمر:',
+        concernLevel: 'مستوى قلقك من هذا الأمر:',
+        selectLevel: 'اختر مستوى مشاعرك',
+        low: 'أقتنع به قليلاً',
+        medium: 'أقتنع به بشكل متوسط',
+        high: 'أقتنع به بشدة',
+        lowConcern: 'أقلق منه قليلاً',
+        mediumConcern: 'أقلق منه بشكل متوسط',
+        highConcern: 'أقلق منه بشدة',
+        answerPlaceholder: 'اكتب إجابتك هنا',
+        recommendedPassion: '🎯 الاهتمام الأنسب لك',
+        totalScore: 'النتيجة: {total} نقطة',
+        personalAdvice: '💡 نصيحة لك',
+        finalRecommendation: '🎯 النتيجة النهائية',
+        recommendedPassionText: 'الاهتمام الأنسب: {passion}',
+        totalScoreText: 'Total Score: {total} points',
+        personalAdviceTitle: '💡 نصيحة لك',
+        nowAnswering: 'أنت تجيب الآن على أسئلة: {passion}',
+        dataRestored: 'تم استعادة بياناتك السابقة',
+        newAssessment: 'تم بدء اختبار جديد',
+        exactPassions: 'يرجى إدخال 3-6 اهتمامات',
+        confirmRestart: 'هل تريد إعادة الاختبار؟ سيتم مسح جميع إجاباتك.',
+        invalidName: 'هذا الاسم غير صالح أو مكرر',
+        newPassionName: 'اكتب الاسم الجديد:',
+        reportTitle: 'تقرير اكتشاف الاهتمامات المهنية',
+        reportSeparator: '=',
+        passionTitle: '{index}. الاهتمام: {passion}',
+        guidingQuestionLabel: 'السؤال: {question}',
+        ratingLabel: '(التقييم: {rating})',
+        totalLabel: 'المجموع: {total} نقطة',
+        finalRecommendationTitle: 'النتيجة النهائية:',
+        recommendationText: 'الاهتمام الأنسب: {passion} (المجموع: {total} نقطة)',
+        personalAdviceLabel: 'نصيحة لك:',
+        originalOrderTitle: 'ترتيب اهتماماتك الأصلي:',
+        priorityLabel: '(الترتيب: {priority})',
+        fileName: 'Career_Interests_Report_AR.txt',
+        noSuggestions: 'لا توجد إجابات سابقة لهذه المرحلة',
+        suggestionAdded: 'تم إضافة الاقتراح!'
+      },
+      en: {
+        progressText: 'Question {current} of {total}',
+        remainingText: 'Remaining: {remaining}',
+        passionLabel: 'Passion: ',
+        stageLabel: 'Stage: ',
+        convictionLevel: 'How strongly do you believe in this:',
+        concernLevel: 'How concerned are you about this:',
+        selectLevel: 'Select your feeling level',
+        low: 'Slightly convinced',
+        medium: 'Moderately convinced',
+        high: 'Strongly convinced',
+        lowConcern: 'Slightly concerned',
+        mediumConcern: 'Moderately concerned',
+        highConcern: 'Strongly concerned',
+        answerPlaceholder: 'Enter your answer',
+        recommendedPassion: '🎯 Recommended Passion',
+        totalScore: 'Total Score: {total} points',
+        personalAdvice: '💡 Personal Advice',
+        finalRecommendation: '🎯 Final Recommendation',
+        recommendedPassionText: 'Recommended Passion: {passion}',
+        totalScoreText: 'Total Score: {total} points',
+        personalAdviceTitle: '💡 Personal Advice',
+        nowAnswering: 'Now answering questions for: {passion}',
+        dataRestored: 'Data restored successfully',
+        newAssessment: 'Started new assessment',
+        exactPassions: 'Please enter between 3 and 6 passions!',
+        confirmRestart: 'Are you sure you want to restart the assessment? All current data will be deleted.',
+        invalidName: 'Error: Invalid or duplicate name!',
+        newPassionName: 'Enter new passion name:',
+        reportTitle: '6Ps Journey Report - Discover Your Career Passions',
+        reportSeparator: '=',
+        passionTitle: '{index}. Passion: {passion}',
+        guidingQuestionLabel: 'Guiding Question: {question}',
+        ratingLabel: '(Rating: {rating})',
+        totalLabel: 'Total: {total} points',
+        finalRecommendationTitle: 'Final Recommendation:',
+        recommendationText: 'Recommended Passion: {passion} (Total: {total} points)',
+        personalAdviceLabel: 'Personal Advice:',
+        originalOrderTitle: 'Your Original Priority Order:',
+        priorityLabel: '(Priority: {priority})',
+        fileName: '6Ps_Report_EN.txt',
+        noSuggestions: 'No previous answers for this stage',
+        suggestionAdded: 'Suggestion added successfully!'
+      }
     };
 
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+      
+      const html = document.getElementById('html-root');
+      const body = document.body;
+      const languageBtn = document.querySelector('.language-switcher');
+      
+      if (currentLanguage === 'en') {
+        html.setAttribute('lang', 'en');
+        html.setAttribute('dir', 'ltr');
+        body.classList.add('en');
+        languageBtn.innerHTML = '<span class="flag">🇸🇦</span><span class="text">العربية</span>';
+      } else {
+        html.setAttribute('lang', 'ar');
+        html.setAttribute('dir', 'rtl');
+        body.classList.remove('en');
+        languageBtn.innerHTML = '<span class="flag">🇺🇸</span><span class="text">English</span>';
+      }
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-ar]').forEach(element => {
+        const key = currentLanguage === 'ar' ? 'data-ar' : 'data-en';
+        element.textContent = element.getAttribute(key);
+      });
+      
+      // Update placeholders
+      document.querySelectorAll('[data-ar][placeholder]').forEach(element => {
+        const key = currentLanguage === 'ar' ? 'data-ar' : 'data-en';
+        element.placeholder = element.getAttribute(key);
+      });
+      
+      // Update current question display if in questions section
+      if (!questionSection.classList.contains('hidden')) {
+        updateQuestionDisplay();
+      }
+      
+      // Update results if in results section
+      if (!resultsSection.classList.contains('hidden')) {
+        updateResultsDisplay();
+      }
+      
+      // Save language preference
+      localStorage.setItem('6ps_language', currentLanguage);
+    }
+
+    function t(key, params = {}) {
+      let text = translations[currentLanguage][key] || key;
+      Object.keys(params).forEach(param => {
+        text = text.replace(`{${param}}`, params[param]);
+      });
+      return text;
+    }
+
+    // تحويل التقييم إلى مستوى نصي
+    function ratingToLevel(rating, stage) {
+      const absRating = Math.abs(rating);
+      if (stage === 'Problems') {
+        if (absRating === 6) return currentLanguage === 'ar' ? 'قلق شديد' : 'Strongly concerned';
+        if (absRating === 4) return currentLanguage === 'ar' ? 'قلق متوسط' : 'Moderately concerned';
+        if (absRating === 2) return currentLanguage === 'ar' ? 'قلق بسيط' : 'Slightly concerned';
+      } else {
+        if (absRating === 6) return currentLanguage === 'ar' ? 'اقتناع شديد' : 'Strongly convinced';
+        if (absRating === 4) return currentLanguage === 'ar' ? 'اقتناع متوسط' : 'Moderately convinced';
+        if (absRating === 2) return currentLanguage === 'ar' ? 'اقتناع بسيط' : 'Slightly convinced';
+      }
+      return '';
+    }
+
+    // دالة عرض نافذة معلومات المرحلة
+    function showStageInfoModal() {
+      const stage = stages[currentStageIndex];
+      const explanation = stageExplanations[currentLanguage][stage];
+      
+      document.getElementById('stage-info-modal-title').textContent = explanation.title;
+      document.getElementById('stage-info-modal-body').innerHTML = `
+        <h4 style="color: var(--primary); margin-bottom: 1rem;">${explanation.why}</h4>
+        <ul style="margin-bottom: 1.5rem; padding-${currentLanguage === 'ar' ? 'right' : 'left'}: 1.5rem;">
+          ${explanation.benefits.map(benefit => `<li style="margin-bottom: 0.5rem;">${benefit}</li>`).join('')}
+        </ul>
+        <h4 style="color: var(--green); margin-bottom: 1rem;">${explanation.howHelps}</h4>
+        <ul style="padding-${currentLanguage === 'ar' ? 'right' : 'left'}: 1.5rem;">
+          ${explanation.helpPoints.map(point => `<li style="margin-bottom: 0.5rem;">${point}</li>`).join('')}
+        </ul>
+      `;
+      
+      document.getElementById('stage-info-modal').classList.add('active');
+    }
+
+    // تعريف المتغيرات الرئيسية
+    const passions = [];
+    const stages = ['Purpose', 'Problems', 'Power', 'Proof', 'Possible']; // Purpose أولاً ثم Problems
+    
+    const guidingQuestions = {
+      ar: {
+        Purpose: 'ما هو هدفك من هذا المجال؟ كيف سيفيدك أو يفيد الآخرين؟',
+        Problems: 'ما هي التحديات التي قد تواجهك في هذا المجال؟',
+        Power: 'ما هي مهاراتك التي تساعدك في هذا المجال؟',
+        Proof: 'ما هي إنجازاتك السابقة في هذا المجال؟',
+        Possible: 'ما هي الفرص المستقبلية في هذا المجال؟'
+      },
+      en: {
+        Purpose: 'What is the main purpose or goal of this passion? How does it positively impact your life or others?',
+        Problems: 'What challenges or obstacles might you face with this passion? What concerns you?',
+        Power: 'What strengths or skills do you have that support this passion?',
+        Proof: 'What evidence or achievements prove your ability to succeed in this passion?',
+        Possible: 'What future opportunities could this passion open up? How could it develop?'
+      }
+    };
+
+    const stageExplanations = {
+      ar: {
+        Purpose: {
+          title: '🎯 مرحلة الهدف والغرض',
+          why: 'لماذا نحل هذه المرحلة؟',
+          benefits: [
+            'تحديد الدافع الحقيقي وراء شغفك يقوي عزيمتك',
+            'فهم التأثير الإيجابي يزيد من حماسك',
+            'ربط الشغف بقيمك الشخصية يجعله أكثر استدامة',
+            'وضوح الهدف يساعد في التركيز والمثابرة'
+          ],
+          howHelps: 'كيف سيساعدك هذا؟',
+          helpPoints: [
+            'ستجد الدافع للاستمرار في الأوقات الصعبة',
+            'ستشعر بمعنى أعمق في عملك',
+            'ستتمكن من إلهام الآخرين برؤيتك',
+            'ستحافظ على الحماس لفترة أطول'
+          ]
+        },
+        Problems: {
+          title: '🚧 مرحلة التحديات والمشاكل',
+          why: 'لماذا نحل هذه المرحلة؟',
+          benefits: [
+            'تحديد العقبات المحتملة مسبقاً يساعدك على الاستعداد لها',
+            'معرفة نقاط ضعفك يمكنك من وضع خطط للتغلب عليها',
+            'تقييم واقعي للتحديات يمنع الصدمات المستقبلية',
+            'يساعدك على اتخاذ قرار مدروس بناءً على المخاطر'
+          ],
+          howHelps: 'كيف سيساعدك هذا؟',
+          helpPoints: [
+            'ستكون أكثر استعداداً لمواجهة التحديات',
+            'ستتمكن من وضع خطط بديلة',
+            'ستقلل من المفاجآت غير السارة',
+            'ستتخذ قرارات أكثر حكمة'
+          ]
+        },
+        Power: {
+          title: '💪 مرحلة القوة والمهارات',
+          why: 'لماذا نحل هذه المرحلة؟',
+          benefits: [
+            'تحديد نقاط قوتك يزيد من ثقتك بنفسك',
+            'معرفة مهاراتك الحالية يساعد في بناء خطة التطوير',
+            'استغلال قدراتك الطبيعية يسرع من تقدمك',
+            'فهم مواهبك يوجهك للمسار الصحيح'
+          ],
+          howHelps: 'كيف سيساعدك هذا؟',
+          helpPoints: [
+            'ستبني على نقاط قوتك الموجودة',
+            'ستطور مهاراتك بشكل أكثر فعالية',
+            'ستشعر بثقة أكبر في قدراتك',
+            'ستحقق نتائج أفضل بجهد أقل'
+          ]
+        },
+        Proof: {
+          title: '🏆 مرحلة الإثبات والإنجازات',
+          why: 'لماذا نحل هذه المرحلة؟',
+          benefits: [
+            'توثيق إنجازاتك يثبت قدرتك على النجاح',
+            'مراجعة تجاربك السابقة تعطيك ثقة أكبر',
+            'إظهار أدلة ملموسة يقنع الآخرين بقدراتك',
+            'تقييم مسيرتك يساعد في التخطيط للمستقبل'
+          ],
+          howHelps: 'كيف سيساعدك هذا؟',
+          helpPoints: [
+            'ستحصل على ثقة أكبر من الآخرين',
+            'ستتمكن من بناء سمعة قوية',
+            'ستجد فرص أفضل بناءً على إنجازاتك',
+            'ستشعر بالفخر والإنجاز'
+          ]
+        },
+        Possible: {
+          title: '🚀 مرحلة الإمكانيات والفرص',
+          why: 'لماذا نحل هذه المرحلة؟',
+          benefits: [
+            'استكشاف الفرص المستقبلية يوسع آفاقك',
+            'تحديد إمكانيات النمو يحفزك للاستمرار',
+            'فهم الاتجاهات الجديدة يبقيك في المقدمة',
+            'رؤية الإمكانيات تزيد من حماسك'
+          ],
+          howHelps: 'كيف سيساعدك هذا؟',
+          helpPoints: [
+            'ستكتشف فرص جديدة لم تفكر بها',
+            'ستخطط لمستقبل أكثر إشراقاً',
+            'ستبقى متحمساً للنمو والتطور',
+            'ستتخذ قرارات استثمارية أفضل'
+          ]
+        }
+      },
+      en: {
+        Purpose: {
+          title: '🎯 Purpose and Goal Stage',
+          why: 'Why do we solve this stage?',
+          benefits: [
+            'Identifying the real motivation behind your passion strengthens your determination',
+            'Understanding positive impact increases your enthusiasm',
+            'Connecting passion to your personal values makes it more sustainable',
+            'Clear purpose helps with focus and perseverance'
+          ],
+          howHelps: 'How will this help you?',
+          helpPoints: [
+            'You\'ll find motivation to continue during difficult times',
+            'You\'ll feel deeper meaning in your work',
+            'You\'ll be able to inspire others with your vision',
+            'You\'ll maintain enthusiasm for longer'
+          ]
+        },
+        Problems: {
+          title: '🚧 Challenges and Problems Stage',
+          why: 'Why do we solve this stage?',
+          benefits: [
+            'Identifying potential obstacles in advance helps you prepare for them',
+            'Knowing your weaknesses allows you to create plans to overcome them',
+            'Realistic assessment of challenges prevents future shocks',
+            'Helps you make informed decisions based on risks'
+          ],
+          howHelps: 'How will this help you?',
+          helpPoints: [
+            'You\'ll be better prepared to face challenges',
+            'You\'ll be able to create alternative plans',
+            'You\'ll reduce unpleasant surprises',
+            'You\'ll make wiser decisions'
+          ]
+        },
+        Power: {
+          title: '💪 Power and Skills Stage',
+          why: 'Why do we solve this stage?',
+          benefits: [
+            'Identifying your strengths increases your self-confidence',
+            'Knowing your current skills helps build a development plan',
+            'Leveraging your natural abilities accelerates your progress',
+            'Understanding your talents guides you to the right path'
+          ],
+          howHelps: 'How will this help you?',
+          helpPoints: [
+            'You\'ll build on your existing strengths',
+            'You\'ll develop your skills more effectively',
+            'You\'ll feel more confident in your abilities',
+            'You\'ll achieve better results with less effort'
+          ]
+        },
+        Proof: {
+          title: '🏆 Proof and Achievements Stage',
+          why: 'Why do we solve this stage?',
+          benefits: [
+            'Documenting your achievements proves your ability to succeed',
+            'Reviewing past experiences gives you greater confidence',
+            'Showing concrete evidence convinces others of your capabilities',
+            'Evaluating your journey helps plan for the future'
+          ],
+          howHelps: 'How will this help you?',
+          helpPoints: [
+            'You\'ll gain greater trust from others',
+            'You\'ll be able to build a strong reputation',
+            'You\'ll find better opportunities based on your achievements',
+            'You\'ll feel pride and accomplishment'
+          ]
+        },
+        Possible: {
+          title: '🚀 Possibilities and Opportunities Stage',
+          why: 'Why do we solve this stage?',
+          benefits: [
+            'Exploring future opportunities broadens your horizons',
+            'Identifying growth potential motivates you to continue',
+            'Understanding new trends keeps you ahead',
+            'Seeing possibilities increases your enthusiasm'
+          ],
+          howHelps: 'How will this help you?',
+          helpPoints: [
+            'You\'ll discover new opportunities you hadn\'t thought of',
+            'You\'ll plan for a brighter future',
+            'You\'ll stay motivated for growth and development',
+            'You\'ll make better investment decisions'
+          ]
+        }
+      }
+    };
+
+    // نصائح لكل مرحلة
+    const stageHints = {
+      ar: {
+        Problems: [
+          'فكر في التحديات المالية: هل يحتاج استثمار كبير؟ هل الدخل مستقر؟',
+          'اذكر العقبات التقنية: ما المهارات التي تحتاج تطويرها؟',
+          'حدد المخاطر: ما أكبر المخاوف التي تواجهك في هذا المجال؟'
+        ],
+        Purpose: [
+          'فكر في الهدف الأساسي: لماذا تحب هذا المجال؟ ما الذي يدفعك إليه؟',
+          'اكتب عن التأثير الإيجابي: كيف يمكن أن يفيد هذا الشغف الآخرين أو المجتمع؟',
+          'حدد القيم: ما القيم الشخصية التي يحققها لك هذا الشغف؟'
+        ],
+        Power: [
+          'اذكر مهاراتك الحالية: ما المهارات التي تمتلكها بالفعل؟',
+          'حدد نقاط قوتك الشخصية: الصبر، الإبداع، التواصل، القيادة، إلخ',
+          'اكتب عن خبراتك السابقة: أي تجارب سابقة تدعم هذا الشغف؟'
+        ],
+        Proof: [
+          'اذكر إنجازاتك: أي مشاريع أو أعمال قمت بها في هذا المجال؟',
+          'حدد الشهادات أو الدورات: أي تعليم رسمي أو غير رسمي حصلت عليه؟',
+          'اكتب عن التقدير: أي مدح أو تقدير حصلت عليه من الآخرين؟'
+        ],
+        Possible: [
+          'فكر في الفرص المستقبلية: ما الوظائف أو المشاريع المتاحة؟',
+          'حدد إمكانيات النمو: كيف يمكن تطوير هذا الشغف مع الوقت؟',
+          'اكتب عن الاتجاهات: ما التطورات الجديدة في هذا المجال؟'
+        ]
+      },
+      en: {
+        Problems: [
+          'Think about financial challenges: Does it require large investment? Is income stable?',
+          'Mention technical obstacles: What skills do you need to develop?',
+          'Identify risks: What are your biggest concerns in this field?'
+        ],
+        Purpose: [
+          'Think about the main goal: Why do you love this field? What drives you to it?',
+          'Write about positive impact: How could this passion benefit others or society?',
+          'Define values: What personal values does this passion fulfill for you?'
+        ],
+        Power: [
+          'List your current skills: What skills do you already possess?',
+          'Identify personal strengths: Patience, creativity, communication, leadership, etc.',
+          'Write about past experiences: Any previous experiences that support this passion?'
+        ],
+        Proof: [
+          'Mention your achievements: Any projects or work you\'ve done in this field?',
+          'Identify certificates or courses: Any formal or informal education you\'ve received?',
+          'Write about recognition: Any praise or recognition you\'ve received from others?'
+        ],
+        Possible: [
+          'Think about future opportunities: What jobs or projects are available?',
+          'Identify growth potential: How can this passion develop over time?',
+          'Write about trends: What new developments are happening in this field?'
+        ]
+      }
+    };
+    
     let currentPassionIndex = 0;
     let currentStageIndex = 0;
-    let previousPassionIndex = -1; // لتتبع الشغف السابق
+    let previousPassionIndex = -1;
     const answers = {};
-    let isTransitioning = false; // لمنع النقر المتكرر أثناء الانتقال
+    const userPriorities = {};
+    let currentStep = "selection"; // selection, questions, results
+    let personalAdviceAdded = false;
 
-    // ===== وظائف المساعدة =====
-    function updatePassionCounter() {
-      const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
-      document.getElementById('passion-counter').textContent = `${checkedCount}/6`;
-      
-      // تحديث لون العداد
-      const counter = document.getElementById('passion-counter');
-      if (checkedCount === 6) {
-        counter.style.backgroundColor = '#10b981'; // لون أخضر
-      } else if (checkedCount > 6) {
-        counter.style.backgroundColor = '#ef4444'; // لون أحمر
-      } else {
-        counter.style.backgroundColor = '#3b82f6'; // لون أزرق
+    // العناصر المستخدمة
+    const passionInput = document.getElementById('passion-input');
+    const addPassionBtn = document.getElementById('add-passion');
+    const passionError = document.getElementById('passion-error');
+    const passionList = document.getElementById('passion-list');
+    const startJourneyBtn = document.getElementById('start-journey');
+    const passionSelection = document.getElementById('passion-selection');
+    const questionSection = document.getElementById('question-section');
+    const resultsSection = document.getElementById('results-section');
+    const currentPassionEl = document.getElementById('current-passion');
+    const currentStageEl = document.getElementById('current-stage');
+    const stageExplanationEl = document.getElementById('stage-explanation');
+    const guidingQuestionEl = document.getElementById('guiding-question');
+    const questionInputs = document.getElementById('question-inputs');
+    const questionError = document.getElementById('question-error');
+    const addInputBtn = document.getElementById('add-input');
+    const prevQuestionBtn = document.getElementById('prev-question');
+    const nextQuestionBtn = document.getElementById('next-question');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const remainingText = document.getElementById('remaining-text');
+    const resultsTable = document.getElementById('results-table');
+    const userPriorityTable = document.getElementById('user-priority-table');
+    const recommendation = document.getElementById('recommendation');
+    const restartTestBtn = document.getElementById('restart-test');
+    const downloadReportBtn = document.getElementById('download-report');
+    const printReportBtn = document.getElementById('print-report');
+    const toast = document.getElementById('toast');
+    const restoreModal = document.getElementById('restore-modal');
+    const suggestionsContainer = document.getElementById('suggestions-container');
+    const suggestionsGrid = document.getElementById('suggestions-grid');
+
+    // Initialize language from localStorage
+    window.addEventListener('load', () => {
+      const savedLanguage = localStorage.getItem('6ps_language');
+      if (savedLanguage && savedLanguage !== currentLanguage) {
+        toggleLanguage();
       }
-    }
-
-    function updateProgressBar() {
-      const totalQuestions = passions.length * stages.length;
-      const currentQuestion = currentPassionIndex * stages.length + currentStageIndex + 1;
-      const progressPercentage = (currentQuestion / totalQuestions) * 100;
       
-      document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
-      document.getElementById('progress-text').textContent = 
-        `السؤال ${currentQuestion} من ${totalQuestions} | المرحلة: ${stageEmojis[stages[currentStageIndex]]} ${stages[currentStageIndex]} | متبقي: ${totalQuestions - currentQuestion} سؤال`;
-    }
-
-    function showNotification(message, type = 'error') {
-      const notification = document.createElement('div');
-      notification.className = `notification ${type}`;
-      notification.textContent = message;
-      
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.classList.add('show');
-      }, 10);
-      
-      setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 300);
-      }, 3000);
-    }
-
-    // ===== إظهار إشعار الانتقال بين الشغف =====
-    function showPassionTransition(passionName) {
-      if (isTransitioning) return;
-      
-      isTransitioning = true;
-      
-      const transitionOverlay = document.getElementById('passion-transition');
-      const passionNameElement = document.getElementById('passion-transition-name');
-      
-      passionNameElement.textContent = passionName;
-      transitionOverlay.classList.add('show');
-      
-      // إخفاء الإشعار بعد 3 ثواني
-      setTimeout(() => {
-        transitionOverlay.classList.remove('show');
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 500); // انتظر حتى تنتهي حركة الإخفاء
-      }, 3000);
-    }
-
-    // ===== إدارة اختيار الشغف =====
-    function updatePassionSelection() {
-      const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
-      const addButton = document.getElementById('add-custom-passion');
-      const errorDiv = document.getElementById('custom-passion-error');
-      
-      updatePassionCounter();
-      
-      if (checkedCount >= 6) {
-        addButton.disabled = true;
-        addButton.classList.add('disabled');
-        errorDiv.classList.remove('hidden');
-      } else {
-        addButton.disabled = false;
-        addButton.classList.remove('disabled');
-        errorDiv.classList.add('hidden');
+      if (!checkSavedData()) {
+        updatePassionSelection();
       }
+    });
+
+    // إدارة النوافذ المنبثقة
+    function showModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
     }
 
-    document.querySelectorAll('.passion-checkbox').forEach(cb => {
-      cb.addEventListener('change', () => {
-        const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
-        if (checkedCount > 6) {
-          cb.checked = false;
-          document.getElementById('passion-error').classList.remove('hidden');
-          showNotification('لا يمكنك اختيار أكثر من 6 شغف!');
-        } else {
-          document.getElementById('passion-error').classList.add('hidden');
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // عرض نافذة منبثقة
+    function showToast(message, duration = 3000) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // تحويل التقييم إلى نسبة مئوية
+    function ratingToPercentage(rating, stage) {
+      const maxRating = stage === 'Problems' ? 6 : 6; // القيم المطلقة
+      const absRating = Math.abs(rating);
+      return Math.round((absRating / maxRating) * 100);
+    }
+
+    // حفظ البيانات في localStorage
+    function saveData() {
+      const data = {
+        passions: passions,
+        userPriorities: userPriorities,
+        answers: answers,
+        currentPassionIndex: currentPassionIndex,
+        currentStageIndex: currentStageIndex,
+        currentStep: currentStep,
+        language: currentLanguage
+      };
+      
+      localStorage.setItem('6ps_journey_data_bilingual', JSON.stringify(data));
+    }
+
+    // التحقق من وجود بيانات محفوظة
+    function checkSavedData() {
+      const savedData = localStorage.getItem('6ps_journey_data_bilingual');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        if (data.passions && data.passions.length > 0) {
+          showModal('restore-modal');
+          return true;
         }
-        updatePassionSelection();
-      });
-    });
+      }
+      return false;
+    }
 
-    // ===== إضافة شغف مخصص =====
-    document.getElementById('add-custom-passion').addEventListener('click', () => {
-      const input = document.getElementById('custom-passion-input');
-      const value = input.value.trim();
-      const checkedCount = document.querySelectorAll('.passion-checkbox:checked').length;
+    // استعادة البيانات المحفوظة
+    function restoreSavedData() {
+      const savedData = localStorage.getItem('6ps_journey_data_bilingual');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        
+        // استعادة البيانات
+        data.passions.forEach(p => passions.push(p));
+        Object.assign(userPriorities, data.userPriorities);
+        Object.assign(answers, data.answers);
+        currentPassionIndex = data.currentPassionIndex;
+        currentStageIndex = data.currentStageIndex;
+        currentStep = data.currentStep;
+        
+        // استعادة اللغة
+        if (data.language && data.language !== currentLanguage) {
+          toggleLanguage();
+        }
+        
+        // عرض الشاشة المناسبة
+        if (currentStep === "questions") {
+          passionSelection.classList.add('hidden');
+          questionSection.classList.remove('hidden');
+          resultsSection.classList.add('hidden');
+          showQuestion();
+        } else if (currentStep === "results") {
+          passionSelection.classList.add('hidden');
+          questionSection.classList.add('hidden');
+          resultsSection.classList.remove('hidden');
+          showResults();
+        } else {
+          updatePassionSelection();
+        }
+        
+        closeModal('restore-modal');
+        showToast(t('dataRestored'));
+      }
+    }
 
-      if (value && checkedCount < 6) {
-        const list = document.getElementById('custom-passions-list');
-        const label = document.createElement('label');
-        label.className = 'checkbox-label';
-        
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = value;
-        checkbox.className = 'passion-checkbox';
-        checkbox.checked = true;
-        checkbox.addEventListener('change', updatePassionSelection);
-        
-        const span = document.createElement('span');
-        span.textContent = ` ${value}`;
-        
-        label.appendChild(checkbox);
-        label.appendChild(span);
-        list.appendChild(label);
-        
-        input.value = '';
+    // مسح البيانات المحفوظة وبدء اختبار جديد
+    function clearSavedData() {
+      localStorage.removeItem('6ps_journey_data_bilingual');
+      closeModal('restore-modal');
+      showToast(t('newAssessment'));
+    }
+
+    // إدارة إدخال الشغف
+    function updatePassionSelection() {
+      const passionCount = passions.length;
+      startJourneyBtn.disabled = passionCount < 3 || passionCount > 6;
+      passionInput.disabled = passionCount >= 6;
+      addPassionBtn.disabled = passionCount >= 6;
+      renderPassionList();
+      
+      // حفظ البيانات
+      currentStep = "selection";
+      saveData();
+    }
+
+    // إضافة شغف جديد
+    addPassionBtn.addEventListener('click', () => {
+      const value = passionInput.value.trim();
+
+      if (value && passions.length < 6 && !passions.includes(value)) {
+        passions.push(value);
+        userPriorities[value] = passions.length; // الترتيب من 1-6
+        passionInput.value = '';
+        passionError.style.display = 'none';
         updatePassionSelection();
-        showNotification(`تمت إضافة "${value}" بنجاح!`, 'success');
-      } else if (checkedCount >= 6) {
-        document.getElementById('custom-passion-error').classList.remove('hidden');
-        showNotification('لا يمكنك إضافة شغف مخصص لأنك اخترت 6 شغف بالفعل!');
-      } else if (!value) {
-        showNotification('يرجى إدخال اسم الشغف المخصص!');
+      } else {
+        passionError.style.display = 'block';
+        setTimeout(() => {
+          passionError.style.display = 'none';
+        }, 3000);
       }
     });
 
-    // إضافة شغف مخصص عند الضغط على Enter
-    document.getElementById('custom-passion-input').addEventListener('keypress', (e) => {
+    // إضافة شغف عند الضغط على Enter
+    passionInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        document.getElementById('add-custom-passion').click();
+        addPassionBtn.click();
       }
     });
 
-    // ===== بدء الرحلة =====
-    document.getElementById('start-journey').addEventListener('click', () => {
-      const checkboxes = document.querySelectorAll('.passion-checkbox:checked');
-      if (checkboxes.length !== 6) {
-        showNotification('يرجى اختيار 6 شغف بالضبط!');
+    // عرض جدول الشغف
+    function renderPassionList() {
+      passionList.innerHTML = '';
+      for (let i = 0; i < 6; i++) {
+        const passion = passions[i] || '';
+        const priority = passion ? userPriorities[passion] : '-';
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${passion || '-'}</td>
+          <td>${priority}</td>
+          <td>
+            ${passion ? `
+              <div class="table-actions">
+                <button class="action-button" onclick="editPassion(${i})" title="${currentLanguage === 'ar' ? 'تعديل' : 'Edit'}">
+                  <svg class="icon"><use xlink:href="#icon-pencil"></use></svg>
+                </button>
+                <button class="action-button delete-button" onclick="deletePassion(${i})" title="${currentLanguage === 'ar' ? 'حذف' : 'Delete'}">
+                  <svg class="icon"><use xlink:href="#icon-trash"></use></svg>
+                </button>
+                <button class="action-button" ${i === 0 ? 'disabled' : ''} onclick="movePassion(${i}, -1)" title="${currentLanguage === 'ar' ? 'لأعلى' : 'Move Up'}">
+                  <svg class="icon"><use xlink:href="#icon-arrow-up"></use></svg>
+                </button>
+                <button class="action-button" ${i === passions.length - 1 ? 'disabled' : ''} onclick="movePassion(${i}, 1)" title="${currentLanguage === 'ar' ? 'لأسفل' : 'Move Down'}">
+                  <svg class="icon"><use xlink:href="#icon-arrow-down"></use></svg>
+                </button>
+              </div>
+            ` : '-'}
+          </td>
+        `;
+        passionList.appendChild(row);
+      }
+    }
+
+    // تعديل شغف
+    window.editPassion = function(index) {
+      const passion = passions[index];
+      const newValue = prompt(t('newPassionName'), passion);
+
+      if (newValue && newValue.trim() && !passions.includes(newValue.trim())) {
+        delete userPriorities[passion];
+        passions[index] = newValue.trim();
+        userPriorities[newValue.trim()] = index + 1; // الترتيب من 1-6
+        updatePassionSelection();
+      } else if (newValue) {
+        alert(t('invalidName'));
+      }
+    };
+
+    // مسح شغف
+    window.deletePassion = function(index) {
+      const passion = passions[index];
+      delete userPriorities[passion];
+      passions.splice(index, 1);
+      reassignPriorities();
+      updatePassionSelection();
+    };
+
+    // نقل شغف لأعلى أو لأسفل
+    window.movePassion = function(index, direction) {
+      const newIndex = index + direction;
+      if (newIndex >= 0 && newIndex < passions.length) {
+        [passions[index], passions[newIndex]] = [passions[newIndex], passions[index]];
+        reassignPriorities();
+        updatePassionSelection();
+      }
+    };
+
+    // إعادة ترتيب الأولويات
+    function reassignPriorities() {
+      const newPriorities = {};
+      passions.forEach((passion, index) => {
+        newPriorities[passion] = index + 1; // الترتيب من 1-6
+      });
+      Object.assign(userPriorities, newPriorities);
+    }
+
+    // بدء الرحلة
+    startJourneyBtn.addEventListener('click', () => {
+      if (passions.length < 3 || passions.length > 6) {
+        alert(currentLanguage === 'ar' ? 'يرجى إدخال من 3 إلى 6 شغف!' : 'Please enter between 3 and 6 passions!');
         return;
       }
-      
-      // تجميع الشغف المختار
-      passions.length = 0;
-      checkboxes.forEach(cb => passions.push(cb.value));
-      
-      // تهيئة مصفوفة الإجابات
-      passions.forEach(p => answers[p] = { Purpose: [], Problems: [], Power: [], Proof: [], Possible: [] });
-      
-      // الانتقال إلى قسم الأسئلة
-      document.getElementById('passion-selection').classList.add('hidden');
-      document.getElementById('question-section').classList.remove('hidden');
-      
-      // إظهار إشعار الانتقال للشغف الأول
-      showPassionTransition(passions[0]);
-      
-      // عرض السؤال الأول
+      passions.forEach(p => {
+        if (!answers[p]) {
+          answers[p] = { Problems: [], Purpose: [], Power: [], Proof: [], Possible: [] };
+        }
+      });
+      passionSelection.classList.add('hidden');
+      questionSection.classList.remove('hidden');
+      previousPassionIndex = -1;
+      currentStep = "questions";
       showQuestion();
-      
-      // تمرير إلى الأعلى
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ===== عرض السؤال الحالي =====
+    // إضافة متغير لتتبع المقترحات المستخدمة
+    const usedSuggestions = new Set();
+
+    // عرض المقترحات من الإجابات السابقة
+    function showSuggestions() {
+      const currentPassion = passions[currentPassionIndex];
+      const currentStage = stages[currentStageIndex];
+      
+      // البحث عن إجابات من نفس المرحلة في شغف آخر
+      const suggestions = new Map(); // استخدام Map لمنع التكرار
+      
+      passions.forEach(passion => {
+        if (passion !== currentPassion && answers[passion] && answers[passion][currentStage]) {
+          answers[passion][currentStage].forEach(answer => {
+            // استخدام النص كـ key لمنع التكرار
+            const key = answer.text.toLowerCase().trim();
+            // فقط إضافة المقترحات التي لم يتم استخدامها من قبل
+            if (!suggestions.has(key) && !usedSuggestions.has(key)) {
+              suggestions.set(key, {
+                text: answer.text,
+                rating: answer.rating,
+                passion: passion,
+                level: ratingToLevel(answer.rating, currentStage)
+              });
+            }
+          });
+        }
+      });
+
+      if (suggestions.size > 0) {
+        suggestionsContainer.classList.remove('hidden');
+        suggestionsGrid.innerHTML = '';
+        
+        // تحويل Map إلى مصفوفة وترتيبها حسب التقييم
+        const sortedSuggestions = Array.from(suggestions.values())
+          .sort((a, b) => Math.abs(b.rating) - Math.abs(a.rating));
+        
+        sortedSuggestions.forEach(suggestion => {
+          const suggestionChip = document.createElement('div');
+          suggestionChip.className = 'suggestion-chip';
+          suggestionChip.onclick = () => {
+            addSuggestionToInput(suggestion.text, suggestion.rating);
+            // إضافة المقترح إلى قائمة المقترحات المستخدمة
+            usedSuggestions.add(suggestion.text.toLowerCase().trim());
+            // إزالة المقترح من العرض
+            suggestionChip.remove();
+            // إخفاء قسم المقترحات إذا لم يتبق أي مقترحات
+            if (suggestionsGrid.children.length === 0) {
+              suggestionsContainer.classList.add('hidden');
+            }
+          };
+          
+          const levelClass = suggestion.level.toLowerCase() === 'عالي' || suggestion.level.toLowerCase() === 'high' ? 'high' :
+                            suggestion.level.toLowerCase() === 'متوسط' || suggestion.level.toLowerCase() === 'medium' ? 'medium' : 'low';
+          
+          suggestionChip.innerHTML = `
+            <div class="suggestion-text" title="${suggestion.text}">${suggestion.text}</div>
+            <div class="suggestion-level ${levelClass}">${suggestion.level}</div>
+          `;
+          
+          suggestionsGrid.appendChild(suggestionChip);
+        });
+      } else {
+        suggestionsContainer.classList.add('hidden');
+      }
+    }
+
+    // إضافة اقتراح إلى حقل الإدخال
+    function addSuggestionToInput(text, rating) {
+      const currentInputs = questionInputs.querySelectorAll('.input-group');
+      let addedToExisting = false;
+
+      // البحث عن حقل فارغ في الـ3 الأساسيين
+      for (let i = 0; i < Math.min(3, currentInputs.length); i++) {
+        const input = currentInputs[i].querySelector('input');
+        const select = currentInputs[i].querySelector('select');
+        
+        if (!input.value.trim()) {
+          input.value = text;
+          select.value = rating.toString();
+          addedToExisting = true;
+          break;
+        }
+      }
+
+      // إذا لم يتم إضافته لحقل موجود، أنشئ حقل جديد
+      if (!addedToExisting && questionInputs.children.length < 6) {
+        const stage = stages[currentStageIndex];
+        addInputField(questionInputs, text, rating, stage, questionInputs.children.length);
+        addInputBtn.disabled = questionInputs.children.length >= 6;
+      }
+
+      showToast(t('suggestionAdded'));
+    }
+
+    // عرض السؤال الحالي
     function showQuestion() {
       const passion = passions[currentPassionIndex];
       const stage = stages[currentStageIndex];
-      
-      // تحديث شريط التقدم
-      updateProgressBar();
-      
-      // تحديث عنوان السؤال
-      document.getElementById('current-passion').textContent = `الشغف: ${passion}`;
-      document.getElementById('current-stage').textContent = `${stageEmojis[stage]} ${stage}`;
-      
-      // إضافة وصف المرحلة
-      const questionHeader = document.querySelector('.question-header');
-      const stageDescription = document.createElement('p');
-      stageDescription.className = 'stage-description';
-      stageDescription.textContent = stageDescriptions[stage];
-      
-      // إزالة الوصف السابق إن وجد
-      const oldDescription = document.querySelector('.stage-description');
-      if (oldDescription) {
-        oldDescription.remove();
-      }
-      
-      questionHeader.appendChild(stageDescription);
+      const totalQuestions = passions.length * stages.length;
+      const currentQuestion = currentPassionIndex * stages.length + currentStageIndex + 1;
+      const remainingQuestions = totalQuestions - currentQuestion;
 
-      // إنشاء خيارات الأسئلة
-      const checkboxesDiv = document.getElementById('question-checkboxes');
-      checkboxesDiv.innerHTML = '';
-      
-      questions[stage].forEach((q, i) => {
-        const label = document.createElement('label');
-        label.className = 'checkbox-label';
-        
-        const input = document.createElement('input');
-        input.type = 'checkbox';
-        input.value = q;
-        input.checked = answers[passion][stage].includes(q);
-        input.className = 'question-checkbox';
-        
-        const span = document.createElement('span');
-        span.textContent = ` ${q}`;
-        
-        label.appendChild(input);
-        label.appendChild(span);
-        checkboxesDiv.appendChild(label);
-      });
-
-      // تقييد اختيار الـ checkboxes
-      document.querySelectorAll('.question-checkbox').forEach(cb => {
-        cb.addEventListener('change', () => {
-          const checkedCount = document.querySelectorAll('.question-checkbox:checked').length;
-          if (checkedCount > 6) {
-            cb.checked = false;
-            document.getElementById('question-error').classList.remove('hidden');
-            setTimeout(() => {
-              document.getElementById('question-error').classList.add('hidden');
-            }, 2000);
-          } else {
-            document.getElementById('question-error').classList.add('hidden');
-          }
-        });
-      });
-
-      // تحديث حالة زر السابق
-      const prevButton = document.getElementById('prev-question');
-      if (currentPassionIndex === 0 && currentStageIndex === 0) {
-        prevButton.disabled = true;
-        prevButton.classList.add('disabled');
-      } else {
-        prevButton.disabled = false;
-        prevButton.classList.remove('disabled');
+      // إظهار نافذة منبثقة فقط عند الانتقال لشغف جديد
+      if (currentPassionIndex !== previousPassionIndex) {
+        showCurrentPassionModal();
+        previousPassionIndex = currentPassionIndex;
+        // إعادة تعيين قائمة المقترحات المستخدمة عند تغيير الشغف
+        usedSuggestions.clear();
       }
+
+      updateQuestionDisplay();
       
-      // تحديث نص زر التالي
-      const nextButton = document.getElementById('next-question');
-      if (currentPassionIndex === passions.length - 1 && currentStageIndex === stages.length - 1) {
-        nextButton.textContent = 'عرض النتائج';
-      } else {
-        nextButton.textContent = 'التالي';
-      }
+      // عرض المقترحات
+      showSuggestions();
+      
+      // حفظ البيانات
+      saveData();
     }
 
-    // ===== الرجوع للسؤال السابق =====
-    document.getElementById('prev-question').addEventListener('click', () => {
-      if (isTransitioning) return; // منع النقر أثناء الانتقال
+    function updateQuestionDisplay() {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      const totalQuestions = passions.length * stages.length;
+      const currentQuestion = currentPassionIndex * stages.length + currentStageIndex + 1;
+      const remainingQuestions = totalQuestions - currentQuestion;
+
+      // تحديث شريط التقدم
+      progressBar.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+      progressText.textContent = t('progressText', { current: currentQuestion, total: totalQuestions });
+      remainingText.textContent = t('remainingText', { remaining: remainingQuestions });
+
+      currentPassionEl.textContent = t('passionLabel') + passion;
+      currentStageEl.textContent = t('stageLabel') + stage;
       
-      // حفظ الإجابات الحالية
-      saveCurrentAnswers();
+      // عرض شرح المرحلة
+      const explanation = stageExplanations[currentLanguage][stage];
+      stageExplanationEl.innerHTML = `
+        <h4>${explanation.title}</h4>
+        <p><strong>${explanation.why}</strong></p>
+        <ul>
+          ${explanation.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+        </ul>
+        <p><strong>${explanation.howHelps}</strong></p>
+        <ul>
+          ${explanation.helpPoints.map(point => `<li>${point}</li>`).join('')}
+        </ul>
+      `;
       
-      // حفظ الشغف الحالي قبل التغيير
-      previousPassionIndex = currentPassionIndex;
+      guidingQuestionEl.textContent = guidingQuestions[currentLanguage][stage];
+
+      questionInputs.innerHTML = '';
+      const currentAnswers = answers[passion][stage];
+      const inputCount = currentAnswers.length || 3;
+
+      for (let i = 0; i < inputCount; i++) {
+        addInputField(questionInputs, currentAnswers[i]?.text || '', currentAnswers[i]?.rating || 0, stage, i);
+      }
+
+      addInputBtn.disabled = inputCount >= 6;
+      prevQuestionBtn.disabled = currentQuestion === 1;
+    }
+
+    // إضافة حقل إدخال
+    function addInputField(container, text = '', rating = 0, stage, index) {
+      const div = document.createElement('div');
+      div.className = 'input-group';
       
+      const inputWrapper = document.createElement('div');
+      inputWrapper.className = 'input-wrapper';
+      
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'input';
+      input.value = text;
+      input.placeholder = t('answerPlaceholder');
+      inputWrapper.appendChild(input);
+      
+      // إضافة زر النصيحة
+      const hintButton = document.createElement('button');
+      hintButton.className = 'hint-button';
+      hintButton.type = 'button';
+      hintButton.innerHTML = '💡';
+      
+      const hintTooltip = document.createElement('div');
+      hintTooltip.className = 'hint-tooltip';
+      
+      // اختيار نصيحة عشوائية من المرحلة الحالية
+      const hints = stageHints[currentLanguage][stage];
+      const randomHint = hints[Math.floor(Math.random() * hints.length)];
+      hintTooltip.textContent = randomHint;
+      
+      hintButton.appendChild(hintTooltip);
+      inputWrapper.appendChild(hintButton);
+      div.appendChild(inputWrapper);
+      
+      const isProblems = stage === 'Problems';
+      const selectLabel = document.createElement('label');
+      selectLabel.textContent = isProblems ? t('concernLevel') : t('convictionLevel');
+      selectLabel.style.minWidth = '100px';
+      selectLabel.style.fontWeight = '500';
+      div.appendChild(selectLabel);
+      
+      const select = document.createElement('select');
+      select.className = 'select';
+      
+      const options = [
+        { value: '', label: t('selectLevel') },
+        { 
+          value: isProblems ? '-2' : '2', 
+          label: isProblems ? t('lowConcern') : t('low')
+        },
+        { 
+          value: isProblems ? '-4' : '4', 
+          label: isProblems ? t('mediumConcern') : t('medium')
+        },
+        { 
+          value: isProblems ? '-6' : '6', 
+          label: isProblems ? t('highConcern') : t('high')
+        }
+      ];
+      
+      options.forEach(option => {
+        const optionEl = document.createElement('option');
+        optionEl.value = option.value;
+        optionEl.textContent = option.label;
+        if (rating.toString() === option.value) {
+          optionEl.selected = true;
+        }
+        select.appendChild(optionEl);
+      });
+      
+      div.appendChild(select);
+      
+      if (index >= 3) {
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'button button-outline';
+        deleteBtn.style.padding = '0.5rem';
+        deleteBtn.style.minWidth = 'auto';
+        deleteBtn.innerHTML = '<svg class="icon"><use xlink:href="#icon-trash"></use></svg>';
+        deleteBtn.onclick = function() {
+          deleteInputField(this);
+        };
+        div.appendChild(deleteBtn);
+      }
+      
+      container.appendChild(div);
+    }
+
+    // مسح حقل إدخال
+    window.deleteInputField = function(button) {
+      if (questionInputs.children.length > 3) {
+        button.parentElement.remove();
+        addInputBtn.disabled = questionInputs.children.length >= 6;
+      }
+    };
+
+    // إضافة إدخال جديد
+    addInputBtn.addEventListener('click', () => {
+      if (questionInputs.children.length < 6) {
+        addInputField(questionInputs, '', 0, stages[currentStageIndex], questionInputs.children.length);
+        addInputBtn.disabled = questionInputs.children.length >= 6;
+      }
+    });
+
+    // الرجوع للسؤال السابق
+    prevQuestionBtn.addEventListener('click', () => {
       if (currentStageIndex > 0) {
         currentStageIndex--;
       } else if (currentPassionIndex > 0) {
         currentPassionIndex--;
         currentStageIndex = stages.length - 1;
-        
-        // إظهار إشعار الانتقال إذا تغير الشغف
-        if (previousPassionIndex !== currentPassionIndex) {
-          showPassionTransition(passions[currentPassionIndex]);
-        }
       }
-      
       showQuestion();
+      // إضافة التمرير إلى أعلى الصفحة
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
 
-    // ===== الانتقال للسؤال التالي =====
-    document.getElementById('next-question').addEventListener('click', () => {
-      if (isTransitioning) return; // منع النقر أثناء الانتقال
-      
-      // حفظ الإجابات الحالية
-      saveCurrentAnswers();
-      
-      // حفظ الشغف الحالي قبل التغيير
-      previousPassionIndex = currentPassionIndex;
-      
+    // الانتقال للسؤال التالي
+    nextQuestionBtn.addEventListener('click', () => {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      const inputGroups = questionInputs.querySelectorAll('.input-group');
+      const newAnswers = [];
+
+      let valid = true;
+      inputGroups.forEach(group => {
+        const text = group.querySelector('input').value.trim();
+        const select = group.querySelector('select');
+        const rating = select.value;
+        
+        if (text && rating) {
+          newAnswers.push({ text, rating: parseInt(rating) });
+        } else {
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        questionError.style.display = 'block';
+        setTimeout(() => {
+          questionError.style.display = 'none';
+        }, 3000);
+        return;
+      }
+
+      answers[passion][stage] = newAnswers;
+
       currentStageIndex++;
       if (currentStageIndex >= stages.length) {
         currentStageIndex = 0;
         currentPassionIndex++;
-        
-        // إظهار إشعار الانتقال إذا تغير الشغف وليس نهاية الاختبار
-        if (currentPassionIndex < passions.length) {
-          showPassionTransition(passions[currentPassionIndex]);
-        }
       }
-      
       if (currentPassionIndex >= passions.length) {
+        currentStep = "results";
+        saveData();
         showResults();
       } else {
         showQuestion();
+        // إضافة التمرير إلى أعلى الصفحة
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       }
     });
 
-    // ===== حفظ الإجابات الحالية =====
-    function saveCurrentAnswers() {
-      const passion = passions[currentPassionIndex];
-      const stage = stages[currentStageIndex];
-      const checkboxes = document.querySelectorAll('.question-checkbox:checked');
-      answers[passion][stage] = Array.from(checkboxes).map(cb => cb.value);
+    // عرض النتائج
+    function showResults() {
+      questionSection.classList.add('hidden');
+      resultsSection.classList.remove('hidden');
+      personalAdviceAdded = false; // إعادة تعيين المتغير عند عرض النتائج لأول مرة
+      updateResultsDisplay();
     }
 
-    // ===== عرض النتائج =====
-    function showResults() {
-      document.getElementById('question-section').classList.add('hidden');
-      document.getElementById('results-section').classList.remove('hidden');
-      
-      const tbody = document.getElementById('results-table');
-      tbody.innerHTML = '';
+    function updateResultsDisplay() {
+      resultsTable.innerHTML = '';
 
-      let maxTotal = -Infinity;
-      let recommendedPassion = '';
-      let passionScores = [];
+      let passionResults = [];
 
+      // حساب النتائج بناءً على التقييمات
       passions.forEach(passion => {
+        const stageSums = stages.map(stage => 
+          answers[passion][stage].reduce((sum, ans) => sum + parseInt(ans.rating), 0)
+        );
+        const total = stageSums.reduce((sum, val) => sum + val, 0);
+        
+        passionResults.push({
+          passion: passion,
+          stageSums: stageSums,
+          total: total
+        });
+      });
+
+      // ترتيب النتائج من الأعلى للأقل
+      passionResults.sort((a, b) => b.total - a.total);
+
+      // عرض النتائج المرتبة
+      passionResults.forEach((result, index) => {
         const row = document.createElement('tr');
-        const counts = stages.map(stage => answers[passion][stage].length);
-        
-        // حساب الإجمالي مع طرح Problems
-        const total = counts.reduce((sum, count, index) => {
-          return stages[index] === 'Problems' ? sum - count : sum + count;
-        }, 0);
-        
+        // إضافة كلاس للنتيجة الأفضل
+        if (index === 0) {
+          row.classList.add('best-result');
+        }
+        row.innerHTML = `
+          <td>${result.passion}</td>
+          ${result.stageSums.map(p => `<td>${p}</td>`).join('')}
+          <td style="font-weight: bold;">${result.total}</td>
+        `;
+        resultsTable.appendChild(row);
+      });
+
+      const topPassion = passionResults[0];
+      recommendation.innerHTML = `
+        <div>
+          <h3 style="color: var(--green); margin-bottom: 10px;">${t('recommendedPassion')}</h3>
+          <p style="font-size: 1.3em; font-weight: bold; color: var(--primary);">${topPassion.passion}</p>
+          <p style="color: var(--text-light); margin-top: 5px;">${t('totalScore', { total: topPassion.total })}</p>
+        </div>
+      `;
+
+      // إضافة النصيحة الشخصية فقط إذا لم تكن موجودة بالفعل
+      const existingHint = document.querySelector('.personal-advice-hint');
+      if (!personalAdviceAdded && !existingHint) {
+        const hintData = generatePersonalHint(topPassion.passion);
+        if (hintData) {
+          const hintElement = document.createElement('div');
+          hintElement.className = 'result-highlight personal-advice-hint';
+          hintElement.style.marginTop = '1.5rem';
+          hintElement.style.background = '#fff3cd';
+          hintElement.style.borderColor = 'var(--yellow)';
+          hintElement.setAttribute('data-ar', hintData.ar);
+          hintElement.setAttribute('data-en', hintData.en);
+          hintElement.innerHTML = `
+            <div>
+              <h3 style="color: var(--yellow); margin-bottom: 10px;">${t('personalAdvice')}</h3>
+              <p style="font-size: 1em; line-height: 1.6; color: var(--text);">${hintData[currentLanguage]}</p>
+            </div>
+          `;
+          recommendation.parentNode.insertBefore(hintElement, recommendation.nextSibling);
+          personalAdviceAdded = true;
+        }
+      } else if (existingHint) {
+        // تحديث النصيحة الموجودة باللغة الحالية
+        const hintText = existingHint.getAttribute(`data-${currentLanguage}`);
+        if (hintText) {
+          const textElement = existingHint.querySelector('p');
+          if (textElement) {
+            textElement.textContent = hintText;
+          }
+        }
+      }
+
+      // جدول الأولويات الأصلية
+      userPriorityTable.innerHTML = '';
+      const sortedPassions = [...passions].sort((a, b) => userPriorities[a] - userPriorities[b]); // ترتيب من 1-6
+      sortedPassions.forEach(passion => {
+        const row = document.createElement('tr');
         row.innerHTML = `
           <td>${passion}</td>
-          ${counts.map(c => `<td>${c}</td>`).join('')}
-          <td class="total-score">${total}</td>
+          <td>${userPriorities[passion]}</td>
         `;
-        
-        tbody.appendChild(row);
-        
-        passionScores.push({ passion, total });
-        
-        if (total > maxTotal) {
-          maxTotal = total;
-          recommendedPassion = passion;
-        }
+        userPriorityTable.appendChild(row);
       });
-      
-      // ترتيب النتائج تنازليًا
-      passionScores.sort((a, b) => b.total - a.total);
-      
-      // عرض التوصية
-      document.getElementById('recommendation').textContent = `${recommendedPassion}`;
-      
-      // إضافة تفاصيل التوصية
-      const details = document.getElementById('recommendation-details');
-      details.innerHTML = `
-        <p>حصل "${recommendedPassion}" على أعلى درجة (${maxTotal}) في تقييمك.</p>
-        <p>هذا يشير إلى أن هذا الشغف يتوافق بشكل كبير مع قدراتك واهتماماتك.</p>
-        <p>ننصحك بالتركيز على تطوير هذا الشغف والاستثمار فيه.</p>
-      `;
-      
-      // تلوين الصفوف حسب الترتيب
-      const rows = document.querySelectorAll('#results-table tr');
-      rows.forEach(row => {
-        const passionName = row.cells[0].textContent;
-        const rank = passionScores.findIndex(p => p.passion === passionName);
-        
-        if (rank === 0) {
-          row.classList.add('top-passion');
-          row.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
-          row.cells[row.cells.length - 1].style.backgroundColor = '#10b981';
-          row.cells[row.cells.length - 1].style.color = 'white';
-          row.cells[row.cells.length - 1].style.fontWeight = 'bold';
-        } else if (rank === 1 || rank === 2) {
-          row.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
-        }
-      });
-      
-      // تمرير إلى الأعلى
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // تحضير محتوى الطباعة
+      preparePrintContent();
     }
 
-    // ===== إعادة الاختبار =====
-    document.getElementById('restart-journey').addEventListener('click', () => {
-      // إعادة تعيين المتغيرات
-      currentPassionIndex = 0;
-      currentStageIndex = 0;
-      previousPassionIndex = -1;
+    // دالة لتوليد النصيحة الشخصية
+    function generatePersonalHint(topPassion) {
+      const purposeAnswers = answers[topPassion]['Purpose'];
       
-      // إعادة عرض قسم اختيار الشغف
-      document.getElementById('results-section').classList.add('hidden');
-      document.getElementById('passion-selection').classList.remove('hidden');
+      // البحث عن أول إجابة بمستوى عالي (6 نقاط) في Purpose
+      const highPurposeAnswer = purposeAnswers.find(answer => parseInt(answer.rating) === 6);
       
-      // إلغاء تحديد جميع خيارات الشغف
-      document.querySelectorAll('.passion-checkbox').forEach(cb => {
-        cb.checked = false;
+      if (highPurposeAnswer) {
+        return {
+          ar: `بناءً على إجاباتك، أنت مناسب جداً لمجال "${topPassion}" لأنك ذكرت: "${highPurposeAnswer.text}". هذا يُظهر وضوح رؤيتك وقوة دافعيتك في هذا المجال. ننصحك بالتركيز على تطوير مهاراتك في هذا الاتجاه والبحث عن الفرص التي تتماشى مع هذا الهدف.`,
+          en: `Based on your answers, you are very well-suited for "${topPassion}" because you mentioned: "${highPurposeAnswer.text}". This shows clarity in your vision and strong motivation in this field. We recommend focusing on developing your skills in this direction and looking for opportunities that align with this goal.`
+        };
+      }
+      
+      // إذا لم توجد إجابة بمستوى عالي، ابحث عن أول إجابة بمستوى متوسط
+      const mediumPurposeAnswer = purposeAnswers.find(answer => parseInt(answer.rating) === 4);
+      
+      if (mediumPurposeAnswer) {
+        return {
+          ar: `أنت تُظهر اهتماماً واضحاً بمجال "${topPassion}" خاصة فيما يتعلق بـ "${mediumPurposeAnswer.text}". ننصحك بالاستمرار في استكشاف هذا المجال وتطوير فهمك له أكثر.`,
+          en: `You show clear interest in "${topPassion}" especially regarding "${mediumPurposeAnswer.text}". We recommend continuing to explore this field and developing your understanding of it further.`
+        };
+      }
+      
+      // إذا لم توجد إجابات مناسبة، أعطِ نصيحة عامة
+      return {
+        ar: `مجال "${topPassion}" يبدو الأنسب لك بناءً على إجاباتك. ننصحك بالتعمق أكثر في هذا المجال واستكشاف الفرص المتاحة فيه.`,
+        en: `"${topPassion}" appears to be the most suitable for you based on your answers. We recommend delving deeper into this field and exploring the opportunities available in it.`
+      };
+    }
+
+    // تحضير محتوى الطباعة
+    function preparePrintContent() {
+      // محتوى الشغف
+      const printPassionsContent = document.getElementById('print-passions-content');
+      printPassionsContent.innerHTML = '';
+      const passionsTable = document.createElement('table');
+      
+      let passionsHtml = `<tr><th>${currentLanguage === 'ar' ? 'الشغف' : 'Passion'}</th><th>${currentLanguage === 'ar' ? 'الترتيب الأصلي' : 'Original Priority'}</th></tr>`;
+      
+      passions.forEach(passion => {
+        passionsHtml += `<tr><td>${passion}</td><td>${userPriorities[passion]}</td></tr>`;
       });
       
-      // إزالة الشغف المخصص
-      document.getElementById('custom-passions-list').innerHTML = '';
+      passionsTable.innerHTML = passionsHtml;
+      printPassionsContent.appendChild(passionsTable);
       
-      // تحديث عداد الشغف
-      updatePassionCounter();
-      
-      // تمرير إلى الأعلى
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+      // محتوى الإجابات مرتبة حسب النتائج
+      const printAnswersContent = document.getElementById('print-answers-content');
+      printAnswersContent.innerHTML = '';
 
-    // ===== طباعة النتائج =====
-    document.getElementById('print-results').addEventListener('click', () => {
+      // حساب وترتيب النتائج
+      let passionResults = [];
+      passions.forEach(passion => {
+        const stageSums = stages.map(stage => 
+          answers[passion][stage].reduce((sum, ans) => sum + parseInt(ans.rating), 0)
+        );
+        const total = stageSums.reduce((sum, val) => sum + val, 0);
+        
+        passionResults.push({
+          passion: passion,
+          stageSums: stageSums,
+          total: total
+        });
+      });
+
+      // ترتيب النتائج من الأعلى للأقل
+      passionResults.sort((a, b) => b.total - a.total);
+
+      passionResults.forEach((result, index) => {
+        const passionDiv = document.createElement('div');
+        passionDiv.className = 'print-passion-section';
+        
+        const passionTitle = document.createElement('h3');
+        passionTitle.className = 'print-passion-title';
+        passionTitle.textContent = t('passionTitle', { index: index + 1, passion: result.passion });
+        passionDiv.appendChild(passionTitle);
+        
+        stages.forEach(stage => {
+          const stageDiv = document.createElement('div');
+          stageDiv.className = 'print-stage-section';
+          
+          const stageTitle = document.createElement('h4');
+          stageTitle.className = 'print-stage-title';
+          stageTitle.textContent = stage;
+          stageDiv.appendChild(stageTitle);
+          
+          const questionP = document.createElement('p');
+          questionP.className = 'print-question';
+          questionP.textContent = t('guidingQuestionLabel', { question: guidingQuestions[currentLanguage][stage] });
+          stageDiv.appendChild(questionP);
+          
+          const answersList = document.createElement('ul');
+          answersList.className = 'print-answers';
+          
+          // ترتيب الإجابات حسب التقييم
+          const sortedAnswers = [...answers[result.passion][stage]].sort((a, b) => {
+            if (stage === 'Problems') {
+              return parseInt(b.rating) - parseInt(a.rating);
+            }
+            return parseInt(b.rating) - parseInt(a.rating);
+          });
+          
+          sortedAnswers.forEach(answer => {
+            const answerItem = document.createElement('li');
+            answerItem.className = 'print-answer-item';
+            
+            const ratingSpan = document.createElement('span');
+            ratingSpan.className = 'print-answer-rating';
+            ratingSpan.textContent = `[${answer.rating}] `;
+            
+            answerItem.appendChild(ratingSpan);
+            answerItem.appendChild(document.createTextNode(answer.text));
+            answersList.appendChild(answerItem);
+          });
+          
+          stageDiv.appendChild(answersList);
+          passionDiv.appendChild(stageDiv);
+        });
+
+        // إضافة الإجمالي
+        const totalDiv = document.createElement('div');
+        totalDiv.className = 'print-total';
+        totalDiv.textContent = t('totalLabel', { total: result.total });
+        passionDiv.appendChild(totalDiv);
+        
+        printAnswersContent.appendChild(passionDiv);
+      });
+      
+      // محتوى النتائج
+      const printResultsContent = document.getElementById('print-results-content');
+      printResultsContent.innerHTML = '';
+
+      const resultsTable = document.createElement('table');
+      
+      let resultsHtml = `<tr><th>${currentLanguage === 'ar' ? 'الترتيب' : 'Rank'}</th><th>${currentLanguage === 'ar' ? 'الشغف' : 'Passion'}</th>`;
+      stages.forEach(stage => {
+        resultsHtml += `<th>${stage}</th>`;
+      });
+      resultsHtml += `<th>${currentLanguage === 'ar' ? 'الإجمالي' : 'Total'}</th></tr>`;
+
+      // عرض النتائج المرتبة
+      passionResults.forEach((result, index) => {
+        const rowClass = index === 0 ? 'class="best-result"' : '';
+        resultsHtml += `<tr ${rowClass}><td>${index + 1}</td><td>${result.passion}</td>`;
+        result.stageSums.forEach(sum => {
+          resultsHtml += `<td>${sum}</td>`;
+        });
+        resultsHtml += `<td>${result.total}</td></tr>`;
+      });
+
+      resultsTable.innerHTML = resultsHtml;
+      printResultsContent.appendChild(resultsTable);
+
+      const topPassion = passionResults[0];
+      const recommendationDiv = document.createElement('div');
+      recommendationDiv.className = 'print-recommendation';
+      recommendationDiv.innerHTML = `
+        <h3>${t('finalRecommendation')}</h3>
+        <p>${t('recommendedPassionText', { passion: topPassion.passion })}</p>
+        <p>${t('totalScoreText', { total: topPassion.total })}</p>
+      `;
+      printResultsContent.appendChild(recommendationDiv);
+
+      // إضافة النصيحة الشخصية للطباعة
+      const hintData = generatePersonalHint(topPassion.passion);
+      if (hintData) {
+        const hintDiv = document.createElement('div');
+        hintDiv.className = 'print-hint';
+        hintDiv.innerHTML = `
+          <h3>${t('personalAdviceTitle')}</h3>
+          <p>${hintData[currentLanguage]}</p>
+        `;
+        printResultsContent.appendChild(hintDiv);
+      }
+    }
+
+    // طباعة التقرير
+    printReportBtn.addEventListener('click', () => {
       window.print();
     });
 
-    // ===== تهيئة الصفحة =====
-    document.addEventListener('DOMContentLoaded', () => {
-      updatePassionSelection();
+    // تحميل التقرير
+    downloadReportBtn.addEventListener('click', () => {
+      // إنشاء نص التقرير
+      let reportText = t('reportTitle') + "\n";
+      reportText += t('reportSeparator').repeat(50) + "\n\n";
+      
+      // حساب وترتيب النتائج
+      let passionResults = [];
+      passions.forEach(passion => {
+        const stageSums = stages.map(stage => 
+          answers[passion][stage].reduce((sum, ans) => sum + parseInt(ans.rating), 0)
+        );
+        const total = stageSums.reduce((sum, val) => sum + val, 0);
+        
+        passionResults.push({
+          passion: passion,
+          stageSums: stageSums,
+          total: total
+        });
+      });
+
+      // ترتيب النتائج من الأعلى للأقل
+      passionResults.sort((a, b) => b.total - a.total);
+
+      // عرض النتائج مرتبة حسب التقييم
+      passionResults.forEach((result, index) => {
+        reportText += t('passionTitle', { index: index + 1, passion: result.passion }) + "\n";
+        reportText += "-".repeat(30) + "\n\n";
+        
+        stages.forEach(stage => {
+          reportText += `${stage}:\n`;
+          reportText += t('guidingQuestionLabel', { question: guidingQuestions[currentLanguage][stage] }) + "\n";
+          
+          // ترتيب الإجابات حسب التقييم (من الأعلى للأقل)
+          const sortedAnswers = [...answers[result.passion][stage]].sort((a, b) => {
+            // للـ Problems نرتب من الأقل سلبية للأكثر سلبية (الأقل قلقاً أولاً)
+            if (stage === 'Problems') {
+              return parseInt(b.rating) - parseInt(a.rating); // من -2 إلى -6
+            }
+            // للباقي نرتب من الأعلى للأقل
+            return parseInt(b.rating) - parseInt(a.rating);
+          });
+          
+          sortedAnswers.forEach(answer => {
+            reportText += `- ${answer.text} ${t('ratingLabel', { rating: answer.rating })}\n`;
+          });
+          reportText += "\n";
+        });
+        
+        reportText += t('totalLabel', { total: result.total }) + "\n";
+        reportText += t('reportSeparator').repeat(50) + "\n\n";
+      });
+      
+      // إضافة التوصية والنصيحة
+      const topPassion = passionResults[0];
+      reportText += t('finalRecommendationTitle') + "\n";
+      reportText += "-".repeat(20) + "\n";
+      reportText += t('recommendationText', { passion: topPassion.passion, total: topPassion.total }) + "\n\n";
+      
+      // إضافة النصيحة الشخصية
+      const hintData = generatePersonalHint(topPassion.passion);
+      if (hintData) {
+        reportText += t('personalAdviceLabel') + "\n";
+        reportText += "-".repeat(15) + "\n";
+        reportText += `${hintData[currentLanguage]}\n\n`;
+      }
+      
+      reportText += t('originalOrderTitle') + "\n";
+      reportText += "-".repeat(35) + "\n";
+      const sortedPassions = [...passions].sort((a, b) => userPriorities[a] - userPriorities[b]);
+      sortedPassions.forEach((passion, index) => {
+        reportText += `${index + 1}. ${passion} ${t('priorityLabel', { priority: userPriorities[passion] })}\n`;
+      });
+      
+      // إنشاء ملف نصي للتحميل
+      const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = t('fileName');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     });
+
+    // إعادة الاختبار
+    restartTestBtn.addEventListener('click', () => {
+      if (confirm(t('confirmRestart'))) {
+        localStorage.removeItem('6ps_journey_data_bilingual');
+        usedSuggestions.clear(); // إعادة تعيين المقترحات المستخدمة
+        location.reload();
+      }
+    });
+
+    // حفظ البيانات عند إغلاق الصفحة أو تحديثها
+    window.addEventListener('beforeunload', () => {
+      saveData();
+    });
+
+    // إغلاق النوافذ المنبثقة عند النقر خارجها
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay') || e.target.classList.contains('stage-info-modal')) {
+        e.target.classList.remove('active');
+      }
+    });
+
+    // دالة لعرض نافذة المرحلة الحالية
+    function showCurrentStageModal() {
+      const stage = stages[currentStageIndex];
+      const explanation = stageExplanations[currentLanguage][stage];
+      
+      document.getElementById('current-stage-modal-title').textContent = explanation.title;
+      document.getElementById('current-stage-modal-description').textContent = explanation.why;
+      
+      const modal = document.getElementById('current-stage-modal');
+      modal.classList.add('active');
+      
+      // إخفاء النافذة بعد ثانيتين
+      setTimeout(() => {
+        modal.classList.remove('active');
+      }, 2000);
+    }
+
+    // دالة لعرض نافذة الشغف الحالي
+    function showCurrentPassionModal() {
+      const passion = passions[currentPassionIndex];
+      const stage = stages[currentStageIndex];
+      const explanation = stageExplanations[currentLanguage][stage];
+      
+      document.getElementById('current-stage-modal-title').textContent = `${t('passionLabel')}${passion}`;
+      document.getElementById('current-stage-modal-description').textContent = t('nowAnswering', { passion });
+      
+      const modal = document.getElementById('current-stage-modal');
+      modal.classList.add('active');
+      
+      // إخفاء النافذة بعد ثانيتين
+      setTimeout(() => {
+        modal.classList.remove('active');
+      }, 2000);
+    }
   </script>
 </body>
 </html>
