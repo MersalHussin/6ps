@@ -6,7 +6,6 @@
   <title>رحلة 6Ps - اكتشف ميولك المهنية | 6Ps Journey - Discover Your Career Passions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="assets/LogoIC.png">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -1294,13 +1293,19 @@
       color: white !important;
       border: none !important;
     }
-.Logo-image{
-    width: 200px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+    .suggestion-level.low {
+      background: #ef4444!important; 
+      color: #fff !important;
+    }
+    .suggestion-level.medium {
+      background: #f1c900 !important; 
+      color: #333 !important;
+    }
+    .suggestion-level.high {
+      background: #00c309  !important; 
+      color: #fff !important;
+    }
   </style>
 </head>
 <body>
@@ -1310,7 +1315,7 @@
   </button>
 
   <div class="container">
-    <img src="assets/Logo.png" alt="Logo Qudraat Shabab" style="width:200px;" sty class="Logo-image">
+    <img src="/placeholder.svg?height=100&width=250" alt="Logo Qudraat Shabab" class="logo-image">
     <h1 data-ar="اكتشف ميولك المهنية" data-en="Discover Your Career Passion">اكتشف شغفك المهني</h1>
 
     <!-- إدخال الشغف -->
@@ -1527,7 +1532,7 @@
         stageLabel: 'المرحلة: ',
         convictionLevel: 'مستوى اقتناعك بهذا الأمر:',
         concernLevel: 'مستوى قلقك من هذا الأمر:',
-        selectLevel: 'اختر مستوى مشاعرك',
+        selectLevel: 'اختر الدرجة',
         low: 'أقتنع به قليلاً',
         medium: 'أقتنع به بشكل متوسط',
         high: 'أقتنع به بشدة',
@@ -1562,7 +1567,11 @@
         priorityLabel: '(الترتيب: {priority})',
         fileName: 'Career_Interests_Report_AR.txt',
         noSuggestions: 'لا توجد إجابات سابقة لهذه المرحلة',
-        suggestionAdded: 'تم إضافة الاقتراح!'
+        suggestionAdded: 'تم إضافة الاقتراح!',
+        relativeImportance: 'درجة الأهمية النسبية:',
+        lowImportance: 'منخفضة',
+        mediumImportance: 'متوسطة',
+        highImportance: 'عالية'
       },
       en: {
         progressText: 'Question {current} of {total}',
@@ -1571,7 +1580,7 @@
         stageLabel: 'Stage: ',
         convictionLevel: 'How strongly do you believe in this:',
         concernLevel: 'How concerned are you about this:',
-        selectLevel: 'Select your feeling level',
+        selectLevel: 'Select Degree',
         low: 'Slightly convinced',
         medium: 'Moderately convinced',
         high: 'Strongly convinced',
@@ -1606,7 +1615,11 @@
         priorityLabel: '(Priority: {priority})',
         fileName: '6Ps_Report_EN.txt',
         noSuggestions: 'No previous answers for this stage',
-        suggestionAdded: 'Suggestion added successfully!'
+        suggestionAdded: 'Suggestion added successfully!',
+        relativeImportance: 'Relative Importance:',
+        lowImportance: 'Low',
+        mediumImportance: 'Medium',
+        highImportance: 'High'
       }
     };
 
@@ -1667,13 +1680,13 @@
     function ratingToLevel(rating, stage) {
       const absRating = Math.abs(rating);
       if (stage === 'Problems') {
-        if (absRating === 6) return currentLanguage === 'ar' ? 'قلق شديد' : 'Strongly concerned';
-        if (absRating === 4) return currentLanguage === 'ar' ? 'قلق متوسط' : 'Moderately concerned';
-        if (absRating === 2) return currentLanguage === 'ar' ? 'قلق بسيط' : 'Slightly concerned';
+        if (absRating === 6) return currentLanguage === 'ar' ? 'عالية' : 'High';
+        if (absRating === 4) return currentLanguage === 'ar' ? 'متوسطة' : 'Medium';
+        if (absRating === 2) return currentLanguage === 'ar' ? 'منخفضة' : 'Low';
       } else {
-        if (absRating === 6) return currentLanguage === 'ar' ? 'اقتناع شديد' : 'Strongly convinced';
-        if (absRating === 4) return currentLanguage === 'ar' ? 'اقتناع متوسط' : 'Moderately convinced';
-        if (absRating === 2) return currentLanguage === 'ar' ? 'اقتناع بسيط' : 'Slightly convinced';
+        if (absRating === 6) return currentLanguage === 'ar' ? 'عالية' : 'High';
+        if (absRating === 4) return currentLanguage === 'ar' ? 'متوسط' : 'Medium';
+        if (absRating === 2) return currentLanguage === 'ar' ? 'بسيط' : 'Low';
       }
       return '';
     }
@@ -2290,9 +2303,19 @@
             }
           };
           
-          const levelClass = suggestion.level.toLowerCase() === 'عالي' || suggestion.level.toLowerCase() === 'high' ? 'high' :
-                            suggestion.level.toLowerCase() === 'متوسط' || suggestion.level.toLowerCase() === 'medium' ? 'medium' : 'low';
-          
+          // تحديد اللون حسب المرحلة
+          let levelClass = '';
+          if (currentStage === 'Problems') {
+            // منخفضة أخضر، متوسطة أصفر، عالية أحمر
+            if (Math.abs(suggestion.rating) === 6) levelClass = 'low'; // أحمر
+            else if (Math.abs(suggestion.rating) === 4) levelClass = 'medium'; // أصفر
+            else levelClass = 'high'; // أخضر
+          } else {
+            // البسيط أحمر، المتوسط أصفر، العالي أخضر
+            if (Math.abs(suggestion.rating) === 6) levelClass = 'high';
+            else if (Math.abs(suggestion.rating) === 4) levelClass = 'medium';
+            else levelClass = 'low';
+          }
           suggestionChip.innerHTML = `
             <div class="suggestion-text" title="${suggestion.text}">${suggestion.text}</div>
             <div class="suggestion-level ${levelClass}">${suggestion.level}</div>
@@ -2434,9 +2457,10 @@
       inputWrapper.appendChild(hintButton);
       div.appendChild(inputWrapper);
       
+      // تقييم الأهمية النسبية
       const isProblems = stage === 'Problems';
       const selectLabel = document.createElement('label');
-      selectLabel.textContent = isProblems ? t('concernLevel') : t('convictionLevel');
+      selectLabel.textContent = t('relativeImportance');
       selectLabel.style.minWidth = '100px';
       selectLabel.style.fontWeight = '500';
       div.appendChild(selectLabel);
@@ -2446,18 +2470,9 @@
       
       const options = [
         { value: '', label: t('selectLevel') },
-        { 
-          value: isProblems ? '-2' : '2', 
-          label: isProblems ? t('lowConcern') : t('low')
-        },
-        { 
-          value: isProblems ? '-4' : '4', 
-          label: isProblems ? t('mediumConcern') : t('medium')
-        },
-        { 
-          value: isProblems ? '-6' : '6', 
-          label: isProblems ? t('highConcern') : t('high')
-        }
+        { value: isProblems ? '-2' : '2', label: `${t(isProblems ? 'lowImportance' : 'lowImportance')} (${isProblems ? '-2' : '2'})` },
+        { value: isProblems ? '-4' : '4', label: `${t(isProblems ? 'mediumImportance' : 'mediumImportance')} (${isProblems ? '-4' : '4'})` },
+        { value: isProblems ? '-6' : '6', label: `${t(isProblems ? 'highImportance' : 'highImportance')} (${isProblems ? '-6' : '6'})` }
       ];
       
       options.forEach(option => {
