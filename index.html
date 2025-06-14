@@ -12,8 +12,9 @@
   <style>
     :root {
       --primary: #052ed8;
-      --green: #00c309;
-      --yellow: #f1c900;
+      --green: #00c409;
+      --secondary: #ffd700;
+      --yellow: #ffd700;
       --background: #f8faff;
       --card-bg: #ffffff;
       --text: #0f172a;
@@ -22,6 +23,7 @@
       --error: #ef4444;
       --radius: 12px;
       --shadow: 0 4px 12px rgba(5, 46, 216, 0.1);
+      --light-bg: #f9f9f9;
     }
 
     * {
@@ -117,6 +119,12 @@
       justify-content: center;
       gap: 0.5rem;
     }
+    .card-station {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      gap: 0.5rem;
+    }
 
     .stage-info-button {
       background: rgba(255, 255, 255, 0.2);
@@ -190,8 +198,8 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--yellow);
-      border: none;
+      background: white;
+      border: 2px solid var(--yellow);
       cursor: pointer;
       color: #333;
       font-size: 1rem;
@@ -199,6 +207,14 @@
       border-radius: 50%;
       transition: all 0.2s ease;
       z-index: 10;
+      width: 35px;
+      height: 35px;
+
+    }
+    .hint-icon{
+      width: 20px;
+      height: 20px;
+      color: red;
     }
 
     [dir="rtl"] .hint-button {
@@ -695,14 +711,18 @@
     }
 
     .modal-close {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: none;
       border: none;
       color: white;
       font-size: 1.5rem;
       cursor: pointer;
       padding: 0.5rem;
-      border-radius: 50%;
-    }
+      border-radius: 50%;    }
 
     .modal-close:hover {
       background: rgba(255, 255, 255, 0.2);
@@ -1147,6 +1167,12 @@
         font-size: 15px;
         padding: 5px 15px;
       font-weight: bold;      }
+
+      .card-Station{
+        font-size: 1.2rem;
+        font-weight: 800;
+        padding: 1rem;
+      }
       .guiding-question {
         font-size: 1.2rem;
         font-weight: 800;
@@ -1308,6 +1334,44 @@
       background: #00c309  !important; 
       color: #fff !important;
     }
+
+    .journey-summary {
+      background: var(--light-bg);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stage-evaluations {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .stage-eval {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .stage-eval h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .stage-eval p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+
+    .stage-eval .rating {
+      color: var(--primary);
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -1323,7 +1387,8 @@
     <!-- إدخال الشغف -->
     <div id="passion-selection" class="card">
       <div class="card-header">
-        <h2 class="card-title" data-ar="ما هي اهتماماتك؟" data-en="What are your Passion">ما هي اهتماماتك؟</h2>
+        <p class="card-station" data-ar="أول محطة : Passion" data-en="The Frist Station: Passion">أول محطة : الـ Passion </p>
+        <h2 class="card-title" data-ar="ما هي مجالات اهتمامك (شغفك المهني)" data-en="What are your Passion">ما هي مجالات اهتمامك (شغفك المهني)</h2>
         <p class="card-description" data-ar="اختر 3-6 مجالات تهتم بها (مثل: البرمجة، التصميم، الطبخ)" data-en="Choose 3-6 areas you're interested in (e.g., Programming, Design, Cooking)">اختر 3-6 مجالات تهتم بها (مثل: البرمجة، التصميم، الطبخ)</p>
       </div>
       <div class="card-content">
@@ -1332,7 +1397,7 @@
           <div class="input-wrapper">
             <input type="text" id="passion-input" class="input" data-ar="اكتب اهتمامك هنا" data-en="Type your interest here" placeholder="اكتب اهتمامك هنا">
             <button class="hint-button" type="button">
-              💡
+              <img src="assets/lightbulb-solid.svg" alt="hint-icon" class="hint-icon">
               <div class="hint-tooltip" data-ar="أمثلة: البرمجة، التصميم، التدريس، الطبخ، الكتابة، التصوير، الرياضة، الموسيقى، ريادة الأعمال، الطب، الهندسة، التسويق" data-en="Examples: Programming, Design, Teaching, Cooking, Writing, Photography, Sports, Music, Entrepreneurship, Medicine, Engineering, Marketing">
                 أمثلة: البرمجة، التصميم، التدريس، الطبخ، الكتابة، التصوير، الرياضة، الموسيقى، ريادة الأعمال، الطب، الهندسة، التسويق
               </div>
@@ -1344,7 +1409,7 @@
           <table id="passion-table" class="table">
             <thead>
               <tr>
-                <th data-ar="الاهتمام" data-en="Interest">الاهتمام</th>
+                <th data-ar="المجال" data-en="Interest">المجال</th>
                 <th data-ar="الترتيب" data-en="Order">الترتيب</th>
                 <th data-ar="خيارات" data-en="Options">خيارات</th>
               </tr>
@@ -1368,9 +1433,9 @@
           <span id="progress-text">السؤال 1 من 30</span>
           <span id="remaining-text">المتبقي: 29</span>
         </div>
-        <h2 id="current-passion" class="card-title">الاهتمام: </h2>
+        <h2 id="current-passion" class="card-title">المجال: </h2>
         <div class="card-description">
-          <span id="current-stage">المرحلة: </span>
+          <span id="current-stage">محطة: </span>
           <button class="stage-info-button" type="button" onclick="showStageInfoModal()">
             ?
           </button>
@@ -1411,9 +1476,9 @@
               <tr>
                 <th data-ar="الشغف" data-en="Passion">الشغف</th>
                 <th>Purpose</th>
-                <th>Problems</th>
                 <th>Power</th>
                 <th>Proof</th>
+                <th>Problems</th>
                 <th>Possible</th>
                 <th data-ar="الإجمالي" data-en="Total">الإجمالي</th>
               </tr>
@@ -1464,7 +1529,7 @@
       </div>
     </div>
 
-    <!-- نافذة معلومات المرحلة -->
+    <!-- نافذة معلومات محطة -->
     <div id="stage-info-modal" class="stage-info-modal">
       <div class="stage-info-content">
         <div class="stage-info-header">
@@ -1497,7 +1562,7 @@
       </div>
     </div>
 
-    <!-- إضافة نافذة المرحلة الحالية -->
+    <!-- إضافة نافذة محطة الحالية -->
     <div id="current-stage-modal" class="current-stage-modal">
       <div class="current-stage-content">
         <h2 id="current-stage-modal-title" class="current-stage-title"></h2>
@@ -1530,8 +1595,8 @@
       ar: {
         progressText: 'السؤال {current} من {total}',
         remainingText: 'المتبقي: {remaining}',
-        passionLabel: 'الاهتمام: ',
-        stageLabel: 'المرحلة: ',
+        passionLabel: 'المجال: ',
+        stageLabel: 'محطة: ',
         convictionLevel: 'مستوى اقتناعك بهذا الأمر:',
         concernLevel: 'مستوى قلقك من هذا الأمر:',
         selectLevel: 'اختر الدرجة',
@@ -1542,13 +1607,13 @@
         mediumConcern: 'أقلق منه بشكل متوسط',
         highConcern: 'أقلق منه بشدة',
         answerPlaceholder: 'اكتب إجابتك هنا',
-        recommendedPassion: '🎯 الاهتمام الأنسب لك',
+        recommendedPassion: '🎯 المجال الأنسب لك',
         totalScore: 'النتيجة: {total} نقطة',
-        personalAdvice: '💡 نصيحة لك',
+        personalAdvice: 'ملخص الرحلة',
         finalRecommendation: '🎯 النتيجة النهائية',
-        recommendedPassionText: 'الاهتمام الأنسب: {passion}',
+        recommendedPassionText: 'المجال الأنسب: {passion}',
         totalScoreText: 'Total Score: {total} points',
-        personalAdviceTitle: '💡 نصيحة لك',
+        personalAdviceTitle: 'ملخص الرحلة',
         nowAnswering: 'أنت تجيب الآن على أسئلة: {passion}',
         dataRestored: 'تم استعادة بياناتك السابقة',
         newAssessment: 'تم بدء اختبار جديد',
@@ -1556,19 +1621,19 @@
         confirmRestart: 'هل تريد إعادة الاختبار؟ سيتم مسح جميع إجاباتك.',
         invalidName: 'هذا الاسم غير صالح أو مكرر',
         newPassionName: 'اكتب الاسم الجديد:',
-        reportTitle: 'تقرير اكتشاف الاهتمامات المهنية',
+        reportTitle: 'تقرير اكتشاف المجال المهنية',
         reportSeparator: '=',
-        passionTitle: '{index}. الاهتمام: {passion}',
+        passionTitle: '{index}. المجال: {passion}',
         guidingQuestionLabel: 'السؤال: {question}',
         ratingLabel: '(التقييم: {rating})',
         totalLabel: 'المجموع: {total} نقطة',
         finalRecommendationTitle: 'النتيجة النهائية:',
-        recommendationText: 'الاهتمام الأنسب: {passion} (المجموع: {total} نقطة)',
+        recommendationText: 'المجال الأنسب: {passion} (المجموع: {total} نقطة)',
         personalAdviceLabel: 'نصيحة لك:',
         originalOrderTitle: 'ترتيب اهتماماتك الأصلي:',
         priorityLabel: '(الترتيب: {priority})',
         fileName: 'Career_Interests_Report_AR.txt',
-        noSuggestions: 'لا توجد إجابات سابقة لهذه المرحلة',
+        noSuggestions: 'لا توجد إجابات سابقة لهذه محطة',
         suggestionAdded: 'تم إضافة الاقتراح!',
         relativeImportance: 'درجة الأهمية النسبية:',
         lowImportance: 'منخفضة',
@@ -1592,11 +1657,11 @@
         answerPlaceholder: 'Enter your answer',
         recommendedPassion: '🎯 Recommended Passion',
         totalScore: 'Total Score: {total} points',
-        personalAdvice: '💡 Personal Advice',
+        personalAdvice: 'Journey Summary',
         finalRecommendation: '🎯 Final Recommendation',
         recommendedPassionText: 'Recommended Passion: {passion}',
         totalScoreText: 'Total Score: {total} points',
-        personalAdviceTitle: '💡 Personal Advice',
+        personalAdviceTitle: 'Journey Summary',
         nowAnswering: 'Now answering questions for: {passion}',
         dataRestored: 'Data restored successfully',
         newAssessment: 'Started new assessment',
@@ -1682,18 +1747,18 @@
     function ratingToLevel(rating, stage) {
       const absRating = Math.abs(rating);
       if (stage === 'Problems') {
-        if (absRating === 6) return currentLanguage === 'ar' ? 'عالية' : 'High';
-        if (absRating === 4) return currentLanguage === 'ar' ? 'متوسطة' : 'Medium';
-        if (absRating === 2) return currentLanguage === 'ar' ? 'منخفضة' : 'Low';
+        if (absRating === 6) return currentLanguage === 'ar' ? 'قلق عالي' : 'High Concern';
+        if (absRating === 4) return currentLanguage === 'ar' ? 'قلق متوسط' : 'Medium Concern';
+        if (absRating === 2) return currentLanguage === 'ar' ? 'قلق منخفض' : 'Low Concern';
       } else {
-        if (absRating === 6) return currentLanguage === 'ar' ? 'عالية' : 'High';
-        if (absRating === 4) return currentLanguage === 'ar' ? 'متوسط' : 'Medium';
-        if (absRating === 2) return currentLanguage === 'ar' ? 'بسيط' : 'Low';
+        if (absRating === 6) return currentLanguage === 'ar' ? 'أهمية عالية' : 'High Importance';
+        if (absRating === 4) return currentLanguage === 'ar' ? 'أهمية متوسطة' : 'Medium Importance';
+        if (absRating === 2) return currentLanguage === 'ar' ? 'أهمية منخفضة' : 'Low Importance';
       }
       return '';
     }
 
-    // دالة عرض نافذة معلومات المرحلة
+    // دالة عرض نافذة معلومات محطة
     function showStageInfoModal() {
       const stage = stages[currentStageIndex];
       const explanation = stageExplanations[currentLanguage][stage];
@@ -1715,18 +1780,20 @@
 
     // تعريف المتغيرات الرئيسية
     const passions = [];
-    const stages = ['Purpose', 'Problems', 'Power', 'Proof', 'Possible']; // Purpose أولاً ثم Problems
+    const stages = ['Purpose', 'Power', 'Proof', 'Problems', 'Possible'];
+    const answers = {};
+    const userPriorities = {};
     
     const guidingQuestions = {
       ar: {
-        Purpose: 'ما هو هدفك من هذا المجال؟ كيف سيفيدك أو يفيد الآخرين؟',
+        Purpose: 'ما هو هدفك من هذا المجال؟',
         Problems: 'ما هي التحديات التي قد تواجهك في هذا المجال؟',
         Power: 'ما هي مهاراتك التي تساعدك في هذا المجال؟',
         Proof: 'ما هي إنجازاتك السابقة في هذا المجال؟',
-        Possible: 'ما هي الفرص المستقبلية في هذا المجال؟'
+        Possible: 'ما هي الخطوات الممكنة التي يمكنك القيام بها في هذا المجال؟'
       },
       en: {
-        Purpose: 'What is the main purpose or goal of this passion? How does it positively impact your life or others?',
+        Purpose: 'What is the main purpose or goal of this passion?',
         Problems: 'What challenges or obstacles might you face with this passion? What concerns you?',
         Power: 'What strengths or skills do you have that support this passion?',
         Proof: 'What evidence or achievements prove your ability to succeed in this passion?',
@@ -1738,7 +1805,7 @@
       ar: {
         Purpose: {
           title: '🎯 مرحلة الهدف والغرض',
-          why: 'لماذا نحل هذه المرحلة؟',
+          why: 'لماذا نحل هذه محطة؟',
           benefits: [
             'تحديد الدافع الحقيقي وراء شغفك يقوي عزيمتك',
             'فهم التأثير الإيجابي يزيد من حماسك',
@@ -1755,7 +1822,7 @@
         },
         Problems: {
           title: '🚧 مرحلة التحديات والمشاكل',
-          why: 'لماذا نحل هذه المرحلة؟',
+          why: 'لماذا نحل هذه محطة؟',
           benefits: [
             'تحديد العقبات المحتملة مسبقاً يساعدك على الاستعداد لها',
             'معرفة نقاط ضعفك يمكنك من وضع خطط للتغلب عليها',
@@ -1772,7 +1839,7 @@
         },
         Power: {
           title: '💪 مرحلة القوة والمهارات',
-          why: 'لماذا نحل هذه المرحلة؟',
+          why: 'لماذا نحل هذه محطة؟',
           benefits: [
             'تحديد نقاط قوتك يزيد من ثقتك بنفسك',
             'معرفة مهاراتك الحالية يساعد في بناء خطة التطوير',
@@ -1789,7 +1856,7 @@
         },
         Proof: {
           title: '🏆 مرحلة الإثبات والإنجازات',
-          why: 'لماذا نحل هذه المرحلة؟',
+          why: 'لماذا نحل هذه محطة؟',
           benefits: [
             'توثيق إنجازاتك يثبت قدرتك على النجاح',
             'مراجعة تجاربك السابقة تعطيك ثقة أكبر',
@@ -1806,7 +1873,7 @@
         },
         Possible: {
           title: '🚀 مرحلة الإمكانيات والفرص',
-          why: 'لماذا نحل هذه المرحلة؟',
+          why: 'لماذا نحل هذه محطة؟',
           benefits: [
             'استكشاف الفرص المستقبلية يوسع آفاقك',
             'تحديد إمكانيات النمو يحفزك للاستمرار',
@@ -1911,69 +1978,98 @@
       }
     };
 
-    // نصائح لكل مرحلة
-    const stageHints = {
-      ar: {
-        Problems: [
-          'فكر في التحديات المالية: هل يحتاج استثمار كبير؟ هل الدخل مستقر؟',
-          'اذكر العقبات التقنية: ما المهارات التي تحتاج تطويرها؟',
-          'حدد المخاطر: ما أكبر المخاوف التي تواجهك في هذا المجال؟'
-        ],
-        Purpose: [
-          'فكر في الهدف الأساسي: لماذا تحب هذا المجال؟ ما الذي يدفعك إليه؟',
-          'اكتب عن التأثير الإيجابي: كيف يمكن أن يفيد هذا الشغف الآخرين أو المجتمع؟',
-          'حدد القيم: ما القيم الشخصية التي يحققها لك هذا الشغف؟'
-        ],
-        Power: [
-          'اذكر مهاراتك الحالية: ما المهارات التي تمتلكها بالفعل؟',
-          'حدد نقاط قوتك الشخصية: الصبر، الإبداع، التواصل، القيادة، إلخ',
-          'اكتب عن خبراتك السابقة: أي تجارب سابقة تدعم هذا الشغف؟'
-        ],
-        Proof: [
-          'اذكر إنجازاتك: أي مشاريع أو أعمال قمت بها في هذا المجال؟',
-          'حدد الشهادات أو الدورات: أي تعليم رسمي أو غير رسمي حصلت عليه؟',
-          'اكتب عن التقدير: أي مدح أو تقدير حصلت عليه من الآخرين؟'
-        ],
-        Possible: [
-          'فكر في الفرص المستقبلية: ما الوظائف أو المشاريع المتاحة؟',
-          'حدد إمكانيات النمو: كيف يمكن تطوير هذا الشغف مع الوقت؟',
-          'اكتب عن الاتجاهات: ما التطورات الجديدة في هذا المجال؟'
-        ]
-      },
-      en: {
-        Problems: [
-          'Think about financial challenges: Does it require large investment? Is income stable?',
-          'Mention technical obstacles: What skills do you need to develop?',
-          'Identify risks: What are your biggest concerns in this field?'
-        ],
-        Purpose: [
-          'Think about the main goal: Why do you love this field? What drives you to it?',
-          'Write about positive impact: How could this passion benefit others or society?',
-          'Define values: What personal values does this passion fulfill for you?'
-        ],
-        Power: [
-          'List your current skills: What skills do you already possess?',
-          'Identify personal strengths: Patience, creativity, communication, leadership, etc.',
-          'Write about past experiences: Any previous experiences that support this passion?'
-        ],
-        Proof: [
-          'Mention your achievements: Any projects or work you\'ve done in this field?',
-          'Identify certificates or courses: Any formal or informal education you\'ve received?',
-          'Write about recognition: Any praise or recognition you\'ve received from others?'
-        ],
-        Possible: [
-          'Think about future opportunities: What jobs or projects are available?',
-          'Identify growth potential: How can this passion develop over time?',
-          'Write about trends: What new developments are happening in this field?'
-        ]
-      }
-    };
+ // نصائح لكل مرحلة
+const stageHints = {
+  ar: {
+    Problems: [
+      'فكّر في التحديات المالية: هل يحتاج المجال إلى استثمار كبير؟ هل الدخل فيه مستقر؟',
+      'فكّر في العقبات التقنية: ما المهارات التي قد تحتاج إلى تطويرها؟',
+      'فكّر في المخاطر المحتملة: ما أكثر الأمور التي قد تثير قلقك في هذا المجال؟',
+      'فكّر في مدى المنافسة: هل المجال مزدحم؟ وهل يمكنك التميز فيه؟',
+      'فكّر في الجوانب القانونية أو التنظيمية: هل هناك قيود قد تؤثر على عملك؟',
+      'فكّر في متطلبات الوقت: هل يتطلب المجال وقتًا طويلًا لتحقيق النجاح؟ وهل يناسب نمط حياتك؟'
+    ],
+    Purpose: [
+      'فكّر في الهدف الأساسي: لماذا يجذبك هذا المجال؟ وما الذي يدفعك نحوه؟',
+      'فكّر في الأثر الإيجابي: كيف يمكن أن يفيد هذا الشغف الآخرين أو المجتمع؟',
+      'فكّر في القيم الشخصية: ما القيم التي يُحققها لك هذا المجال؟',
+      'فكّر في علاقتك برسالتك في الحياة: هل يتماشى هذا المجال مع رؤيتك؟',
+      'فكّر في التغيير الذي تود رؤيته: هل يمكنك الإسهام في إحداث فرق؟',
+      'فكّر في علاقتك بهويتك: هل هذا الشغف يعبر عن ذاتك؟'
+    ],
+    Power: [
+      'فكّر في مهاراتك الحالية: ما الذي تمتلكه بالفعل ويدعمك في هذا المجال؟',
+      'فكّر في نقاط قوتك الشخصية: مثل الصبر، الإبداع، أو مهارات التواصل والقيادة.',
+      'فكّر في تجاربك السابقة: هل مررت بخبرات تعزز هذا الشغف؟',
+      'فكّر في الموارد المتاحة لك: مثل شبكة علاقات، أدوات، أو وقت يمكنك استغلاله.',
+      'فكّر في التحديات التي تغلبت عليها سابقًا: وكيف شكلت قوتك اليوم.',
+      'فكّر في الأشخاص الذين ألهموك أو دعموك في هذا الطريق.'
+    ],
+    Proof: [
+      'فكّر في إنجازاتك: هل لديك مشاريع أو أعمال تبرز قدراتك في هذا المجال؟',
+      'فكّر في تعليمك: هل حصلت على شهادات أو دورات مرتبطة بهذا الشغف؟',
+      'فكّر في التقدير: هل تلقيت مدحًا أو إشادة من الآخرين على ما قدمته؟',
+      'فكّر في مدى اهتمام الآخرين: هل هناك جمهور يتابعك أو يهتم بعملك؟',
+      'فكّر في الفرص التي حصلت فيها على عرض أو مشاركة لأعمالك؟',
+      'فكّر في نتائج ملموسة يمكن أن تدعم مصداقيتك في هذا المجال.'
+    ],
+    Possible: [
+      'فكّر في الفرص المستقبلية: ما الوظائف أو المشاريع التي قد تكون متاحة؟',
+      'فكّر في إمكانيات النمو: كيف يمكن أن يتطور هذا الشغف مع الوقت؟',
+      'فكّر في الاتجاهات الجديدة: ما التغيرات أو الابتكارات التي تؤثر على هذا المجال؟',
+      'فكّر في إمكانية الدمج: هل يمكن الجمع بينه وبين مجالات أخرى؟',
+      'فكّر في الأدوات أو التقنيات التي قد تدعم هذا المجال مستقبلًا.',
+      'فكّر في مستقبلك على المدى البعيد: كيف ترى نفسك بعد 5–10 سنوات؟'
+    ]
+  },
+  en: {
+    Problems: [
+      'Think about financial challenges: Does the field require large investment? Is income stable?',
+      'Think about technical barriers: What skills might you need to develop?',
+      'Think about potential risks: What aspects of the field concern you most?',
+      'Think about market competition: Is the field crowded? Can you stand out?',
+      'Think about legal or regulatory issues: Are there restrictions you should consider?',
+      'Think about time investment: Does success in this field require long-term commitment?'
+    ],
+    Purpose: [
+      'Think about your core motivation: Why are you drawn to this field?',
+      'Think about the positive impact: How might this passion benefit others or society?',
+      'Think about your personal values: What values does this passion align with?',
+      'Think about your life vision: Does this field support your mission or goals?',
+      'Think about the change you hope to create: Could this passion lead to meaningful impact?',
+      'Think about your identity: Does this passion reflect who you are?'
+    ],
+    Power: [
+      'Think about your current skills: What strengths do you already have?',
+      'Think about your personal qualities: Patience, creativity, leadership, communication, etc.',
+      'Think about your past experiences: Have you had experiences that reinforce this passion?',
+      'Think about the resources available to you: networks, tools, time, support.',
+      'Think about challenges you\'ve overcome: How have they made you stronger?',
+      'Think about the people who have inspired or supported you in this path.'
+    ],
+    Proof: [
+      'Think about your accomplishments: Any projects or work related to this field?',
+      'Think about your education: Have you taken courses or earned certifications?',
+      'Think about feedback: Have others praised your work or contributions?',
+      'Think about your audience: Are there people interested in what you offer?',
+      'Think about exposure: Has your work been featured, shared, or published?',
+      'Think about measurable results: Are there outcomes that demonstrate your impact?'
+    ],
+    Possible: [
+      'Think about future opportunities: What roles or projects might exist?',
+      'Think about potential for growth: How could this passion evolve over time?',
+      'Think about emerging trends: What changes are shaping this field?',
+      'Think about cross-field possibilities: Could this passion merge with others?',
+      'Think about supportive tools or technologies on the horizon.',
+      'Think about your long-term future: Where could you be in 5–10 years?'
+    ]
+  }
+};
+
     
     let currentPassionIndex = 0;
     let currentStageIndex = 0;
     let previousPassionIndex = -1;
-    const answers = {};
-    const userPriorities = {};
     let currentStep = "selection"; // selection, questions, results
     let personalAdviceAdded = false;
 
@@ -2012,7 +2108,7 @@
     // Initialize language from localStorage
     window.addEventListener('load', () => {
       const savedLanguage = localStorage.getItem('6ps_language');
-      if (savedLanguage && savedLanguage !== currentLanguage) {
+      if (savedLanguage && savedLanguage  == currentLanguage) {
         toggleLanguage();
       }
       
@@ -2241,11 +2337,19 @@
         alert(currentLanguage === 'ar' ? 'يرجى إدخال من 3 إلى 6 شغف!' : 'Please enter between 3 and 6 passions!');
         return;
       }
+      
+      // إخفاء زر الترجمة
+      const languageBtn = document.querySelector('.language-switcher');
+      if (languageBtn) {
+        languageBtn.style.display = 'none';
+      }
+      
       passions.forEach(p => {
         if (!answers[p]) {
           answers[p] = { Problems: [], Purpose: [], Power: [], Proof: [], Possible: [] };
         }
       });
+      
       passionSelection.classList.add('hidden');
       questionSection.classList.remove('hidden');
       previousPassionIndex = -1;
@@ -2261,7 +2365,7 @@
       const currentPassion = passions[currentPassionIndex];
       const currentStage = stages[currentStageIndex];
       
-      // البحث عن إجابات من نفس المرحلة في شغف آخر
+      // البحث عن إجابات من نفس محطة في شغف آخر
       const suggestions = new Map(); // استخدام Map لمنع التكرار
       
       passions.forEach(passion => {
@@ -2305,7 +2409,7 @@
             }
           };
           
-          // تحديد اللون حسب المرحلة
+          // تحديد اللون حسب محطة
           let levelClass = '';
           if (currentStage === 'Problems') {
             // منخفضة أخضر، متوسطة أصفر، عالية أحمر
@@ -2396,9 +2500,9 @@
       remainingText.textContent = t('remainingText', { remaining: remainingQuestions });
 
       currentPassionEl.textContent = t('passionLabel') + passion;
-      currentStageEl.textContent = t('stageLabel') + stage;
+      currentStageEl.textContent = stage === 'Possible' ? 'أخر محطة: Possible' : t('stageLabel') + stage;
       
-      // عرض شرح المرحلة
+      // عرض شرح محطة
       const explanation = stageExplanations[currentLanguage][stage];
       stageExplanationEl.innerHTML = `
         <h4>${explanation.title}</h4>
@@ -2445,12 +2549,12 @@
       const hintButton = document.createElement('button');
       hintButton.className = 'hint-button';
       hintButton.type = 'button';
-      hintButton.innerHTML = '💡';
+      hintButton.innerHTML = '<img src="assets/lightbulb-solid.svg" alt="hint-icon" class="hint-icon">';
       
       const hintTooltip = document.createElement('div');
       hintTooltip.className = 'hint-tooltip';
       
-      // اختيار نصيحة عشوائية من المرحلة الحالية
+      // اختيار نصيحة عشوائية من محطة الحالية
       const hints = stageHints[currentLanguage][stage];
       const randomHint = hints[Math.floor(Math.random() * hints.length)];
       hintTooltip.textContent = randomHint;
@@ -2531,7 +2635,7 @@
       showQuestion();
       // إضافة التمرير إلى أعلى الصفحة
       window.scrollTo({
-        top: 0,
+        top: 20,
         behavior: 'smooth'
       });
     });
@@ -2579,7 +2683,7 @@
         showQuestion();
         // إضافة التمرير إلى أعلى الصفحة
         window.scrollTo({
-          top: 0,
+          top: 20,
           behavior: 'smooth'
         });
       }
@@ -2590,12 +2694,24 @@
       questionSection.classList.add('hidden');
       resultsSection.classList.remove('hidden');
       personalAdviceAdded = false; // إعادة تعيين المتغير عند عرض النتائج لأول مرة
+      
+      // إخفاء زر النتيجة
+      const resultHighlight = document.querySelector('.result-highlight');
+      if (resultHighlight) {
+        resultHighlight.style.display = 'none';
+      }
+      
       updateResultsDisplay();
     }
 
     function updateResultsDisplay() {
-      resultsTable.innerHTML = '';
+      // إخفاء زر الترجمة
+      const languageSwitcher = document.querySelector('.language-switcher');
+      if (languageSwitcher) {
+        languageSwitcher.style.display = 'none';
+      }
 
+      resultsTable.innerHTML = '';
       let passionResults = [];
 
       // حساب النتائج بناءً على التقييمات
@@ -2631,15 +2747,39 @@
       });
 
       const topPassion = passionResults[0];
+
+      // إضافة قسم الشغف ونتيجته
+      const passionResultElement = document.createElement('div');
+      passionResultElement.className = 'result-highlight passion-result';
+      passionResultElement.style.marginBottom = '1.5rem';
+      passionResultElement.style.background = '#e8f5e9';
+      passionResultElement.style.borderColor = 'var(--green)';
+      passionResultElement.style.padding = '1.5rem';
+      passionResultElement.style.borderRadius = 'var(--radius)';
+      passionResultElement.style.boxShadow = 'var(--shadow)';
+      passionResultElement.style.direction = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      passionResultElement.style.textAlign = currentLanguage === 'ar' ? 'right' : 'left';
+      passionResultElement.innerHTML = `
+        <div>
+          <h3 style="color: var(--green); margin-bottom: 15px; font-size: 2em; text-align: center;">${currentLanguage === 'ar' ? 'المجال المناسب ليك' : 'Your Passion is'}</h3>
+          <div style="background: #fff; padding: 15px; border-radius: 8px; border: 0 solid var(--green); text-align: center;">
+            <p style="font-size: 1.5em; font-weight: bold; color: var(--green); margin-bottom: 10px;">${topPassion.passion}</p>
+            <p style="color: var(--text-light);">${t('totalScore', { total: topPassion.total })}</p>
+          </div>
+        </div>
+      `;
+      recommendation.parentNode.insertBefore(passionResultElement, recommendation);
+
+      // تحديث عرض النتائج
       recommendation.innerHTML = `
         <div>
-          <h3 style="color: var(--green); margin-bottom: 10px;">${t('recommendedPassion')}</h3>
+          <h3 style="color: var(--primary); margin-bottom: 10px;">${t('recommendedPassion')}</h3>
           <p style="font-size: 1.3em; font-weight: bold; color: var(--primary);">${topPassion.passion}</p>
           <p style="color: var(--text-light); margin-top: 5px;">${t('totalScore', { total: topPassion.total })}</p>
         </div>
       `;
 
-      // إضافة النصيحة الشخصية فقط إذا لم تكن موجودة بالفعل
+      // إضافة النصيحة الشخصية
       const existingHint = document.querySelector('.personal-advice-hint');
       if (!personalAdviceAdded && !existingHint) {
         const hintData = generatePersonalHint(topPassion.passion);
@@ -2647,14 +2787,29 @@
           const hintElement = document.createElement('div');
           hintElement.className = 'result-highlight personal-advice-hint';
           hintElement.style.marginTop = '1.5rem';
-          hintElement.style.background = '#fff3cd';
-          hintElement.style.borderColor = 'var(--yellow)';
+          hintElement.style.background = '#eff2ff';
+          hintElement.style.borderColor = '#052ed8';
+          hintElement.style.padding = '1.5rem';
+          hintElement.style.borderRadius = 'var(--radius)';
+          hintElement.style.boxShadow = 'var(--shadow)';
+          hintElement.style.direction = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+          hintElement.style.textAlign = currentLanguage === 'ar' ? 'right' : 'left';
           hintElement.setAttribute('data-ar', hintData.ar);
           hintElement.setAttribute('data-en', hintData.en);
           hintElement.innerHTML = `
             <div>
-              <h3 style="color: var(--yellow); margin-bottom: 10px;">${t('personalAdvice')}</h3>
-              <p style="font-size: 1em; line-height: 1.6; color: var(--text);">${hintData[currentLanguage]}</p>
+              <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 2em; text-align: center;">${t('personalAdvice')}</h3>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                ${hintData[currentLanguage].split('\n').map(line => {
+                  if (line.trim() === '') return '';
+                  if (line.startsWith('-')) {
+                    return `<div style="background:#fcfcff; color: var(--primary); padding: 10px; border-radius: 8px; border-${currentLanguage === 'ar' ? 'right' : 'left'}: 3px solid #052ed8; text-align: ${currentLanguage === 'ar' ? 'right' : 'left'}">
+                      ${line.replace('-', '')}
+                    </div>`;
+                  }
+                  return `<div style="text-align: center; font-weight: bold; color: var(--primary);">${line}</div>`;
+                }).join('')}
+              </div>
             </div>
           `;
           recommendation.parentNode.insertBefore(hintElement, recommendation.nextSibling);
@@ -2664,6 +2819,8 @@
         // تحديث النصيحة الموجودة باللغة الحالية
         const hintText = existingHint.getAttribute(`data-${currentLanguage}`);
         if (hintText) {
+          existingHint.style.direction = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+          existingHint.style.textAlign = currentLanguage === 'ar' ? 'right' : 'left';
           const textElement = existingHint.querySelector('p');
           if (textElement) {
             textElement.textContent = hintText;
@@ -2689,33 +2846,46 @@
 
     // دالة لتوليد النصيحة الشخصية
     function generatePersonalHint(topPassion) {
-      const purposeAnswers = answers[topPassion]['Purpose'];
-      
-      // البحث عن أول إجابة بمستوى عالي (6 نقاط) في Purpose
-      const highPurposeAnswer = purposeAnswers.find(answer => parseInt(answer.rating) === 6);
-      
-      if (highPurposeAnswer) {
-        return {
-          ar: `بناءً على إجاباتك، أنت مناسب جداً لمجال "${topPassion}" لأنك ذكرت: "${highPurposeAnswer.text}". هذا يُظهر وضوح رؤيتك وقوة دافعيتك في هذا المجال. ننصحك بالتركيز على تطوير مهاراتك في هذا الاتجاه والبحث عن الفرص التي تتماشى مع هذا الهدف.`,
-          en: `Based on your answers, you are very well-suited for "${topPassion}" because you mentioned: "${highPurposeAnswer.text}". This shows clarity in your vision and strong motivation in this field. We recommend focusing on developing your skills in this direction and looking for opportunities that align with this goal.`
-        };
-      }
-      
-      // إذا لم توجد إجابة بمستوى عالي، ابحث عن أول إجابة بمستوى متوسط
-      const mediumPurposeAnswer = purposeAnswers.find(answer => parseInt(answer.rating) === 4);
-      
-      if (mediumPurposeAnswer) {
-        return {
-          ar: `أنت تُظهر اهتماماً واضحاً بمجال "${topPassion}" خاصة فيما يتعلق بـ "${mediumPurposeAnswer.text}". ننصحك بالاستمرار في استكشاف هذا المجال وتطوير فهمك له أكثر.`,
-          en: `You show clear interest in "${topPassion}" especially regarding "${mediumPurposeAnswer.text}". We recommend continuing to explore this field and developing your understanding of it further.`
-        };
-      }
-      
-      // إذا لم توجد إجابات مناسبة، أعطِ نصيحة عامة
-      return {
-        ar: `مجال "${topPassion}" يبدو الأنسب لك بناءً على إجاباتك. ننصحك بالتعمق أكثر في هذا المجال واستكشاف الفرص المتاحة فيه.`,
-        en: `"${topPassion}" appears to be the most suitable for you based on your answers. We recommend delving deeper into this field and exploring the opportunities available in it.`
-      };
+      // نجمع أفضل إجابة لكل مرحلة
+      let reasons = [];
+      stages.forEach(stage => {
+        const stageAnswers = answers[topPassion][stage];
+        if (stageAnswers && stageAnswers.length > 0) {
+          let selected;
+          if (stage === 'Problems') {
+            // اختيار أقل درجة قلق (أقل تقييم سالب)
+            selected = stageAnswers.reduce((min, curr) => parseInt(curr.rating) > parseInt(min.rating) ? curr : min, stageAnswers[0]);
+          } else {
+            // أعلى تقييم
+            selected = stageAnswers.reduce((max, curr) => parseInt(curr.rating) > parseInt(max.rating) ? curr : max, stageAnswers[0]);
+          }
+          reasons.push({ stage, text: selected.text, rating: selected.rating });
+        }
+      });
+
+      // بناء النص العربي
+      let ar = `هذا المجال مناسب لك لأنك ذكرت في رحلتك:`;
+      reasons.forEach(r => {
+        if (r.stage === 'Problems') {
+          ar += `\n- في محطة Problems: لأن أقل ما يقلقك هو: "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
+        } else {
+          ar += `\n- في محطة ${r.stage}: لأنك كتبت "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
+        }
+      });
+      ar += `\nاستمر في تطوير نفسك بهذا المجال!`;
+
+      // بناء النص الإنجليزي
+      let en = `This field suits you because, during your journey, you mentioned:`;
+      reasons.forEach(r => {
+        if (r.stage === 'Problems') {
+          en += `\n- In Problems: Because your least concern was: "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
+        } else {
+          en += `\n- In ${r.stage}: Because you wrote "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
+        }
+      });
+      en += `\nKeep developing yourself in this field!`;
+
+      return { ar, en };
     }
 
     // تحضير محتوى الطباعة
@@ -2976,7 +3146,7 @@
       }
     });
 
-    // دالة لعرض نافذة المرحلة الحالية
+    // دالة لعرض نافذة محطة الحالية
     function showCurrentStageModal() {
       const stage = stages[currentStageIndex];
       const explanation = stageExplanations[currentLanguage][stage];
@@ -3013,3 +3183,5 @@
   </script>
 </body>
 </html>
+
+
