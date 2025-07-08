@@ -2869,7 +2869,7 @@ const stageHints = {
         if (r.stage === 'Problems') {
           ar += `\n- في محطة Problems: لأن أقل ما يقلقك هو: "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
         } else {
-          ar += `\n- في محطة ${r.stage}: لأنك كتبت "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
+          ar += `\n- في محطة ${r.stage}: لأن "${r.text}" (${ratingToLevel(r.rating, r.stage)})`;
         }
       });
       ar += `\nاستمر في تطوير نفسك بهذا المجال!`;
